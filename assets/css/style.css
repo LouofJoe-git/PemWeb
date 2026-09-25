@@ -1,0 +1,130 @@
+/* ==========================================================================
+   TUGAS PEMROGRAMAN WEB: NAVBAR CEPATIK (VERSI PEMULA)
+   ========================================================================== */
+
+/* 1. Reset Dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  background-color: #FFFFFF;
+  padding: 20px;
+}
+
+/* 2. Kotak Navigasi Kapsul (Navbar) */
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  padding: 8px 12px 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #EBEBEB;
+}
+
+/* 4. Bagian Logo */
+.logo img {
+  height: 38px;
+  display: block;
+}
+
+/* 5. Bagian Menu Navigasi */
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #4B5563;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  line-height: 1.2;
+}
+
+.menu li a:hover {
+  color: #F05A35;
+}
+
+/* Menu yang sedang aktif (Beranda) */
+.menu li a.aktif {
+  background-color: #FCEEE7;
+  color: #1E232A;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 30px;
+}
+
+/* 6. Bagian Tombol Kanan */
+.tombol-grup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Gaya umum tombol */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+/* Tombol 1: Cek Pesanan */
+.btn-cek {
+  background-color: #FCEEE7;
+  color: #1E232A;
+  border: none;
+  padding: 7px 18px;
+}
+
+.btn-cek:hover {
+  background-color: #F8DFD4;
+}
+
+/* Tombol 2: Scan QR Kiosk */
+.btn-scan {
+  background-color: #FFFFFF;
+  color: #1E232A;
+  border: 1.5px solid #E5E7EB;
+  padding: 6.5px 18px;
+}
+
+.btn-scan:hover {
+  border-color: #F05A35;
+  color: #F05A35;
+}
+
+/* Tombol 3: Mulai Cetak */
+.btn-cetak {
+  background-color: #F05A35;
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 22px;
+  box-shadow: 0 4px 15px rgba(240, 90, 53, 0.35);
+}
+
+.btn-cetak:hover {
+  background-color: #E24522;
+}
+
+.panah {
+  font-size: 16px;
+  margin-left: 4px;
+}
