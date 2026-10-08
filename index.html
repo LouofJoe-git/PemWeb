@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Cepatik - Self-Service Cloud Printing Kiosk & Cetak Mandiri Modern untuk Ekosistem Kampus.">
+  <title>Cepatik - Self-Service Cloud Printing</title>
+  <!-- Favicon Ikon Tab Browser -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/icon.svg">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVHhe7Zu/S8NAFIAzOjq66ejYRXDTzeYU/BN0U3MFndRRQRER1EFwFAVnQZAiYhUEXUQXUaRDBYeig0UEf7W9py+h1bzQQGlj7d178C3vLrl33yWlBJ5lhQQ4IgaOGAZpzzQtWL8jYnRvFQMSA51Kih2QAnRDSTupRuPddM/lQFtKijd6oW4oaS/AUE+Lb/NqzB6lE3VGJcT6z8l7j732Jx+kv9c7fUccBQf1R0mRsfBdoAMmYeGvIk2ahKVkfIImTcLy/jAEB0yh/gJWpwD2tqMD70/XrIH6C8Aiowy8P12zBlgAC2ABLIAF0GRNsAAWQEuubzRaQHF5EvK7W5W5uYR8oRAdeH+65i+wPlpzGFULwEXePz7/LVgfrTkMFtCsAlIPaXh+ew3ktReAm+46WYPW/VloP1yE+5cn37j2Ajbvzt3Nl1hKH/vGtReAJ952MF8WcPqY8Y1rLwC5ymVh7jYFyexNYMwIAWGwgEYJ+Ly+gMLu1p+B69EaGioAi6JzowTXozWwABbAAlgAC6iyDhbAAlgAC2ABNBlGpa/CxZXqvsbWCq5Ha3DriPqrsG6wABbAAlgAC6BJk2ABLIAFsAAWQJMmgZ1i0zRpEtgvFKdJk7BgfLCVJk3C6xqTIkMHTABbBUttc2a+Bo6YLjdPKmlvBCZojJLirLx5DPwtwOZiOlFHcPMw0tfhE1AKt4HasXP0Ih1w24N/P/bf8QXf4i9hq+va5AAAAABJRU5ErkJggg==">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/script.js" defer></script>
+</head>
+
+<body>
+
+  <aside class="topbar">
+    <span>Kiosk &amp; loker mandiri Cepatik aktif 24/7 di 40+ titik kampus mitra</span>
+    <span class="status-dot" title="Status Online"></span>
+  </aside>
+
+  <header class="header-area">
+    <nav class="navbar">
+      <a href="#hero" class="logo" aria-label="Beranda Cepatik">
+        <img src="assets/images/logo.svg" alt="Logo Cepatik">
+      </a>
+
+      <ul class="menu">
+        <li><a href="#hero" class="aktif">Beranda</a></li>
+        <li><a href="#kalkulator">Kalkulator Tarif</a></li>
+        <li><a href="#keunggulan">Keunggulan</a></li>
+        <li><a href="#lokasi">Lokasi Kiosk</a></li>
+        <li><a href="#cta">Bantuan</a></li>
+      </ul>
+
+      <div class="tombol-grup">
+        <a href="#tracker" class="btn btn-cek">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Cek Pesanan</span>
+        </a>
+        <a href="cetak.html" class="btn btn-cetak">
+          <span>Mulai Cetak</span>
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="hero">
+      <div class="hero-glow"></div>
+      <div class="container hero-grid">
+
+        <aside class="hero-mockup-wrap">
+          <div class="card-antrean">
+            <div class="card-antrean-head">
+              <div class="antrean-title">
+                <span class="status-dot"></span>
+                <span>Antrean Cloud</span>
+              </div>
+              <span class="badge-realtime">Real-time</span>
+            </div>
+
+            <ul class="antrean-list">
+              <li class="antrean-item">
+                <div class="antrean-file">
+                  <div class="file-icon">PDF</div>
+                  <div class="file-info">
+                    <h4>Skripsi_BAB_1-5_Final.pdf</h4>
+                    <p>24 Lembar · A4 Duplex</p>
+                  </div>
+                </div>
+                <div class="antrean-status">
+                  <span>Siap di Loker #A4</span>
+                  <strong>PIN: 8492</strong>
+                </div>
+              </li>
+
+              <li class="antrean-item">
+                <div class="antrean-file">
+                  <div class="file-icon" style="background:#EFECE6; color:#4B5563;">DOC</div>
+                  <div class="file-info">
+                    <h4>Jurnal_Ilmiah_TI.docx</h4>
+                    <p>12 Lembar · Hitam Putih</p>
+                  </div>
+                </div>
+                <div style="font-size: 10px; font-family: var(--font-mono); color: var(--text-muted);">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
+                    <span>Spooling ke Kiosk...</span>
+                    <strong style="color:var(--primary);">85%</strong>
+                  </div>
+                  <div class="progress-bar-wrap">
+                    <div class="progress-bar-fill" style="width: 85%;"></div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="antrean-item">
+                <div class="antrean-file">
+                  <div class="file-icon" style="background:#EFECE6; color:#4B5563;">PPT</div>
+                  <div class="file-info">
+                    <h4>Proposal_Proyek_Akhir.pdf</h4>
+                    <p>8 Lembar · Full Color</p>
+                  </div>
+                </div>
+                <div
+                  style="font-size: 11px; background:#FEF3C7; color:#92400E; padding:4px 8px; border-radius:6px; font-weight:700;">
+                  Menunggu Pembayaran QRIS
+                </div>
+              </li>
+            </ul>
+
+            <div class="antrean-footer">
+              <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Enkripsi TLS · File Dihapus Otomatis 2 Jam</span>
+            </div>
+          </div>
+
+          <div class="badge-harga-hemat">
+            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+              stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 6v12M15 9.5H9.5a2.5 2.5 0 0 1 0-5H14M10 14.5h4.5a2.5 2.5 0 0 1 0 5H9.5"></path>
+            </svg>
+            <span>Mulai Rp 350 / lembar</span>
+          </div>
+        </aside>
+
+        <article class="hero-content">
+          <div class="hero-tag">
+            <span class="hero-tag-star">★</span>
+            <span>Solusi Cetak Mandiri &amp; Cepat untuk Mahasiswa</span>
+          </div>
+
+          <h1 class="hero-title">
+            Cetak Dokumen Dari Mana Saja, Ambil Mandiri Kapan Saja<span>.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Upload dokumen dari HP atau laptop, bayar instan via QRIS, dan ambil langsung di mesin printer kiosk tanpa
+            perlu antre lama di meja operator.
+          </p>
+
+          <div class="tracker-box" id="tracker">
+            <form class="tracker-form" id="formTracker">
+              <div class="tracker-input-group">
+                <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF"
+                  stroke-width="2">
+                  <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path>
+                  <line x1="8" y1="7" x2="16" y2="7"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                  <line x1="8" y1="17" x2="13" y2="17"></line>
+                </svg>
+                <input type="text" id="inputTiket" placeholder="Masukkan kode tiket (cth: CPT-9482)" maxlength="12">
+              </div>
+              <button type="submit" class="btn-tracker">
+                <span>Cek Status</span>
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+            </form>
+            <!-- Hasil Cek Tiket Real-time -->
+            <div id="trackerResult" style="display: none; margin-top: 12px;"></div>
+          </div>
+
+          <div id="dropzone">
+            <label class="dropzone-label" for="fileInput">
+              <input type="file" id="fileInput" style="display: none;"
+                accept=".pdf,.docx,.doc,.pptx,.ppt,.jpg,.jpeg,.png">
+              <div class="dropzone-content">
+                <div class="dropzone-icon-box">
+                  <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                    <path d="M12 12v9"></path>
+                    <path d="m16 16-4-4-4 4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="dropzone-title" id="dropzoneTitle">Tarik &amp; Lepas Berkas atau Klik untuk Upload</h3>
+                  <p class="dropzone-subtitle">Mendukung format PDF, Word, PowerPoint, &amp; Gambar</p>
+                </div>
+                <div class="dropzone-badges">
+                  <span>⚡ Auto-Count</span>
+                  <span>🔒 TLS 256-Bit</span>
+                  <span>🗑 Hapus Otomatis</span>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <ul class="trust-list">
+            <li class="trust-item">
+              <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <div class="trust-text">
+                <strong>Privasi 100%</strong>
+                <span>File terhapus aman</span>
+              </div>
+            </li>
+            <li class="trust-item">
+              <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <div class="trust-text">
+                <strong>QRIS Dinamis</strong>
+                <span>Semua Bank &amp; eWallet</span>
+              </div>
+            </li>
+            <li class="trust-item">
+              <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#374151"
+                stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <div class="trust-text">
+                <strong>Spooling Kilat</strong>
+                <span>Cetak dalam 12 detik</span>
+              </div>
+            </li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="status-strip">
+      <div class="container status-strip-content">
+        <div class="status-left">
+          <span class="status-dot"></span>
+          <span>42 Mitra Kiosk Cepatik Online &amp; Siap Cetak</span>
+        </div>
+        <div class="status-right">
+          <div>⚡ Kecepatan: <strong>35 Halaman / Menit</strong></div>
+          <div>🔒 Ambil Mandiri via <strong>PIN / QR</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="kalkulator-section" id="kalkulator">
+      <div class="container">
+        <div class="kalkulator-card">
+          <header>
+            <span class="section-badge">Hitung Transparan</span>
+            <h2 class="section-title">Kalkulator Simulasi Biaya Cetak</h2>
+            <p class="section-subtitle">Estimasi biaya cetak akurat secara real-time tanpa ada biaya tersembunyi.</p>
+          </header>
+
+          <div class="kalkulator-layout">
+            <form id="calcForm" onsubmit="return false;">
+              <div class="form-group-title">1. Ukuran &amp; Jenis Kertas</div>
+              <div class="radio-pilihan-grid">
+                <div class="radio-card radio-kertas selected">
+                  <input type="radio" name="paper" value="a4_75" checked>
+                  <span class="radio-label">A4 Standard</span>
+                  <span class="radio-desc">75 GSM Harian</span>
+                  <span class="radio-price">+Rp 0</span>
+                </div>
+                <div class="radio-card radio-kertas">
+                  <input type="radio" name="paper" value="a4_80">
+                  <span class="radio-label">A4 Tebal</span>
+                  <span class="radio-desc">80 GSM Skripsi</span>
+                  <span class="radio-price">+Rp 50/lbr</span>
+                </div>
+                <div class="radio-card radio-kertas">
+                  <input type="radio" name="paper" value="f4_80">
+                  <span class="radio-label">F4 / Folio</span>
+                  <span class="radio-desc">80 GSM Dokumen</span>
+                  <span class="radio-price">+Rp 100/lbr</span>
+                </div>
+              </div>
+
+              <div class="form-group-title">2. Mode Warna Tinta</div>
+              <div class="radio-pilihan-grid">
+                <div class="radio-card radio-warna selected">
+                  <input type="radio" name="color" value="bw" checked>
+                  <span class="radio-label">Hitam Putih</span>
+                  <span class="radio-desc">Teks makalah</span>
+                  <span class="radio-price">Rp 350</span>
+                </div>
+                <div class="radio-card radio-warna">
+                  <input type="radio" name="color" value="color_std">
+                  <span class="radio-label">Warna Standar</span>
+                  <span class="radio-desc">Grafik &amp; diagram</span>
+                  <span class="radio-price">Rp 1.000</span>
+                </div>
+                <div class="radio-card radio-warna">
+                  <input type="radio" name="color" value="color_full">
+                  <span class="radio-label">Full Color Foto</span>
+                  <span class="radio-desc">Foto &amp; poster</span>
+                  <span class="radio-price">Rp 2.000</span>
+                </div>
+              </div>
+
+              <div class="opsi-halaman-row">
+                <div class="input-box">
+                  <label for="inputHalaman">Jumlah Halaman</label>
+                  <div class="input-number-wrap">
+                    <input type="number" id="inputHalaman" value="15" min="1" max="500">
+                    <span style="font-size: 12px; color: var(--text-muted);">Lembar</span>
+                  </div>
+                </div>
+
+                <div class="input-box duplex-toggle-box">
+                  <div>
+                    <label for="toggleDuplex" style="margin-bottom: 2px;">Cetak Bolak-Balik</label>
+                    <span style="font-size: 11px; color: #059669; font-weight:600;">Diskon hemat kertas 5%</span>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="toggleDuplex">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </form>
+
+            <aside class="struk-preview">
+              <div class="struk-head">
+                <div>
+                  <span
+                    style="font-size: 10px; font-family: var(--font-mono); color: var(--primary); font-weight: 800; text-transform: uppercase;">Estimasi
+                    Realtime</span>
+                  <h3>Rincian Tiket Cetak</h3>
+                </div>
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                  stroke-width="2">
+                  <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path>
+                  <line x1="8" y1="7" x2="16" y2="7"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+              </div>
+
+              <dl class="struk-list">
+                <div class="struk-row">
+                  <dt>Jenis Kertas</dt>
+                  <dd id="strukKertas">A4 Standard (75 GSM)</dd>
+                </div>
+                <div class="struk-row">
+                  <dt>Warna Tinta</dt>
+                  <dd id="strukWarna">Hitam Putih (B/W)</dd>
+                </div>
+                <div class="struk-row">
+                  <dt>Volume</dt>
+                  <dd id="strukHalaman">15 hlm x 1 rangkap</dd>
+                </div>
+                <div class="struk-row">
+                  <dt>Metode Sisi</dt>
+                  <dd id="strukMetode">1 Sisi (Simplex)</dd>
+                </div>
+                <div class="struk-row">
+                  <dt>Cloud Spooling</dt>
+                  <dd style="color: #059669; font-weight: 800;">GRATIS</dd>
+                </div>
+              </dl>
+
+              <div class="struk-footer">
+                <div class="total-row">
+                  <div>
+                    <span
+                      style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); font-family: var(--font-mono);">Total
+                      Estimasi:</span>
+                    <div class="total-tax">Termasuk PPN 11%</div>
+                  </div>
+                  <div class="total-nominal" id="strukTotal">Rp 5.250</div>
+                </div>
+
+                <a href="cetak.html" class="btn-upload-struk">
+                  <span>Lanjutkan Pemesanan di Aplikasi Cetak</span>
+                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                    <path d="M12 12v9"></path>
+                    <path d="m16 16-4-4-4 4"></path>
+                  </svg>
+                </a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="keunggulan-section" id="keunggulan">
+      <div class="container">
+        <header class="keunggulan-header">
+          <span class="section-badge">Keamanan &amp; Performa</span>
+          <h2 class="section-title">Mengapa Memilih Cepatik?</h2>
+          <p class="section-subtitle">Teknologi cetak mandiri modern yang dirancang untuk kenyamanan mahasiswa.</p>
+        </header>
+
+        <div class="keunggulan-grid">
+          <article class="kartu-keunggulan">
+            <div>
+              <div class="keunggulan-icon green">
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <h3>Privasi Berkas Terjamin</h3>
+              <p>Dokumen skripsi dan data pribadi dienkripsi TLS 256-bit dan otomatis terhapus permanen dari server 2
+                jam setelah selesai cetak.</p>
+            </div>
+            <div class="keunggulan-tag" style="color: #059669;">✓ Zero Data Retention</div>
+          </article>
+
+          <article class="kartu-keunggulan">
+            <div>
+              <div class="keunggulan-icon coral">
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+              </div>
+              <h3>Laserjet Cepat 35 ppm</h3>
+              <p>Kiosk dilengkapi printer laserjet enterprise berkecepatan tinggi dengan toner tahan air dan sensor
+                presisi anti-paper-jam.</p>
+            </div>
+            <div class="keunggulan-tag" style="color: var(--primary);">✓ Resolusi 1200 x 1200 DPI</div>
+          </article>
+
+          <article class="kartu-keunggulan">
+            <div>
+              <div class="keunggulan-icon gray">
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <h3>Akses Kiosk 24 Jam</h3>
+              <p>Loker mandiri tersebar di perpustakaan, kantin, dan mitra kampus. Deadline tugas subuh pun tetap bisa
+                diambil kapan saja.</p>
+            </div>
+            <div class="keunggulan-tag">✓ 24/7 Self-Pickup</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="lokasi-section" id="lokasi">
+      <div class="container">
+        <div class="lokasi-card-wrap">
+          <div class="lokasi-top">
+            <div>
+              <span class="section-badge">Jaringan Kampus</span>
+              <h2 class="section-title">Titik Kiosk Terdekat</h2>
+              <p class="section-subtitle" style="margin-bottom:0;">Pilih lokasi kiosk yang paling dekat dengan fakultas
+                atau lokasimu.</p>
+            </div>
+
+            <div class="search-kiosk">
+              <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF"
+                stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" placeholder="Cari kampus atau gedung...">
+            </div>
+          </div>
+
+          <div class="lokasi-grid">
+            <article class="kartu-kiosk">
+              <div class="kiosk-status-head">
+                <span class="kiosk-badge-online">
+                  <span class="status-dot"></span> Online &amp; Siap
+                </span>
+                <span class="kiosk-distance">0.3 km</span>
+              </div>
+              <h4>Kiosk Perpustakaan UI</h4>
+              <address>Lantai 1, Lobby Depan Starbucks Kampus Depok</address>
+              <div class="kiosk-spec-grid">
+                <div>Kertas A4: <strong>920 lbr</strong></div>
+                <div>Kertas F4: <strong>450 lbr</strong></div>
+                <div>Buka: <strong>24 Jam</strong></div>
+                <div>Loker: <strong>Tersedia (6)</strong></div>
+              </div>
+              <div class="kiosk-actions">
+                <a href="#dropzone" class="btn-pilih-kiosk">Pilih Lokasi Ini</a>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-maps"
+                  title="Buka Maps">
+                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="kartu-kiosk">
+              <div class="kiosk-status-head">
+                <span class="kiosk-badge-online">
+                  <span class="status-dot"></span> Online &amp; Siap
+                </span>
+                <span class="kiosk-distance">0.8 km</span>
+              </div>
+              <h4>Mitra Barokah ITB</h4>
+              <address>Jl. Ganesha No. 10 (Samping Gerbang Utama ITB)</address>
+              <div class="kiosk-spec-grid">
+                <div>Kertas A4: <strong>1.400 lbr</strong></div>
+                <div>Kertas F4: <strong>620 lbr</strong></div>
+                <div>Buka: <strong>07.00 - 23.00</strong></div>
+                <div>Loker: <strong>Tersedia (12)</strong></div>
+              </div>
+              <div class="kiosk-actions">
+                <a href="#dropzone" class="btn-pilih-kiosk">Pilih Lokasi Ini</a>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-maps"
+                  title="Buka Maps">
+                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="kartu-kiosk">
+              <div class="kiosk-status-head">
+                <span class="kiosk-badge-online">
+                  <span class="status-dot"></span> Online &amp; Siap
+                </span>
+                <span class="kiosk-distance">1.2 km</span>
+              </div>
+              <h4>Kiosk Gelanggang UGM</h4>
+              <address>Student Center UGM, Sayap Barat Lt. Dasar</address>
+              <div class="kiosk-spec-grid">
+                <div>Kertas A4: <strong>850 lbr</strong></div>
+                <div>Kertas F4: <strong>110 lbr</strong></div>
+                <div>Buka: <strong>24 Jam</strong></div>
+                <div>Loker: <strong>Tersedia (8)</strong></div>
+              </div>
+              <div class="kiosk-actions">
+                <a href="#dropzone" class="btn-pilih-kiosk">Pilih Lokasi Ini</a>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-maps"
+                  title="Buka Maps">
+                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-text">
+            <span
+              style="font-size: 11px; font-family: var(--font-mono); color: var(--peach); font-weight: 800; text-transform: uppercase;">Cetak
+              Mandiri Tanpa Antre</span>
+            <h2>Siap Cetak Dokumen Kamu Sekarang?</h2>
+            <p>Upload berkasmu sekarang juga, bayar mudah via QRIS, dan ambil di loker pintar Cepatik kapan pun kamu
+              sempat.</p>
+            <div class="cta-btn-group">
+              <a href="cetak.html" class="btn btn-cetak">
+                <span>Buka Sistem Cetak</span>
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+                <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Hubungi CS WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <aside class="cta-badge-card">
+            <div class="cta-qr-icon">
+              <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
+            <strong style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Scan di Kiosk</strong>
+            <p style="font-size: 11px; color: #D6CEC8; margin-top: 4px;">Buka loker mandiri dengan kode tiket 6 digit
+            </p>
+            <div class="cta-badge-code">CPT-2026</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="floating-help">
+    <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="btn-floating"
+      title="Bantuan WhatsApp">
+      💬
+    </a>
+  </aside>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="assets/images/logo.svg" alt="Cepatik Logo">
+        <span>Cepatik Cloud Printing</span>
+        <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">© 2026 PT Cepatik Teknologi
+          Nusantara</span>
+      </div>
+
+      <nav class="footer-links">
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat &amp; Ketentuan</a>
+        <a href="#lokasi">Lokasi Kiosk</a>
+        <a href="#">Kemitraan Toko</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+
+</html>

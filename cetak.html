@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal Aplikasi Cetak Mandiri Cepatik - Upload, Konfigurasi, & Ambil di Kiosk.">
+  <title>Cetak Dokumen Mandiri - Cepatik</title>
+
+  <!-- Favicon Ikon Tab Browser -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/icon.svg">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVHhe7Zu/S8NAFIAzOjq66ejYRXDTzeYU/BN0U3MFndRRQRER1EFwFAVnQZAiYhUEXUQXUaRDBYeig0UEf7W9py+h1bzQQGlj7d178C3vLrl33yWlBJ5lhQQ4IgaOGAZpzzQtWL8jYnRvFQMSA51Kih2QAnRDSTupRuPddM/lQFtKijd6oW4oaS/AUE+Lb/NqzB6lE3VGJcT6z8l7j732Jx+kv9c7fUccBQf1R0mRsfBdoAMmYeGvIk2ahKVkfIImTcLy/jAEB0yh/gJWpwD2tqMD70/XrIH6C8Aiowy8P12zBlgAC2ABLIAF0GRNsAAWQEuubzRaQHF5EvK7W5W5uYR8oRAdeH+65i+wPlpzGFULwEXePz7/LVgfrTkMFtCsAlIPaXh+ew3ktReAm+46WYPW/VloP1yE+5cn37j2Ajbvzt3Nl1hKH/vGtReAJ952MF8WcPqY8Y1rLwC5ymVh7jYFyexNYMwIAWGwgEYJ+Ly+gMLu1p+B69EaGioAi6JzowTXozWwABbAAlgAC6iyDhbAAlgAC2ABNBlGpa/CxZXqvsbWCq5Ha3DriPqrsG6wABbAAlgAC6BJk2ABLIAFsAAWQJMmgZ1i0zRpEtgvFKdJk7BgfLCVJk3C6xqTIkMHTABbBUttc2a+Bo6YLjdPKmlvBCZojJLirLx5DPwtwOZiOlFHcPMw0tfhE1AKt4HasXP0Ih1w24N/P/bf8QXf4i9hq+va5AAAAABJRU5ErkJggg==">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- File CSS Eksternal (Berbagi Design System dengan Landing Page) -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- File JavaScript Khusus Sistem Pemesanan -->
+  <script src="assets/js/sistem.js" defer></script>
+</head>
+
+<body class="app-body">
+
+  <!-- ====================================================================
+       1. APP NAVBAR (HEADER APLIKASI)
+       ==================================================================== -->
+  <header class="app-navbar">
+    <div class="app-navbar-inner">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <a href="index.html" class="logo" title="Kembali ke Beranda">
+          <img src="assets/images/logo.svg" alt="Logo Cepatik">
+        </a>
+        <span style="font-size: 11px; background: #ECFDF5; color: #065F46; padding: 4px 10px; border-radius: 999px; font-weight: 700; border: 1px solid #A7F3D0;">
+          ● Kiosk Online
+        </span>
+      </div>
+
+      <a href="index.html" class="btn-back-home">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Kembali ke Beranda</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       2. WIZARD STEP TRACKER
+       ==================================================================== -->
+  <div class="app-wrapper">
+
+    <nav class="wizard-progress" aria-label="Alur Langkah Pemesanan">
+      <div class="wizard-step active" id="stepIndicator1">
+        <span class="step-num">1</span>
+        <span>Unggah Berkas</span>
+      </div>
+      <div class="wizard-step" id="stepIndicator2">
+        <span class="step-num">2</span>
+        <span>Atur Cetakan</span>
+      </div>
+      <div class="wizard-step" id="stepIndicator3">
+        <span class="step-num">3</span>
+        <span>Pilih Loker</span>
+      </div>
+      <div class="wizard-step" id="stepIndicator4">
+        <span class="step-num">4</span>
+        <span>Bayar QRIS</span>
+      </div>
+      <div class="wizard-step" id="stepIndicator5">
+        <span class="step-num">5</span>
+        <span>Tiket Selesai</span>
+      </div>
+    </nav>
+
+    <!-- ====================================================================
+         3. WORKSPACE UTAMA: DUA KOLOM (FORMULIR & RINGKASAN SIDEBAR)
+         ==================================================================== -->
+    <div class="app-grid-layout">
+
+      <!-- KOLOM KIRI: PANEL LANGKAH-LANGKAH -->
+      <main class="app-main-panel">
+
+        <!-- ----------------------------------------------------------------
+             LANGKAH 1: UNGGAH BERKAS DOKUMEN
+             ---------------------------------------------------------------- -->
+        <section class="step-panel active-panel" data-step="1">
+          <header class="panel-header">
+            <h2>Langkah 1: Unggah Dokumen Kamu</h2>
+            <p>Pilih file skripsi, tugas, atau makalah yang ingin kamu cetak di mesin kiosk.</p>
+          </header>
+
+          <label for="inputAppFile" class="dropzone-label" style="max-width: 100%;" id="boxUploadArea">
+            <input type="file" id="inputAppFile" style="display: none;" accept=".pdf,.docx,.doc,.pptx,.jpg,.png">
+            <div class="dropzone-content">
+              <div class="dropzone-icon-box">
+                <svg class="icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                  <path d="M12 12v9"></path>
+                  <path d="m16 16-4-4-4 4"></path>
+                </svg>
+              </div>
+              <h3 class="dropzone-title">Klik atau Tarik Berkas ke Sini</h3>
+              <p class="dropzone-subtitle">Mendukung format PDF, Word (.docx), PowerPoint (.pptx), atau Gambar</p>
+              <div class="dropzone-badges">
+                <span>🔒 Enkripsi TLS 256-Bit</span>
+                <span>⚡ Auto-Deteksi Halaman</span>
+              </div>
+            </div>
+          </label>
+
+          <!-- Tampilan Berkas Terpilih (Awalnya Sembunyi, Muncul Setelah Unggah) -->
+          <div class="uploaded-preview-box" id="previewUpload" style="display: none;">
+            <div class="file-preview-left">
+              <div class="file-badge-icon">PDF</div>
+              <div class="file-badge-meta">
+                <h4 id="previewNamaFile">Nama_Dokumen.pdf</h4>
+                <p id="previewInfoFile">0 Halaman · 0 MB · Siap Cetak</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 11px; background: #ECFDF5; color: #065F46; padding: 4px 10px; border-radius: 6px; font-weight: 800;">
+                ✓ Terverifikasi
+              </span>
+              <button type="button" id="btnHapusBerkas" style="background: #FEE2E2; color: #DC2626; border: 1px solid #FECACA; border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 700; cursor: pointer;">
+                ✕ Hapus
+              </button>
+            </div>
+          </div>
+
+          <div class="wizard-actions">
+            <div></div>
+            <button type="button" class="btn-wizard-next" onclick="pindahLangkah(2)">
+              <span>Lanjut: Atur Cetakan</span>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- ----------------------------------------------------------------
+             LANGKAH 2: PENGATURAN KERTAS & FINISHING
+             ---------------------------------------------------------------- -->
+        <section class="step-panel" data-step="2">
+          <header class="panel-header">
+            <h2>Langkah 2: Opsi Cetak &amp; Finishing</h2>
+            <p>Pilih spesifikasi kertas, warna tinta, dan kebutuhan penjilidan.</p>
+          </header>
+
+          <!-- Pilihan Kertas -->
+          <div class="form-group-title">1. Jenis Kertas</div>
+          <div class="radio-pilihan-grid">
+            <div class="radio-card opsi-app-kertas selected">
+              <input type="radio" name="app_paper" value="a4_75" checked>
+              <span class="radio-label">A4 Standar</span>
+              <span class="radio-desc">75 GSM Harian</span>
+              <span class="radio-price">+Rp 0</span>
+            </div>
+            <div class="radio-card opsi-app-kertas">
+              <input type="radio" name="app_paper" value="a4_80">
+              <span class="radio-label">A4 Tebal</span>
+              <span class="radio-desc">80 GSM Skripsi</span>
+              <span class="radio-price">+Rp 50/lbr</span>
+            </div>
+            <div class="radio-card opsi-app-kertas">
+              <input type="radio" name="app_paper" value="f4_80">
+              <span class="radio-label">F4 Folio</span>
+              <span class="radio-desc">80 GSM Dokumen</span>
+              <span class="radio-price">+Rp 100/lbr</span>
+            </div>
+          </div>
+
+          <!-- Pilihan Warna -->
+          <div class="form-group-title">2. Mode Warna Tinta</div>
+          <div class="radio-pilihan-grid">
+            <div class="radio-card opsi-app-warna selected">
+              <input type="radio" name="app_color" value="bw" checked>
+              <span class="radio-label">Hitam Putih</span>
+              <span class="radio-desc">Makalah &amp; skripsi</span>
+              <span class="radio-price">Rp 350/lbr</span>
+            </div>
+            <div class="radio-card opsi-app-warna">
+              <input type="radio" name="app_color" value="color_std">
+              <span class="radio-label">Warna Standar</span>
+              <span class="radio-desc">Grafik &amp; logo</span>
+              <span class="radio-price">Rp 1.000/lbr</span>
+            </div>
+            <div class="radio-card opsi-app-warna">
+              <input type="radio" name="app_color" value="color_full">
+              <span class="radio-label">Full Color</span>
+              <span class="radio-desc">Poster &amp; foto</span>
+              <span class="radio-price">Rp 2.000/lbr</span>
+            </div>
+          </div>
+
+          <!-- Pilihan Sisi & Rangkap -->
+          <div class="opsi-halaman-row" style="margin-bottom: 22px;">
+            <div class="input-box">
+              <label for="inputRangkap">Jumlah Rangkap (Salinan)</label>
+              <div class="input-number-wrap">
+                <input type="number" id="inputRangkap" value="1" min="1" max="20">
+                <span style="font-size: 12px; color: var(--text-muted);">Set dokumen</span>
+              </div>
+            </div>
+
+            <div class="input-box duplex-toggle-box">
+              <div>
+                <label for="toggleDuplexApp" style="margin-bottom: 2px;">Cetak Bolak-Balik</label>
+                <span style="font-size: 11px; color: #059669; font-weight:600;">Diskon hemat kertas 5%</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="toggleDuplexApp">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pilihan Finishing Jilid -->
+          <div class="form-group-title">3. Penjilidan &amp; Finishing</div>
+          <div class="radio-pilihan-grid">
+            <div class="radio-card opsi-app-jilid selected">
+              <input type="radio" name="app_jilid" value="none" checked>
+              <span class="radio-label">Tanpa Jilid</span>
+              <span class="radio-desc">Lepasan biasa</span>
+              <span class="radio-price">+Rp 0</span>
+            </div>
+            <div class="radio-card opsi-app-jilid">
+              <input type="radio" name="app_jilid" value="steples">
+              <span class="radio-label">Steples Pojok</span>
+              <span class="radio-desc">Rapih sudut kiri atas</span>
+              <span class="radio-price">+Rp 500</span>
+            </div>
+            <div class="radio-card opsi-app-jilid">
+              <input type="radio" name="app_jilid" value="lakban">
+              <span class="radio-label">Jilid Lakban Mika</span>
+              <span class="radio-desc">Mika bening + lakban</span>
+              <span class="radio-price">+Rp 3.500</span>
+            </div>
+          </div>
+
+          <div class="wizard-actions">
+            <button type="button" class="btn-wizard-prev" onclick="pindahLangkah(1)">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>Kembali</span>
+            </button>
+            <button type="button" class="btn-wizard-next" onclick="pindahLangkah(3)">
+              <span>Lanjut: Pilih Loker</span>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- ----------------------------------------------------------------
+             LANGKAH 3: PILIH LOKASI KIOSK & LOKER
+             ---------------------------------------------------------------- -->
+        <section class="step-panel" data-step="3">
+          <header class="panel-header">
+            <h2>Langkah 3: Pilih Titik Kiosk &amp; Loker Pengambilan</h2>
+            <p>Pilih mesin printer kiosk terdekat yang paling nyaman untuk kamu ambil hasilnya.</p>
+          </header>
+
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div class="radio-card opsi-app-kiosk selected" style="padding: 18px;">
+              <input type="radio" name="app_kiosk" value="Kiosk Perpustakaan UI (Loker Blok A)" checked>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <span class="radio-label" style="font-size: 14px;">Kiosk Perpustakaan UI (Loker Blok A)</span>
+                  <span class="radio-desc" style="font-size: 12px;">Lantai 1, Lobby Depan Starbucks Kampus Depok</span>
+                </div>
+                <span style="font-size: 11px; background: #ECFDF5; color: #065F46; padding: 2px 8px; border-radius: 6px; font-weight: 700;">6 Loker Siap</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px; font-family: var(--font-mono);">
+                Status: Online 24 Jam • Stok Kertas: Penuh
+              </div>
+            </div>
+
+            <div class="radio-card opsi-app-kiosk" style="padding: 18px;">
+              <input type="radio" name="app_kiosk" value="Mitra Barokah ITB (Loker Blok B)">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <span class="radio-label" style="font-size: 14px;">Mitra Barokah ITB (Loker Blok B)</span>
+                  <span class="radio-desc" style="font-size: 12px;">Jl. Ganesha No. 10 (Samping Gerbang Utama ITB)</span>
+                </div>
+                <span style="font-size: 11px; background: #ECFDF5; color: #065F46; padding: 2px 8px; border-radius: 6px; font-weight: 700;">12 Loker Siap</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px; font-family: var(--font-mono);">
+                Status: Buka 07.00 - 23.00 • Stok Kertas: Penuh
+              </div>
+            </div>
+
+            <div class="radio-card opsi-app-kiosk" style="padding: 18px;">
+              <input type="radio" name="app_kiosk" value="Kiosk Gelanggang UGM (Loker Blok C)">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <span class="radio-label" style="font-size: 14px;">Kiosk Gelanggang UGM (Loker Blok C)</span>
+                  <span class="radio-desc" style="font-size: 12px;">Student Center UGM, Sayap Barat Lt. Dasar</span>
+                </div>
+                <span style="font-size: 11px; background: #ECFDF5; color: #065F46; padding: 2px 8px; border-radius: 6px; font-weight: 700;">8 Loker Siap</span>
+              </div>
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px; font-family: var(--font-mono);">
+                Status: Online 24 Jam • Stok Kertas: Penuh
+              </div>
+            </div>
+          </div>
+
+          <div class="wizard-actions">
+            <button type="button" class="btn-wizard-prev" onclick="pindahLangkah(2)">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>Kembali</span>
+            </button>
+            <button type="button" class="btn-wizard-next" onclick="pindahLangkah(4)">
+              <span>Lanjut: Bayar QRIS</span>
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- ----------------------------------------------------------------
+             LANGKAH 4: PEMBAYARAN INSTAN VIA QRIS
+             ---------------------------------------------------------------- -->
+        <section class="step-panel" data-step="4">
+          <header class="panel-header">
+            <h2>Langkah 4: Pembayaran Instan via QRIS</h2>
+            <p>Scan kode QR menggunakan m-Banking atau e-Wallet apa saja (GoPay, OVO, Dana, ShopeePay).</p>
+          </header>
+
+          <div class="qris-card">
+            <div style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark);">
+              QRIS STANDAR PEMBAYARAN NASIONAL
+            </div>
+
+            <!-- Mockup QR Code Visual -->
+            <div class="qris-image-wrap">
+              <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#2D2825" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+                <path d="M10 7h4v4h-4z"></path>
+              </svg>
+              <span style="font-size: 10px; font-family: var(--font-mono); color: var(--text-muted); margin-top: 4px;">NMID: ID1020261948</span>
+            </div>
+
+            <div style="font-size: 12px; color: var(--text-muted);">Total Tagihan:</div>
+            <div style="font-size: 28px; font-weight: 900; color: var(--primary); font-family: var(--font-main);" id="qrisTotalDisplay">
+              Rp 5.250
+            </div>
+
+            <span class="qris-timer-pill" id="qrisTimerText">⏱ Sisa Waktu Bayar: 15:00 Menit</span>
+          </div>
+
+          <div class="wizard-actions">
+            <button type="button" class="btn-wizard-prev" onclick="pindahLangkah(3)">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              <span>Kembali</span>
+            </button>
+            <button type="button" class="btn-wizard-next" id="btnBayarQRIS" style="background-color: #059669;">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Simulasikan Bayar Berhasil</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ----------------------------------------------------------------
+             LANGKAH 5: TIKET PENGAMBILAN & PIN LOKER (SELESAI)
+             ---------------------------------------------------------------- -->
+        <section class="step-panel" data-step="5">
+          <div class="ticket-success-box">
+            <div style="width: 52px; height: 52px; background: #ECFDF5; color: #059669; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+              <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+
+            <h2 style="font-size: 22px; font-weight: 900; color: #065F46; margin-bottom: 4px;">Pembayaran Sukses &amp; Dokumen Dicetak!</h2>
+            <p style="font-size: 13px; color: var(--text-muted); max-width: 480px; margin: 0 auto;">
+              Dokumenmu sedang di-spooling dan otomatis masuk ke loker mandiri dalam 12 detik.
+            </p>
+
+            <!-- Tampilan Kode Tiket & PIN -->
+            <div class="ticket-code-display">
+              <span style="font-size: 11px; text-transform: uppercase; font-family: var(--font-mono); font-weight: 800; color: var(--text-muted); letter-spacing: 1px;">KODE TIKET KIOSK:</span>
+              <div class="ticket-big-code" id="displayTiket">CPT-8492</div>
+              <div class="ticket-pin-info">
+                PIN Loker Mandiri: <span style="background: var(--primary-soft); color: var(--primary); padding: 2px 10px; border-radius: 6px;" id="displayPIN">8492</span>
+              </div>
+            </div>
+
+            <div style="background: #FAFAF8; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: left; font-size: 12.5px; margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span style="color: var(--text-muted);">Lokasi Pengambilan:</span>
+                <strong id="displayLokasiSukses">Kiosk Perpustakaan UI (Loker Blok A)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <span style="color: var(--text-muted);">Batas Simpan Loker:</span>
+                <strong style="color: #D97706;">2 Jam (s.d. 19:45 WIB)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Keamanan Data:</span>
+                <strong style="color: #059669;">File Terhapus Permanen Otomatis</strong>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn-wizard-next" onclick="pindahLangkah(1)">
+                <span>Cetak Dokumen Lain</span>
+              </button>
+              <button type="button" class="btn btn-cek" onclick="window.print()" style="padding: 11px 20px;">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                <span>Cetak Struk Tiket</span>
+              </button>
+              <a href="index.html" class="btn-back-home" style="padding: 11px 22px;">
+                <span>Kembali ke Beranda</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- KOLOM KANAN: SIDEBAR RINGKASAN PESANAN -->
+      <aside class="app-sidebar-panel">
+        <header style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px dashed var(--border-color); margin-bottom: 14px;">
+          <h3 style="font-size: 15px; font-weight: 800; color: var(--text-dark);">Ringkasan Pesanan</h3>
+          <span style="font-size: 11px; background: var(--primary-soft); color: var(--primary); font-weight: 800; padding: 2px 8px; border-radius: 6px; font-family: var(--font-mono);">LIVE</span>
+        </header>
+
+        <dl class="struk-list" style="font-size: 12px; gap: 8px;">
+          <div class="struk-row">
+            <dt>Berkas:</dt>
+            <dd id="ringkasFile" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Belum dipilih</dd>
+          </div>
+          <div class="struk-row">
+            <dt>Volume:</dt>
+            <dd id="ringkasHalaman">0 lembar</dd>
+          </div>
+          <div class="struk-row">
+            <dt>Kertas:</dt>
+            <dd id="ringkasKertas">A4 Standard (75 GSM)</dd>
+          </div>
+          <div class="struk-row">
+            <dt>Warna:</dt>
+            <dd id="ringkasWarna">Hitam Putih</dd>
+          </div>
+          <div class="struk-row">
+            <dt>Metode:</dt>
+            <dd id="ringkasDuplex">1 Sisi (Simplex)</dd>
+          </div>
+          <div class="struk-row">
+            <dt>Jilid:</dt>
+            <dd id="ringkasJilid">Tanpa Jilid</dd>
+          </div>
+          <div class="struk-row">
+            <dt>Loker:</dt>
+            <dd id="ringkasKiosk" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Perpustakaan UI</dd>
+          </div>
+        </dl>
+
+        <div style="margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border-color);">
+          <div class="total-row">
+            <div>
+              <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); font-family: var(--font-mono);">Total Biaya:</span>
+              <div class="total-tax">Termasuk PPN 11%</div>
+            </div>
+            <div class="total-nominal" id="ringkasTotal">Rp 0</div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
