@@ -130,7 +130,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Beralih ke halaman sistem cetak dalam 800ms
         setTimeout(function () {
-          window.location.href = 'cetak.html';
+          const isPhp = window.location.pathname.endsWith('.php') || !window.location.pathname.includes('.html');
+          window.location.href = isPhp ? 'cetak.php' : 'cetak.html';
         }, 800);
       }
     });
@@ -194,6 +195,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Bantuan jika user lupa kode tiket (otomatis ambil dari pesanan terakhir di localStorage)
+  try {
+    const stored = localStorage.getItem('cepatik_tiket_aktif');
+    if (stored && formTracker && trackerResult) {
+      const tiketObj = JSON.parse(stored);
+      if (tiketObj && tiketObj.tiket) {
+        const helperDiv = document.createElement('div');
+        helperDiv.id = 'quickTicketHelper';
+        helperDiv.style.cssText = 'margin-top: 8px; font-size: 11.5px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;';
+        helperDiv.innerHTML = `<span>Lupa kode tiket?</span> <button type="button" style="background: none; border: none; color: var(--primary); font-weight: 700; cursor: pointer; text-decoration: underline; font-size: 11.5px; padding: 0;">Gunakan Pesanan Terakhir (${tiketObj.tiket})</button>`;
+        helperDiv.querySelector('button').addEventListener('click', function () {
+          if (inputTiket) {
+            inputTiket.value = tiketObj.tiket;
+            formTracker.dispatchEvent(new Event('submit'));
+          }
+        });
+        formTracker.parentNode.insertBefore(helperDiv, trackerResult);
+      }
+    }
+  } catch (err) { }
   // Inisialisasi perhitungan kalkulator saat halaman dimuat
   updateKalkulator();
 });

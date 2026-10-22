@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const previewInfoFile = document.getElementById('previewInfoFile');
   const btnHapusBerkas = document.getElementById('btnHapusBerkas');
   const inputRangkap = document.getElementById('inputRangkap');
+  const inputAppHalaman = document.getElementById('inputAppHalaman');
   const toggleDuplexApp = document.getElementById('toggleDuplexApp');
 
   // =========================================================================
@@ -66,10 +67,20 @@ document.addEventListener('DOMContentLoaded', function () {
       ukuranFormatted = Math.max(1, Math.round(file.size / 1024)) + ' KB';
     }
 
-    // Simulasi hitung estimasi halaman otomatis berdasarkan ukuran file
+    // Estimasi halaman otomatis yang realistis berdasarkan tipe file dan ukuran
     let estimasiHalaman = 12;
     if (file.size > 0) {
-      estimasiHalaman = Math.max(4, Math.min(80, Math.floor(file.size / 60000) || 10));
+      if (fileExt === 'PPT' || fileExt === 'PPTX') {
+        // File presentasi PowerPoint biasanya berukuran besar karena gambar/media.
+        // Rata-rata 1 slide ~300KB-500KB, sehingga estimasi dibuat realistis (10-25 slide)
+        estimasiHalaman = Math.max(4, Math.min(30, Math.floor(file.size / 350000) || 12));
+      } else if (fileExt === 'JPG' || fileExt === 'JPEG' || fileExt === 'PNG') {
+        // Berkas gambar diasumsikan 1 lembar cetak
+        estimasiHalaman = 1;
+      } else {
+        // Dokumen PDF/DOC/DOCX (rata-rata 60KB-100KB per halaman)
+        estimasiHalaman = Math.max(2, Math.min(60, Math.floor(file.size / 70000) || 10));
+      }
     }
 
     pesanan.file.nama = file.name;
@@ -78,6 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
     pesanan.file.ekstensi = fileExt;
     fileSudahDipilih = true;
 
+    // Sinkronisasi nilai estimasi ke input jumlah halaman di Langkah 2
+    if (inputAppHalaman) {
+      inputAppHalaman.value = estimasiHalaman;
+    }
     // Tampilkan Kotak Preview Berkas Terpilih
     if (previewNamaFile) previewNamaFile.textContent = file.name;
     if (previewInfoFile) {
@@ -329,6 +344,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Input Jumlah Halaman Manual
+  if (inputAppHalaman) {
+    inputAppHalaman.addEventListener('input', function () {
+      const val = Math.max(1, parseInt(this.value) || 1);
+      pesanan.file.halaman = val;
+      if (previewInfoFile && pesanan.file.nama !== 'Belum dipilih') {
+        previewInfoFile.textContent = `${val} Halaman · ${pesanan.file.ukuran} · Format ${pesanan.file.ekstensi} · Siap Cetak`;
+      }
+      hitungTotal();
+    });
+  }
   // Input Rangkap Salinan
   if (inputRangkap) {
     inputRangkap.addEventListener('input', function () {
