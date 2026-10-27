@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal Masuk Admin & Operator Kiosk Mandiri Cepatik Cloud Printing.">
+  <title>Login Operator & Admin - Cepatik Cloud Printing</title>
+
+  <!-- Favicon Ikon Tab Browser -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/icon.svg">
+  <link rel="icon" type="image/png"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVHhe7Zu/S8NAFIAzOjq66ejYRXDTzeYU/BN0U3MFndRRQRER1EFwFAVnQZAiYhUEXUQXUaRDBYeig0UEf7W9py+h1bzQQGlj7d178C3vLrl33yWlBJ5lhQQ4IgaOGAZpzzQtWL8jYnRvFQMSA51Kih2QAnRDSTupRuPddM/lQFtKijd6oW4oaS/AUE+Lb/NqzB6lE3VGJcT6z8l7j732Jx+kv9c7fUccBQf1R0mRsfBdoAMmYeGvIk2ahKVkfIImTcLy/jAEB0yh/gJWpwD2tqMD70/XrIH6C8Aiowy8P12zBlgAC2ABLIAF0GRNsAAWQEuubzRaQHF5EvK7W5W5uYR8oRAdeH+65i+wPlpzGFULwEXePz7/LVgfrTkMFtCsAlIPaXh+ew3ktReAm+46WYPW/VloP1yE+5cn37j2Ajbvzt3Nl1hKH/vGtReAJ952MF8WcPqY8Y1rLwC5ymVh7jYFyexNYMwIAWGwgEYJ+Ly+gMLu1p+B69EaGioAi6JzowTXozWwABbAAlgAC6iyDhbAAlgAC2ABNBlGpa/CxZXqvsbWCq5Ha3DriPqrsG6wABbAAlgAC6BJk2ABLIAFsAAWQJMmgZ1i0zRpEtgvFKdJk7BgfLCVJk3C6xqTIkMHTABbBUttc2a+Bo6YLjdPKmlvBCZojJLirLx5DPwtwOZiOlFHcPMw0tfhE1AKt4HasXP0Ih1w24N/P/bf8QXf4i9hq+va5AAAAABJRU5ErkJggg==">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- File CSS Utama Proyek Cepatik -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Database Layer -->
+  <script src="db/database.js" defer></script>
+</head>
+
+<body class="login-body">
+
+  <div class="login-hero-glow"></div>
+
+  <!-- Header Navigasi -->
+  <header class="login-header-nav">
+    <a href="index.html" class="logo" title="Kembali ke Beranda Cepatik">
+      <img src="assets/images/logo.svg" alt="Logo Cepatik">
+    </a>
+
+    <a href="index.html" class="btn btn-cek" style="font-size: 12px; padding: 7px 16px;">
+      <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>Kembali ke Beranda</span>
+    </a>
+  </header>
+
+  <!-- Kontainer Form Login -->
+  <main class="login-main">
+    <div class="login-card">
+
+      <div class="login-card-head">
+        <div class="login-badge-pill">
+          <span class="status-dot"></span>
+          <span>Sistem Keamanan Kiosk</span>
+        </div>
+        <h1>Portal Operator &amp; Admin</h1>
+        <p>Pilih titik lokasi penugasan kiosk atau masuk dengan hak akses Super Admin</p>
+      </div>
+
+      <!-- Alert Pesan Kesalahan -->
+      <div id="loginErrorAlert" class="login-alert-error" role="alert">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="loginErrorText">Nama pengguna atau kata sandi tidak valid.</span>
+      </div>
+
+      <!-- Form Login -->
+      <form id="formAdminLogin" class="login-form">
+
+        <!-- 1. Pilihan Lokasi Kiosk & Peran -->
+        <div class="form-field">
+          <label for="selectKioskLocation" class="form-label">
+            <span>Lokasi Penugasan / Peran Kiosk</span>
+            <span style="font-size: 11px; color: var(--primary); font-weight: 600;">Wajib Dipilih</span>
+          </label>
+          <div class="form-input-wrap">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <select id="selectKioskLocation" class="form-select-control" required>
+              <option value="all">⭐ Super Admin (Semua Lokasi Kiosk)</option>
+              <option value="ui_perpus" selected>📍 Kiosk #01 - Perpustakaan UI</option>
+              <option value="itb_ganesha">📍 Kiosk #02 - Mitra Barokah ITB</option>
+              <option value="ugm_gelanggang">📍 Kiosk #03 - Gelanggang UGM</option>
+              <option value="lab_komputer">📍 Kiosk #04 - Lab Komputer TI</option>
+              <option value="gedung_rektorat">📍 Kiosk #05 - Gedung Rektorat</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 2. Username -->
+        <div class="form-field">
+          <label for="inputUsername" class="form-label">
+            <span>Nama Pengguna (Username)</span>
+          </label>
+          <div class="form-input-wrap">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <input type="text" id="inputUsername" class="form-input-control" placeholder="Contoh: admin atau operator" value="admin" required autocomplete="username">
+          </div>
+        </div>
+
+        <!-- 3. Password -->
+        <div class="form-field">
+          <label for="inputPassword" class="form-label">
+            <span>Kata Sandi / PIN Operator</span>
+            <span style="font-size: 11px; color: var(--text-muted);">Default: cepatik2026</span>
+          </label>
+          <div class="form-input-wrap">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input type="password" id="inputPassword" class="form-input-control" placeholder="Masukkan kata sandi..." value="cepatik2026" required autocomplete="current-password">
+            <button type="button" class="btn-toggle-password" id="btnTogglePassword" title="Lihat/Sembunyikan kata sandi">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Opsi Tambahan -->
+        <div class="login-options-row">
+          <label class="remember-checkbox">
+            <input type="checkbox" id="checkRemember" checked>
+            <span>Ingat sesi saya di peramban ini</span>
+          </label>
+          <span style="color: var(--text-muted); font-size: 11px;">Enkripsi Browser Mandiri</span>
+        </div>
+
+        <!-- Tombol Masuk -->
+        <button type="submit" class="btn-login-submit" id="btnLoginSubmit">
+          <span>Masuk ke Panel Kontrol</span>
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+      </form>
+
+      <!-- 1-Click Demo Shortcut Login -->
+      <div class="login-demo-box">
+        <div class="login-demo-title">Pintasan Uji Coba Demo 1-Klik</div>
+        <div class="login-demo-grid">
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('all', 'admin', 'Super Admin Pusat')">
+            <span>👑 Super Admin</span>
+            <small>Akses Seluruh Titik Kiosk</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('ui_perpus', 'operator_ui', 'Operator Perpustakaan UI')">
+            <span>📍 Operator Kiosk UI</span>
+            <small>Khusus Perpustakaan Depok</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('itb_ganesha', 'operator_itb', 'Operator ITB Ganesha')">
+            <span>📍 Operator Kiosk ITB</span>
+            <small>Khusus Kampus ITB Bandung</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('ugm_gelanggang', 'operator_ugm', 'Operator UGM')">
+            <span>📍 Operator Kiosk UGM</span>
+            <small>Khusus Gelanggang Yogyakarta</small>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="login-footer-text">
+    © 2026 PT Cepatik Teknologi Nusantara · Keamanan Sistem Self-Service Kiosk Terdistribusi 24/7
+  </footer>
+
+  <!-- Logika Autentikasi Klien -->
+  <script>
+    // Lookup Judul Kiosk dari Database CepatikDB
+    function getKioskTitle(kioskId) {
+      if (kioskId === 'all') return 'Semua Titik Kampus (Pusat)';
+      if (window.CepatikDB) {
+        const kiosks = window.CepatikDB.getKiosks();
+        const found = kiosks.find(k => k.id === kioskId);
+        if (found) return found.nama_lengkap || found.nama;
+      }
+      return 'Kiosk Mandiri Cepatik';
+    }
+
+    // Toggle Lihat/Sembunyikan Password
+    const btnTogglePassword = document.getElementById('btnTogglePassword');
+    const inputPassword = document.getElementById('inputPassword');
+    if (btnTogglePassword && inputPassword) {
+      btnTogglePassword.addEventListener('click', function () {
+        const isPassword = inputPassword.type === 'password';
+        inputPassword.type = isPassword ? 'text' : 'password';
+        this.innerHTML = isPassword ?
+          `<svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>` :
+          `<svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+      });
+    }
+
+    // Fungsi Simpan Sesi dan Redirect
+    function processLogin(kioskId, username, displayName, remember) {
+      const isSuperAdmin = kioskId === 'all' || username.toLowerCase() === 'admin';
+      const roleText = isSuperAdmin ? 'Super Admin' : 'Operator Kiosk';
+      const kioskTitle = getKioskTitle(kioskId);
+
+      const now = new Date();
+      const sessionData = {
+        username: username,
+        nama: displayName || (isSuperAdmin ? 'Admin Pusat Cepatik' : `Operator ${kioskTitle}`),
+        role: roleText,
+        kioskId: kioskId,
+        kioskName: kioskTitle,
+        loginTime: now.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
+      };
+
+      // Simpan sesi ke storage
+      sessionStorage.setItem('cepatik_admin_session', JSON.stringify(sessionData));
+      if (remember) {
+        localStorage.setItem('cepatik_admin_session', JSON.stringify(sessionData));
+      } else {
+        localStorage.removeItem('cepatik_admin_session');
+      }
+
+      // Animasi tombol loading
+      const btnSubmit = document.getElementById('btnLoginSubmit');
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span>⏳ Memvalidasi Hak Akses...</span>';
+      }
+
+      setTimeout(function () {
+        window.location.href = 'admin.html';
+      }, 500);
+    }
+
+    // Penanganan Submit Form
+    const formLogin = document.getElementById('formAdminLogin');
+    const loginErrorAlert = document.getElementById('loginErrorAlert');
+    const loginErrorText = document.getElementById('loginErrorText');
+
+    if (formLogin) {
+      formLogin.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const kioskId = document.getElementById('selectKioskLocation').value;
+        const username = document.getElementById('inputUsername').value.trim();
+        const password = document.getElementById('inputPassword').value.trim();
+        const remember = document.getElementById('checkRemember').checked;
+
+        // Validasi Sederhana
+        if (!username || !password) {
+          if (loginErrorAlert) {
+            loginErrorAlert.style.display = 'flex';
+            loginErrorText.textContent = 'Silakan masukkan nama pengguna dan kata sandi Anda.';
+          }
+          return;
+        }
+
+        // Demo password check (menerima 'cepatik2026', 'admin', 'admin123', atau password apapun yang diinput)
+        if (password.length < 4) {
+          if (loginErrorAlert) {
+            loginErrorAlert.style.display = 'flex';
+            loginErrorText.textContent = 'Kata sandi minimal 4 karakter (Default demo: cepatik2026).';
+          }
+          return;
+        }
+
+        if (loginErrorAlert) loginErrorAlert.style.display = 'none';
+        processLogin(kioskId, username, null, remember);
+      });
+    }
+
+    // Fungsi 1-Click Quick Demo Login
+    function quickLogin(kioskId, user, name) {
+      const selectKiosk = document.getElementById('selectKioskLocation');
+      const inputUser = document.getElementById('inputUsername');
+      const inputPass = document.getElementById('inputPassword');
+
+      if (selectKiosk) selectKiosk.value = kioskId;
+      if (inputUser) inputUser.value = user;
+      if (inputPass) inputPass.value = 'cepatik2026';
+
+      processLogin(kioskId, user, name, true);
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Panel Admin Kiosk Cepatik - Pemantauan Antrean Cloud Printing Real-Time, Cetak Struk Kasir Thermal, & Manajemen Mesin Kiosk.">
+  <title>Panel Admin Kiosk - Cepatik Cloud Printing</title>
+
+  <!-- Favicon Ikon Tab Browser -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/icon.svg">
+  <link rel="icon" type="image/png"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVHhe7Zu/S8NAFIAzOjq66ejYRXDTzeYU/BN0U3MFndRRQRER1EFwFAVnQZAiYhUEXUQXUaRDBYeig0UEf7W9py+h1bzQQGlj7d178C3vLrl33yWlBJ5lhQQ4IgaOGAZpzzQtWL8jYnRvFQMSA51Kih2QAnRDSTupRuPddM/lQFtKijd6oW4oaS/AUE+Lb/NqzB6lE3VGJcT6z8l7j732Jx+kv9c7fUccBQf1R0mRsfBdoAMmYeGvIk2ahKVkfIImTcLy/jAEB0yh/gJWpwD2tqMD70/XrIH6C8Aiowy8P12zBlgAC2ABLIAF0GRNsAAWQEuubzRaQHF5EvK7W5W5uYR8oRAdeH+65i+wPlpzGFULwEXePz7/LVgfrTkMFtCsAlIPaXh+ew3ktReAm+46WYPW/VloP1yE+5cn37j2Ajbvzt3Nl1hKH/vGtReAJ952MF8WcPqY8Y1rLwC5ymVh7jYFyexNYMwIAWGwgEYJ+Ly+gMLu1p+B69EaGioAi6JzowTXozWwABbAAlgAC6iyDhbAAlgAC2ABNBlGpa/CxZXqvsbWCq5Ha3DriPqrsG6wABbAAlgAC6BJk2ABLIAFsAAWQJMmgZ1i0zRpEtgvFKdJk7BgfLCVJk3C6xqTIkMHTABbBUttc2a+Bo6YLjdPKmlvBCZojJLirLx5DPwtwOZiOlFHcPMw0tfhE1AKt4HasXP0Ih1w24N/P/bf8QXf4i9hq+va5AAAAABJRU5ErkJggg==">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- File CSS Utama Proyek Cepatik -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Database Layer & Script Logika Admin -->
+  <script src="db/database.js" defer></script>
+  <script src="assets/js/admin.js" defer></script>
+</head>
+
+<body class="admin-body">
+
+  <!-- ====================================================================
+       1. TOPBAR ADMIN (STATUS MESIN, LOKASI KIOSK, & WAKTU REAL-TIME)
+       ==================================================================== -->
+  <aside class="admin-topbar">
+    <div class="admin-topbar-info">
+      <span class="admin-topbar-item">
+        <span class="status-dot"></span>
+        <span id="activeKioskTopbar"><strong>Kiosk Perpustakaan UI</strong> (Online 24/7)</span>
+      </span>
+      <span class="admin-topbar-item" style="color: #A89F91;">|</span>
+      <span class="admin-topbar-item" id="liveClock">
+        Memuat waktu...
+      </span>
+    </div>
+
+    <div class="admin-topbar-links">
+      <a href="index.html" title="Kembali ke Landing Page Cepatik">
+        <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span>Lihat Web Beranda</span>
+      </a>
+      <span style="color: #635A52;">•</span>
+      <a href="cetak.html" title="Buka Portal Cetak Pelanggan">
+        <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>Portal Cetak Siswa</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       2. HEADER PANEL ADMIN & PROFIL OPERATOR AKTIF
+       ==================================================================== -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-brand-wrap">
+        <a href="index.html" class="logo" title="Cepatik Cloud Printing">
+          <img src="assets/images/logo.svg" alt="Logo Cepatik">
+        </a>
+        <span class="admin-badge-panel">
+          <span class="status-dot"></span>
+          Kiosk Admin Dashboard
+        </span>
+      </div>
+
+      <!-- Profil Operator & Pilihan Lokasi Kiosk -->
+      <div class="admin-header-actions">
+
+        <!-- Filter Lokasi Kiosk (Khusus Super Admin) -->
+        <div class="kiosk-filter-select-wrap" id="kioskSwitcherWrap">
+          <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted);">Titik Kiosk:</span>
+          <select id="selectKioskAdminFilter" class="kiosk-filter-select" title="Saring antrean berdasarkan lokasi kiosk">
+            <option value="all">Semua Lokasi Kiosk</option>
+            <option value="ui_perpus">📍 Kiosk Perpustakaan UI</option>
+            <option value="itb_ganesha">📍 Mitra Barokah ITB</option>
+            <option value="ugm_gelanggang">📍 Kiosk Gelanggang UGM</option>
+            <option value="lab_komputer">📍 Kiosk Lab Komputer</option>
+            <option value="gedung_rektorat">📍 Kiosk Gedung Rektorat</option>
+          </select>
+        </div>
+
+        <!-- Badge Profil Operator Aktif -->
+        <div class="operator-profile-badge" title="Akun Operator Aktif">
+          <span class="operator-avatar" id="operatorAvatar">A</span>
+          <div>
+            <div style="font-weight: 800; font-size: 12px; color: var(--text-dark);" id="operatorNameDisplay">Admin Pusat</div>
+            <div style="font-size: 10px; color: var(--text-muted);" id="operatorRoleDisplay">Super Admin</div>
+          </div>
+        </div>
+
+        <!-- Tombol Logout -->
+        <button type="button" class="btn-logout" onclick="logoutAdmin()" title="Keluar dari sesi admin">
+          <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Keluar</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       3. KONTEN UTAMA (METRIK RINGKASAN & TABEL REAL-TIME)
+       ==================================================================== -->
+  <main class="admin-container">
+
+    <!-- METRIK RINGKASAN (4 CARDS) -->
+    <section class="admin-metrics-grid" aria-label="Ringkasan Metrik Kiosk">
+
+      <!-- Card 1: Total Pesanan Hari Ini -->
+      <article class="admin-metric-card">
+        <div class="admin-metric-top">
+          <span class="admin-metric-title">Total Pesanan Hari Ini</span>
+          <div class="admin-metric-icon-wrap coral">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+        </div>
+        <div class="admin-metric-value" id="metricTotalOrders">0 Pesanan</div>
+        <div class="admin-metric-footer">
+          <span style="color: #059669; font-weight: 700;">↑ 100% database synced</span>
+          <span>· Real-time</span>
+        </div>
+      </article>
+
+      <!-- Card 2: Total Omzet QRIS -->
+      <article class="admin-metric-card">
+        <div class="admin-metric-top">
+          <span class="admin-metric-title">Total Omzet (QRIS)</span>
+          <div class="admin-metric-icon-wrap emerald">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+          </div>
+        </div>
+        <div class="admin-metric-value" id="metricTotalRevenue">Rp 0</div>
+        <div class="admin-metric-footer">
+          <span style="color: #059669; font-weight: 700;">✓ Verifikasi Instan</span>
+          <span>· QRIS Settlement</span>
+        </div>
+      </article>
+
+      <!-- Card 3: Pesanan Perlu Diproses -->
+      <article class="admin-metric-card">
+        <div class="admin-metric-top">
+          <span class="admin-metric-title">Perlu Diproses</span>
+          <div class="admin-metric-icon-wrap amber">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+        </div>
+        <div class="admin-metric-value" id="metricPendingOrders" style="color: #D97706;">0 Antrean</div>
+        <div class="admin-metric-footer">
+          <span id="metricCompletedOrders" style="font-weight: 700; color: #4B5563;">0 Selesai</span>
+          <span>· Memerlukan tindakan</span>
+        </div>
+      </article>
+
+      <!-- Card 4: Status Printer Kiosk (Kertas & Tinta) -->
+      <article class="admin-metric-card">
+        <div class="admin-metric-top">
+          <span class="admin-metric-title">Status Kiosk &amp; Logistik</span>
+          <div class="admin-metric-icon-wrap indigo">
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <div class="admin-hardware-bars">
+          <div class="admin-hardware-item">
+            <div class="admin-hardware-label">
+              <span>Tray Kertas A4:</span>
+              <strong style="color: #10B981;">88% (~440 Lbr)</strong>
+            </div>
+            <div class="admin-progress-track">
+              <div class="admin-progress-fill fill-green" style="width: 88%;"></div>
+            </div>
+          </div>
+
+          <div class="admin-hardware-item">
+            <div class="admin-hardware-label">
+              <span>Tray Kertas F4:</span>
+              <strong style="color: #F59E0B;">65% (~325 Lbr)</strong>
+            </div>
+            <div class="admin-progress-track">
+              <div class="admin-progress-fill fill-amber" style="width: 65%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-ink-levels">
+          <span>Level Tinta:</span>
+          <span class="admin-ink-badge" title="Tinta Hitam">
+            <span class="ink-dot" style="background:#000;"></span> 88%
+          </span>
+          <span class="admin-ink-badge" title="Cyan">
+            <span class="ink-dot" style="background:#06B6D4;"></span> 72%
+          </span>
+          <span class="admin-ink-badge" title="Magenta">
+            <span class="ink-dot" style="background:#EC4899;"></span> 65%
+          </span>
+          <span class="admin-ink-badge" title="Yellow">
+            <span class="ink-dot" style="background:#FBBF24;"></span> 80%
+          </span>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ==================================================================
+         TABEL ANTREAN PESANAN REAL-TIME
+         ================================================================== -->
+    <section class="admin-card">
+      <div class="admin-card-head">
+        <div class="admin-card-head-title">
+          <h2>
+            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--primary);">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+            Antrean Pesanan Cloud Real-time
+          </h2>
+          <p>Sinkronisasi instan terpusat dari database antrean ('db/database.js') tanpa reload</p>
+        </div>
+
+        <div style="font-size: 11.5px; color: var(--text-muted); display: flex; align-items: center; gap: 8px;">
+          <span class="status-dot"></span>
+          <span>Mesin Kiosk Standby</span>
+        </div>
+      </div>
+
+      <!-- Toolbar Filter & Search -->
+      <div class="admin-toolbar">
+        <div class="admin-filter-group" role="tablist" aria-label="Filter status pesanan">
+          <button type="button" class="admin-filter-btn active" data-filter="Semua">
+            Semua <span class="admin-filter-count">0</span>
+          </button>
+          <button type="button" class="admin-filter-btn" data-filter="Menunggu Cetak">
+            Menunggu Cetak <span class="admin-filter-count">0</span>
+          </button>
+          <button type="button" class="admin-filter-btn" data-filter="Sedang Diproses">
+            Sedang Diproses <span class="admin-filter-count">0</span>
+          </button>
+          <button type="button" class="admin-filter-btn" data-filter="Siap Diambil">
+            Siap Diambil <span class="admin-filter-count">0</span>
+          </button>
+          <button type="button" class="admin-filter-btn" data-filter="Selesai">
+            Selesai <span class="admin-filter-count">0</span>
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <!-- Search Input -->
+          <div class="admin-search-wrap">
+            <svg class="icon admin-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="searchOrderInput" class="admin-search-input" placeholder="Cari ID Tiket atau Nama File..." autocomplete="off">
+          </div>
+
+          <!-- Tombol Enforce Retensi Berkas -->
+          <button type="button" class="btn btn-cek" onclick="handlePurgeFiles()" title="Pemusnahan otomatis file dokumen pesanan selesai demi privasi mahasiswa (Zero Data Retention)" style="font-size: 12px; padding: 7px 14px; white-space: nowrap;">
+            <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            <span>Retensi Berkas</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabel Antrean -->
+      <div class="admin-table-container">
+        <table class="admin-table" aria-label="Daftar Antrean Pesanan Kiosk">
+          <thead>
+            <tr>
+              <th style="width: 130px;">Kode Tiket</th>
+              <th style="width: 160px;">Waktu &amp; Lokasi</th>
+              <th>Nama File</th>
+              <th>Opsi Cetak</th>
+              <th style="width: 130px;">Total Biaya</th>
+              <th style="width: 170px;">Status Pesanan</th>
+              <th style="width: 120px; text-align: center;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="adminOrderTableBody">
+            <!-- Data baris pesanan di-render secara dinamis oleh assets/js/admin.js -->
+          </tbody>
+        </table>
+
+        <!-- Empty State (Jika tidak ada data) -->
+        <div id="emptyOrderState" class="admin-empty-state" style="display: none;">
+          <div class="admin-empty-icon">
+            <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+          </div>
+          <h3>Tidak Ada Antrean Pesanan</h3>
+          <p>Belum ada pesanan yang sesuai dengan filter atau lokasi kiosk aktif saat ini.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       4. KONTAINER KHUSUS STRUK KASIR / THERMAL (#receipt-print-area)
+       Tersembunyi secara default di layar, hanya muncul saat @media print.
+       ==================================================================== -->
+  <div id="receipt-print-area" aria-hidden="true">
+    <!-- Konten struk kertas thermal di-populate dinamis oleh cetakStruk() di admin.js -->
+  </div>
+
+  <!-- Toast Notifikasi Ringan -->
+  <div id="adminToast" class="admin-toast" role="alert"></div>
+
+</body>
+
+</html>

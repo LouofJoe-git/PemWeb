@@ -1,0 +1,100 @@
+[
+  {
+    "id": "CPT-8492",
+    "waktu": "11:45 WIB",
+    "tanggal": "27 Okt 2026",
+    "file": {
+      "nama": "Skripsi_BAB_1-5_Final.pdf",
+      "ukuran": "3.8 MB",
+      "halaman": 24,
+      "ekstensi": "PDF"
+    },
+    "kertas": "A4 Standard (75 GSM)",
+    "tinta": "Hitam Putih",
+    "duplex": true,
+    "rangkap": 1,
+    "jilid": "Jilid Spiral Kawat",
+    "total": 13400,
+    "kiosk": "Kiosk Perpustakaan UI",
+    "status": "Siap Diambil"
+  },
+  {
+    "id": "CPT-3021",
+    "waktu": "12:05 WIB",
+    "tanggal": "27 Okt 2026",
+    "file": {
+      "nama": "Laporan_Praktikum_Fisika.docx",
+      "ukuran": "1.4 MB",
+      "halaman": 14,
+      "ekstensi": "DOCX"
+    },
+    "kertas": "A4 Standard (75 GSM)",
+    "tinta": "Hitam Putih",
+    "duplex": false,
+    "rangkap": 2,
+    "jilid": "Tanpa Jilid",
+    "total": 9800,
+    "kiosk": "Kiosk Lab Komputer TI",
+    "status": "Sedang Diproses"
+  },
+  {
+    "id": "CPT-5519",
+    "waktu": "12:18 WIB",
+    "tanggal": "27 Okt 2026",
+    "file": {
+      "nama": "Poster_Dies_Natalis_2026.png",
+      "ukuran": "5.2 MB",
+      "halaman": 1,
+      "ekstensi": "PNG"
+    },
+    "kertas": "A4 Tebal (80 GSM)",
+    "tinta": "Full Color Foto",
+    "duplex": false,
+    "rangkap": 3,
+    "jilid": "Tanpa Jilid",
+    "total": 6150,
+    "kiosk": "Kiosk Gedung Rektorat",
+    "status": "Menunggu Cetak"
+  },
+  {
+    "id": "CPT-9182",
+    "waktu": "10:12 WIB",
+    "tanggal": "27 Okt 2026",
+    "file": {
+      "nama": "Jurnal_Ilmiah_TI_Revisi.pdf",
+      "ukuran": "850 KB",
+      "halaman": 8,
+      "ekstensi": "PDF",
+      "terhapus": true,
+      "statusRetensi": "Dihapus Otomatis (Retensi Selesai)",
+      "waktuDihapus": "10:15 WIB"
+    },
+    "kertas": "F4 Folio (80 GSM)",
+    "tinta": "Warna Standar",
+    "duplex": true,
+    "rangkap": 1,
+    "jilid": "Tanpa Jilid",
+    "total": 8350,
+    "kiosk": "Kiosk Gelanggang UGM",
+    "status": "Selesai"
+  },
+  {
+    "id": "CPT-4473",
+    "waktu": "12:20 WIB",
+    "tanggal": "27 Okt 2026",
+    "file": {
+      "nama": "Modul_Algoritma_Pemrograman.pdf",
+      "ukuran": "4.6 MB",
+      "halaman": 32,
+      "ekstensi": "PDF"
+    },
+    "kertas": "A4 Standard (75 GSM)",
+    "tinta": "Hitam Putih",
+    "duplex": true,
+    "rangkap": 1,
+    "jilid": "Jilid Softcover Mika",
+    "total": 16200,
+    "kiosk": "Kiosk Perpustakaan UI",
+    "status": "Menunggu Cetak"
+  }
+]

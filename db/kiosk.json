@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ui_perpus",
+    "nama": "Kiosk Perpustakaan UI",
+    "nama_lengkap": "Kiosk Perpustakaan UI",
+    "lokasi": "Gedung Perpustakaan Pusat UI Depok, Lt. 1",
+    "status": "online"
+  },
+  {
+    "id": "itb_ganesha",
+    "nama": "Mitra Barokah ITB",
+    "nama_lengkap": "Mitra Barokah ITB",
+    "lokasi": "Jl. Ganesha No. 10 (Samping Gerbang Utama ITB)",
+    "status": "online"
+  },
+  {
+    "id": "ugm_gelanggang",
+    "nama": "Kiosk Gelanggang UGM",
+    "nama_lengkap": "Kiosk Gelanggang UGM",
+    "lokasi": "Student Center UGM, Sayap Barat Lt. Dasar",
+    "status": "online"
+  },
+  {
+    "id": "lab_komputer",
+    "nama": "Kiosk Lab Komputer TI",
+    "nama_lengkap": "Kiosk Lab Komputer TI",
+    "lokasi": "Gedung Lab Komputer & Informatika Lt. 2",
+    "status": "online"
+  },
+  {
+    "id": "gedung_rektorat",
+    "nama": "Kiosk Gedung Rektorat",
+    "nama_lengkap": "Kiosk Gedung Rektorat",
+    "lokasi": "Lobby Utama Gedung Rektorat Kampus",
+    "status": "online"
+  }
+]

@@ -95,6 +95,60 @@ assert_test("cetak.php merender radio jilid dari PHP array", strpos($html_cetak,
 assert_test("cetak.php merender radio kiosk dari PHP array", strpos($html_cetak, 'name="app_kiosk"') !== false);
 
 echo "\n====================================================\n";
+echo "6. PENGUJIAN PHP OOP (CLASSES & OBJECTS - WEEK 5)\n";
+echo "====================================================\n";
+
+require_once __DIR__ . '/classes/Order.php';
+require_once __DIR__ . '/classes/Kiosk.php';
+
+$testOrder = new Order(
+    'CPT-8492',
+    'Skripsi_Final.pdf',
+    'a4_80',       // 350 + 50 = 400 / lbr
+    'bw',
+    48,            // 48 * 400 = 19.200
+    true,          // Duplex 5% disc: round(19.200 * 0.95) = 18.240
+    'lakban',      // + 3.500 = 21.740
+    'Siap Diambil'
+);
+
+assert_test("Order getId() mengembalikan 'CPT-8492'", $testOrder->getId() === 'CPT-8492');
+assert_test("Order getFileName() mengembalikan 'Skripsi_Final.pdf'", $testOrder->getFileName() === 'Skripsi_Final.pdf');
+assert_test("Order calculateTotal() menghitung Rp 21.740 (tinta + kertas + duplex + jilid)", $testOrder->calculateTotal() === 21740);
+assert_test("Order getFormattedTotal() mengembalikan 'Rp 21.740'", $testOrder->getFormattedTotal() === 'Rp 21.740');
+assert_test("Order getStatus() mengembalikan 'Siap Diambil'", $testOrder->getStatus() === 'Siap Diambil');
+assert_test("Order getPrintSpecs() mengandung 'A4 80 GSM' dan 'Duplex'", 
+    strpos($testOrder->getPrintSpecs(), 'A4 80 GSM') !== false && strpos($testOrder->getPrintSpecs(), 'Duplex') !== false);
+assert_test("Order getFileExtension() mengembalikan 'PDF'", $testOrder->getFileExtension() === 'PDF');
+
+$testKiosk = new Kiosk(
+    'KSK-01',
+    'Kiosk Perpustakaan UI',
+    ['a4' => 88, 'f4' => 65],
+    true
+);
+
+assert_test("Kiosk getKioskId() mengembalikan 'KSK-01'", $testKiosk->getKioskId() === 'KSK-01');
+assert_test("Kiosk getLocationName() mengembalikan 'Kiosk Perpustakaan UI'", $testKiosk->getLocationName() === 'Kiosk Perpustakaan UI');
+assert_test("Kiosk getA4Percentage() mengembalikan 88", $testKiosk->getA4Percentage() === 88);
+assert_test("Kiosk isOnline() mengembalikan true", $testKiosk->isOnline() === true);
+
+echo "\n====================================================\n";
+echo "7. PENGUJIAN RENDERING HALAMAN ADMIN.PHP (SSR - WEEK 6)\n";
+echo "====================================================\n";
+
+ob_start();
+include __DIR__ . '/admin.php';
+$html_admin = ob_get_clean();
+
+assert_test("admin.php ter-render tanpa error dan memiliki DOCTYPE", strpos($html_admin, '<!DOCTYPE html>') !== false);
+assert_test("admin.php merender tabel antrean pesanan", strpos($html_admin, 'admin-table') !== false);
+assert_test("admin.php merender objek Kiosk Perpustakaan UI", strpos($html_admin, 'Kiosk Perpustakaan UI') !== false);
+assert_test("admin.php merender objek pesanan CPT-8492", strpos($html_admin, 'CPT-8492') !== false);
+assert_test("admin.php merender tombol Cetak Struk", strpos($html_admin, 'printThermalReceipt') !== false);
+assert_test("admin.php memiliki container receipt-print-area", strpos($html_admin, 'id="receipt-print-area"') !== false);
+
+echo "\n====================================================\n";
 echo "RINGKASAN HASIL PENGUJIAN: $passed_tests / $total_tests BERHASIL\n";
 if (empty($errors)) {
     echo "STATUS: SEMUA FITUR & LOGIKA PHP BERJALAN SEMPURNA!\n";

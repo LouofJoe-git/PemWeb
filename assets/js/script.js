@@ -138,7 +138,147 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ==========================================
-  // 3. LOGIKA QUICK TRACKER (CEK TIKET VIA LOCALSTORAGE)
+  // 3. WIDGET STATUS JAM OPERASIONAL & LIVE CLOCK (REAL-TIME DETIK DEMI DETIK)
+  // ==========================================
+  function updateOperationalClock() {
+    const now = new Date();
+
+    // Kompensasi presisi zona waktu WIB (UTC+7)
+    const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const wibDate = new Date(utcMs + (7 * 3600000));
+
+    const currentHour = wibDate.getHours();
+    const jam = String(currentHour).padStart(2, '0');
+    const menit = String(wibDate.getMinutes()).padStart(2, '0');
+    const detik = String(wibDate.getSeconds()).padStart(2, '0');
+    const timeString = `${jam}:${menit}:${detik} WIB`;
+
+    // Deteksi jam operasional Cepatik (08:00 - 22:00 WIB)
+    const isOnline = currentHour >= 8 && currentHour < 22;
+
+    // 1. Update Komponen "Live Operational Status Widget" (.op-status-card)
+    const opCards = document.querySelectorAll('.op-status-card');
+    opCards.forEach(card => {
+      // Container status variant
+      if (isOnline) {
+        card.classList.add('is-online');
+        card.classList.remove('is-offline');
+      } else {
+        card.classList.add('is-offline');
+        card.classList.remove('is-online');
+      }
+
+      // Baris Header: Sisi kiri status ringkas "• ON-DUTY" / "• OFF-DUTY"
+      const dutyText = card.querySelector('.op-duty-text');
+      if (dutyText) {
+        dutyText.textContent = isOnline ? '• ON-DUTY' : '• OFF-DUTY';
+      }
+
+      const dutyDot = card.querySelector('.op-duty-dot');
+      if (dutyDot) {
+        dutyDot.className = `op-duty-dot ${isOnline ? 'online' : 'offline'}`;
+      }
+
+      // Jam Digital Monospace: HH:MM dan :SS lebih ramping / kontras lembut
+      const clockHM = card.querySelector('.op-clock-hm');
+      const clockSec = card.querySelector('.op-clock-sec');
+      if (clockHM) clockHM.textContent = `${jam}:${menit}`;
+      if (clockSec) clockSec.textContent = `:${detik}`;
+
+      // Baris Keterangan: teks status ketersediaan di bawah jam
+      const cardDesc = card.querySelector('.op-card-desc');
+      if (cardDesc) {
+        cardDesc.textContent = isOnline ? 'Admin & Kiosk Online' : 'Kiosk Mandiri (CS Istirahat)';
+      }
+
+      // Baris Jadwal: 08:00–22:00
+      const schedTime = card.querySelector('.op-schedule-time');
+      if (schedTime) {
+        schedTime.textContent = '08:00–22:00';
+      }
+
+      // Baris Bawah: Status Pill Badge memanjang ("● ONLINE" / "● OFFLINE")
+      const cardBadge = card.querySelector('.op-card-badge');
+      const badgeText = card.querySelector('.op-badge-text');
+      if (cardBadge) {
+        if (isOnline) {
+          cardBadge.className = 'op-card-badge badge-online';
+          if (badgeText) badgeText.textContent = '● ONLINE';
+        } else {
+          cardBadge.className = 'op-card-badge badge-offline';
+          if (badgeText) badgeText.textContent = '● OFFLINE';
+        }
+      }
+    });
+
+    // 2. Update Topbar Clock & Status
+    const digitalClock = document.getElementById('digitalClock');
+    if (digitalClock) {
+      digitalClock.textContent = timeString;
+    }
+
+    const operationalBadge = document.getElementById('operationalStatusBadge');
+    const operationalDot = document.getElementById('operationalDot');
+    const operationalStatusText = document.getElementById('operationalStatusText');
+
+    if (operationalDot && operationalStatusText) {
+      if (isOnline) {
+        operationalDot.className = 'status-indicator-dot online';
+        operationalStatusText.textContent = 'ON-DUTY · KIOSK & CS ONLINE';
+        if (operationalBadge) {
+          operationalBadge.classList.add('is-online');
+          operationalBadge.classList.remove('is-offline');
+        }
+      } else {
+        operationalDot.className = 'status-indicator-dot offline';
+        operationalStatusText.textContent = 'OFF-DUTY · KIOSK STANDBY';
+        if (operationalBadge) {
+          operationalBadge.classList.add('is-offline');
+          operationalBadge.classList.remove('is-online');
+        }
+      }
+    }
+
+    // 3. Fallback Legacy Elements (jika ada di template lain)
+    const heroLiveClock = document.getElementById('heroLiveClock');
+    const heroOpBadge = document.getElementById('heroOpBadge');
+    const heroOpDesc = document.getElementById('heroOpDesc');
+    const heroOpDot = document.getElementById('heroOpDot');
+    const heroPill = document.getElementById('heroOperationalPill');
+
+    if (heroLiveClock) {
+      heroLiveClock.textContent = timeString;
+    }
+
+    if (heroOpBadge && heroOpDot) {
+      if (isOnline) {
+        heroOpBadge.textContent = 'ON-DUTY · ONLINE';
+        heroOpBadge.className = 'hero-op-badge badge-on-duty';
+        if (heroOpDesc) heroOpDesc.textContent = 'Admin & Kiosk Online (Buka s/d 22:00)';
+        heroOpDot.className = 'hero-op-dot online';
+        if (heroPill) {
+          heroPill.classList.add('pill-online');
+          heroPill.classList.remove('pill-offline');
+        }
+      } else {
+        heroOpBadge.textContent = 'OFF-DUTY · OFFLINE';
+        heroOpBadge.className = 'hero-op-badge badge-off-duty';
+        if (heroOpDesc) heroOpDesc.textContent = 'Kiosk Mandiri (CS Istirahat)';
+        heroOpDot.className = 'hero-op-dot offline';
+        if (heroPill) {
+          heroPill.classList.add('pill-offline');
+          heroPill.classList.remove('pill-online');
+        }
+      }
+    }
+  }
+
+  // Jalankan segera dan pasang interval 1000ms
+  updateOperationalClock();
+  setInterval(updateOperationalClock, 1000);
+
+  // ==========================================
+  // 4. LOGIKA QUICK TRACKER REAL-TIME
   // ==========================================
   const formTracker = document.getElementById('formTracker');
   const inputTiket = document.getElementById('inputTiket');
@@ -151,42 +291,51 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!kode) {
         if (trackerResult) {
           trackerResult.style.display = 'block';
-          trackerResult.innerHTML = '<div style="background:#FEF2F2; color:#991B1B; padding:10px 14px; border-radius:8px; font-size:12px; border:1px solid #FECACA;">⚠️ Masukkan kode tiket terlebih dahulu (contoh: CPT-8492).</div>';
+          trackerResult.innerHTML = '<div style="background:#FEF2F2; color:#991B1B; padding:10px 14px; border-radius:8px; font-size:12px; border:1px solid #FECACA;">⚠️ Masukkan kode tiket atau PIN terlebih dahulu (contoh: CPT-8492).</div>';
         }
         return;
       }
 
-      // Periksa apakah tiket tersimpan dari sesi aplikasi sebelumnya di localStorage
-      let tiketAktif = null;
-      try {
-        const stored = localStorage.getItem('cepatik_tiket_aktif');
-        if (stored) tiketAktif = JSON.parse(stored);
-      } catch (err) { }
+      // Cari langsung ke CepatikDB tunggal
+      const dataTiket = window.CepatikDB ? window.CepatikDB.findOrderByTicket(kode) : null;
 
-      const isCocok = tiketAktif && (kode === tiketAktif.tiket || kode === tiketAktif.pin || kode === 'CPT-8492');
-      const dataTiket = isCocok && tiketAktif ? tiketAktif : {
-        tiket: kode,
-        pin: '8492',
-        file: { nama: 'Skripsi_BAB_1-5_Final.pdf' },
-        kiosk: 'Kiosk Perpustakaan Kampus (Loker Siap Buka)',
-        total: 5250
-      };
+      if (!dataTiket) {
+        if (trackerResult) {
+          trackerResult.style.display = 'block';
+          trackerResult.innerHTML = `
+            <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:10px; padding:14px; font-size:12.5px; color:#991B1B; animation:fadeIn 0.3s ease;">
+              <div style="font-weight:800; font-size:13px; margin-bottom:4px;">❌ TIKET [${kode}] TIDAK DITEMUKAN</div>
+              <p style="margin:0; font-size:12px; color:#7F1D1D;">Pesanan tidak ada di antrean database kiosk. Pastikan kode tiket yang dimasukkan benar.</p>
+            </div>
+          `;
+        }
+        return;
+      }
+
+      const rawFileName = typeof dataTiket.file === 'object' ? dataTiket.file.nama : dataTiket.file;
+      const isSiap = dataTiket.status === 'Siap Diambil' || dataTiket.status === 'Siap di Loker';
+      const statusBadgeBg = isSiap ? '#ECFDF5' : (dataTiket.status === 'Sedang Diproses' ? '#EFF6FF' : '#FEF3C7');
+      const statusBadgeColor = isSiap ? '#065F46' : (dataTiket.status === 'Sedang Diproses' ? '#1E40AF' : '#92400E');
+      const statusBorder = isSiap ? '#A7F3D0' : (dataTiket.status === 'Sedang Diproses' ? '#BFDBFE' : '#FCD34D');
 
       if (trackerResult) {
         trackerResult.style.display = 'block';
         trackerResult.innerHTML = `
           <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:10px; padding:14px; font-size:12.5px; color:#065F46; box-shadow:0 4px 12px rgba(6,95,70,0.06); animation:fadeIn 0.3s ease;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span style="font-weight:800; font-family:var(--font-mono); font-size:14px; color:#047857;">✓ TIKET [${dataTiket.tiket}] DITEMUKAN</span>
-              <span style="background:#059669; color:#fff; font-size:10px; padding:2px 8px; border-radius:4px; font-weight:800;">SIAP DI LOKER</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px; flex-wrap:wrap;">
+              <span style="font-weight:800; font-family:var(--font-mono); font-size:14px; color:#047857;">✓ KODE TIKET: [${dataTiket.id || dataTiket.tiket}]</span>
+              <span style="background:${statusBadgeBg}; color:${statusBadgeColor}; border:1px solid ${statusBorder}; font-size:11px; padding:3px 10px; border-radius:999px; font-weight:800; text-transform:uppercase;">
+                ${dataTiket.status === 'Siap di Loker' ? 'Siap Diambil' : dataTiket.status}
+              </span>
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:12px; margin-bottom:10px; color:#1F2937;">
-              <div><strong>Berkas:</strong> ${dataTiket.file.nama}</div>
-              <div><strong>PIN Loker:</strong> <span style="background:#FEF3C7; color:#92400E; padding:2px 6px; border-radius:4px; font-family:var(--font-mono); font-weight:800;">${dataTiket.pin}</span></div>
-              <div style="grid-column: span 2;"><strong>Lokasi:</strong> ${dataTiket.kiosk}</div>
+              <div style="grid-column: span 2;"><strong>Berkas:</strong> ${rawFileName}</div>
+              <div style="grid-column: span 2;"><strong>Lokasi Kiosk:</strong> ${dataTiket.kiosk}</div>
+              <div><strong>Biaya:</strong> ${window.CepatikDB ? window.CepatikDB.formatRupiah(dataTiket.total) : 'Rp ' + dataTiket.total}</div>
+              <div><strong>Waktu:</strong> ${dataTiket.waktu || 'Hari ini'}</div>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; border-top:1px dashed #A7F3D0; padding-top:8px;">
-              <span style="color:#059669;">File terhapus otomatis setelah diambil</span>
+              <span style="color:#059669;">Gunakan Kode Tiket di atas pada layar mesin Kiosk untuk mengambil cetakan</span>
               <button type="button" onclick="document.getElementById('trackerResult').style.display='none'" style="background:none; border:none; color:#065F46; font-size:11px; cursor:pointer; font-weight:700; text-decoration:underline;">Tutup</button>
             </div>
           </div>
@@ -195,26 +344,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Bantuan jika user lupa kode tiket (otomatis ambil dari pesanan terakhir di localStorage)
-  try {
-    const stored = localStorage.getItem('cepatik_tiket_aktif');
-    if (stored && formTracker && trackerResult) {
-      const tiketObj = JSON.parse(stored);
-      if (tiketObj && tiketObj.tiket) {
-        const helperDiv = document.createElement('div');
-        helperDiv.id = 'quickTicketHelper';
-        helperDiv.style.cssText = 'margin-top: 8px; font-size: 11.5px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;';
-        helperDiv.innerHTML = `<span>Lupa kode tiket?</span> <button type="button" style="background: none; border: none; color: var(--primary); font-weight: 700; cursor: pointer; text-decoration: underline; font-size: 11.5px; padding: 0;">Gunakan Pesanan Terakhir (${tiketObj.tiket})</button>`;
-        helperDiv.querySelector('button').addEventListener('click', function () {
-          if (inputTiket) {
-            inputTiket.value = tiketObj.tiket;
-            formTracker.dispatchEvent(new Event('submit'));
-          }
-        });
-        formTracker.parentNode.insertBefore(helperDiv, trackerResult);
-      }
-    }
-  } catch (err) { }
+  // 5. Toggle minimize/close kartu status operasional floating
+  const btnOpClose = document.getElementById('btnOpClose');
+  const floatingOpCard = document.getElementById('floatingOpCard');
+  if (btnOpClose && floatingOpCard) {
+    btnOpClose.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      floatingOpCard.classList.toggle('is-hidden');
+    });
+  }
+
   // Inisialisasi perhitungan kalkulator saat halaman dimuat
   updateKalkulator();
 });

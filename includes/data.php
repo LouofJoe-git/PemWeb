@@ -114,13 +114,12 @@ $daftar_kiosk = [
     [
         'id' => 'ui_depok',
         'nama' => 'Kiosk Perpustakaan UI',
-        'nama_lengkap_app' => 'Kiosk Perpustakaan UI (Loker Blok A)',
+        'nama_lengkap_app' => 'Kiosk Perpustakaan UI',
         'lokasi' => 'Lantai 1, Lobby Depan Starbucks Kampus Depok',
         'jarak' => '0.3 km',
         'stok_a4' => 920,
         'stok_f4' => 450,
         'jam_buka' => '24 Jam',
-        'loker_tersedia' => 6,
         'status' => 'online', 
         'maps_url' => 'https://maps.google.com/?q=Perpustakaan+UI+Depok',
         'default' => true
@@ -128,13 +127,12 @@ $daftar_kiosk = [
     [
         'id' => 'itb_ganesha',
         'nama' => 'Mitra Barokah ITB',
-        'nama_lengkap_app' => 'Mitra Barokah ITB (Loker Blok B)',
+        'nama_lengkap_app' => 'Mitra Barokah ITB',
         'lokasi' => 'Jl. Ganesha No. 10 (Samping Gerbang Utama ITB)',
         'jarak' => '0.8 km',
         'stok_a4' => 1400,
         'stok_f4' => 620,
         'jam_buka' => '07.00 - 23.00',
-        'loker_tersedia' => 12,
         'status' => 'online',
         'maps_url' => 'https://maps.google.com/?q=Jl.+Ganesha+No.+10+Bandung',
         'default' => false
@@ -142,13 +140,12 @@ $daftar_kiosk = [
     [
         'id' => 'ugm_gelanggang',
         'nama' => 'Kiosk Gelanggang UGM',
-        'nama_lengkap_app' => 'Kiosk Gelanggang UGM (Loker Blok C)',
+        'nama_lengkap_app' => 'Kiosk Gelanggang UGM',
         'lokasi' => 'Student Center UGM, Sayap Barat Lt. Dasar',
         'jarak' => '1.2 km',
         'stok_a4' => 850,
         'stok_f4' => 110,
         'jam_buka' => '24 Jam',
-        'loker_tersedia' => 8,
         'status' => 'online',
         'maps_url' => 'https://maps.google.com/?q=Gelanggang+Mahasiswa+UGM',
         'default' => false
@@ -162,8 +159,8 @@ $daftar_antrean = [
         'tipe' => 'PDF',
         'keterangan' => '24 Lembar · A4 Duplex',
         'status_kode' => 'ready',
-        'status_teks' => 'Siap di Loker #A4',
-        'pin' => '8492',
+        'status_teks' => 'Siap Diambil di Kiosk',
+        'pin' => 'CPT-8492',
         'progress' => 100
     ],
     [
@@ -210,7 +207,7 @@ $daftar_keunggulan = [
     [
         'id' => 'access',
         'judul' => 'Akses Kiosk 24 Jam',
-        'deskripsi' => 'Loker mandiri tersebar di perpustakaan, kantin, dan mitra kampus. Deadline tugas subuh pun tetap bisa diambil kapan saja.',
+        'deskripsi' => 'Mesin kiosk mandiri tersebar di perpustakaan, kantin, dan mitra kampus. Deadline tugas subuh pun tetap bisa diambil kapan saja.',
         'tag' => '✓ 24/7 Self-Pickup',
         'tag_style' => '',
         'icon_class' => 'gray',

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     duplex: false,
     rangkap: 1,
     jilid: { nama: 'Tanpa Jilid', harga: 0 },
-    kiosk: 'Kiosk Perpustakaan UI (Loker Blok A)',
+    kiosk: 'Kiosk Perpustakaan UI',
     total: 0,
     tiket: '',
     pin: ''
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const input = this.querySelector('input');
       if (input) input.checked = true;
 
-      pesanan.kiosk = input ? input.value : 'Kiosk Perpustakaan UI (Loker Blok A)';
+      pesanan.kiosk = input ? input.value : 'Kiosk Perpustakaan UI';
       hitungTotal();
     });
   });
@@ -409,12 +409,46 @@ document.addEventListener('DOMContentLoaded', function () {
         if (displayPIN) displayPIN.textContent = pesanan.pin;
         if (displayLokasiSukses) displayLokasiSukses.textContent = pesanan.kiosk;
 
-        // Simpan ke localStorage agar bisa dilacak di tracker index.html
+        // Simpan ke localStorage agar bisa dilacak di tracker index.html & panel admin
         try {
           localStorage.setItem('cepatik_tiket_aktif', JSON.stringify(pesanan));
           let riwayat = JSON.parse(localStorage.getItem('cepatik_riwayat_tiket') || '[]');
           riwayat.unshift(pesanan);
           localStorage.setItem('cepatik_riwayat_tiket', JSON.stringify(riwayat.slice(0, 5)));
+
+          // Sinkronisasi otomatis ke Database Antrean Pesanan Cepatik (db/)
+          const now = new Date();
+          const jamWib = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB';
+          const tglFormat = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+
+          const orderBaru = {
+            id: pesanan.tiket,
+            waktu: jamWib,
+            tanggal: tglFormat,
+            file: {
+              nama: pesanan.file.nama || 'Dokumen_Cetak.pdf',
+              ukuran: pesanan.file.ukuran || '1.5 MB',
+              halaman: pesanan.file.halaman || 1,
+              ekstensi: pesanan.file.ekstensi || 'PDF'
+            },
+            kertas: pesanan.kertas.nama || 'A4 Standard (75 GSM)',
+            tinta: pesanan.warna.nama || 'Hitam Putih',
+            duplex: !!pesanan.duplex,
+            rangkap: pesanan.rangkap || 1,
+            jilid: pesanan.jilid.nama || 'Tanpa Jilid',
+            total: pesanan.total || 0,
+            pin: pesanan.pin,
+            kiosk: pesanan.kiosk || 'Kiosk Perpustakaan UI',
+            status: 'Menunggu Cetak'
+          };
+
+          if (window.CepatikDB) {
+            window.CepatikDB.addOrder(orderBaru);
+          } else {
+            let antreanAdmin = JSON.parse(localStorage.getItem('cepatik_orders') || '[]');
+            antreanAdmin.unshift(orderBaru);
+            localStorage.setItem('cepatik_orders', JSON.stringify(antreanAdmin));
+          }
         } catch (e) {
           console.warn('LocalStorage tidak dapat diakses:', e);
         }
