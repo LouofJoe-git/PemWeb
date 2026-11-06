@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -27,7 +27,7 @@
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        <span id="digitalClock">--:--:-- WIB</span>
+        <!--<span id="digitalClock">--:--:-- WIB</span>-->
       </div>
       <div class="topbar-divider">•</div>
       <div class="topbar-item topbar-status is-online" id="operationalStatusBadge">
@@ -97,19 +97,21 @@
           </h1>
 
           <p class="hero-desc">
-            Upload dokumen dari HP atau laptop, bayar instan via QRIS otomatis, dan ambil langsung di mesin kiosk pintar tanpa perlu antre di fotokopian kampus.
+            Upload dokumen dari HP atau laptop, bayar instan via QRIS otomatis, dan ambil langsung di mesin kiosk pintar
+            tanpa perlu antre di fotokopian kampus.
           </p>
         </header>
 
         <!-- Dua Kartu Aksi Utama: Upload Dropzone & Quick Ticket Tracker -->
         <div class="hero-actions-grid">
-          
+
           <!-- Kartu 1: Dropzone Unggah Dokumen Utama -->
           <article class="hero-action-card hero-dropzone-card">
             <div class="action-card-header">
               <div class="action-card-header-left">
                 <div class="action-card-icon upload-icon-gradient">
-                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
                     <path d="M12 12v9"></path>
                     <path d="m16 16-4-4-4 4"></path>
@@ -129,7 +131,8 @@
                   accept=".pdf,.docx,.doc,.pptx,.ppt,.jpg,.jpeg,.png">
                 <div class="dropzone-content">
                   <div class="dropzone-icon-box">
-                    <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
                       <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
                       <path d="M12 12v9"></path>
                       <path d="m16 16-4-4-4 4"></path>
@@ -154,7 +157,8 @@
             <div class="action-card-header">
               <div class="action-card-header-left">
                 <div class="action-card-icon tracker-icon-gradient">
-                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
@@ -170,7 +174,8 @@
             <div class="tracker-box" id="tracker">
               <form class="tracker-form" id="formTracker">
                 <div class="tracker-input-group">
-                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2">
+                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF"
+                    stroke-width="2">
                     <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path>
                     <line x1="8" y1="7" x2="16" y2="7"></line>
                     <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -180,7 +185,8 @@
                 </div>
                 <button type="submit" class="btn-tracker">
                   <span>Cek Status</span>
-                  <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
                 </button>
@@ -189,9 +195,12 @@
               <!-- Tombol Cepat Contoh Tiket Demo -->
               <div class="tracker-quick-suggestions">
                 <span>Coba tiket:</span>
-                <button type="button" class="btn-sample-code" onclick="document.getElementById('inputTiket').value='CPT-8492'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8492</button>
-                <button type="button" class="btn-sample-code" onclick="document.getElementById('inputTiket').value='CPT-8493'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8493</button>
-                <button type="button" class="btn-sample-code" onclick="document.getElementById('inputTiket').value='CPT-8494'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8494</button>
+                <button type="button" class="btn-sample-code"
+                  onclick="document.getElementById('inputTiket').value='CPT-8492'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8492</button>
+                <button type="button" class="btn-sample-code"
+                  onclick="document.getElementById('inputTiket').value='CPT-8493'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8493</button>
+                <button type="button" class="btn-sample-code"
+                  onclick="document.getElementById('inputTiket').value='CPT-8494'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8494</button>
               </div>
 
               <!-- Hasil Cek Tiket Real-time -->
@@ -214,7 +223,8 @@
             </div>
           </li>
           <li class="trust-item">
-            <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+            <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+              stroke-width="2">
               <rect x="3" y="3" width="7" height="7"></rect>
               <rect x="14" y="3" width="7" height="7"></rect>
               <rect x="14" y="14" width="7" height="7"></rect>
@@ -374,7 +384,7 @@
                     <span
                       style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); font-family: var(--font-mono);">Total
                       Estimasi:</span>
-                    <div class="total-tax">Termasuk PPN 11%</div>
+                    
                   </div>
                   <div class="total-nominal" id="strukTotal">Rp 5.250</div>
                 </div>
@@ -447,7 +457,8 @@
                 </svg>
               </div>
               <h3>Akses Kiosk 24 Jam</h3>
-              <p>Mesin kiosk mandiri tersebar di perpustakaan, kantin, dan mitra kampus. Deadline tugas subuh pun tetap bisa diambil kapan saja.</p>
+              <p>Mesin kiosk mandiri tersebar di perpustakaan, kantin, dan mitra kampus. Deadline tugas subuh pun tetap
+                bisa diambil kapan saja.</p>
             </div>
             <div class="keunggulan-tag">✓ 24/7 Self-Pickup</div>
           </article>
@@ -484,8 +495,8 @@
                 </span>
                 <span class="kiosk-distance">0.3 km</span>
               </div>
-              <h4>Kiosk Perpustakaan UI</h4>
-              <address>Lantai 1, Lobby Depan Starbucks Kampus Depok</address>
+              <h4>Kiosk Perpustakaan Pusat UMM (Lt. 1)</h4>
+              <address>Gedung Perpustakaan Pusat UMM Kampus III, Lantai 1</address>
               <div class="kiosk-spec-grid">
                 <div>Kertas A4: <strong>920 lbr</strong></div>
                 <div>Kertas F4: <strong>450 lbr</strong></div>
@@ -511,8 +522,8 @@
                 </span>
                 <span class="kiosk-distance">0.8 km</span>
               </div>
-              <h4>Mitra Barokah ITB</h4>
-              <address>Jl. Ganesha No. 10 (Samping Gerbang Utama ITB)</address>
+              <h4>Kiosk GKB 1 UMM</h4>
+              <address>Lobby Utama GKB 1 UMM Kampus III, Lantai Dasar</address>
               <div class="kiosk-spec-grid">
                 <div>Kertas A4: <strong>1.400 lbr</strong></div>
                 <div>Kertas F4: <strong>620 lbr</strong></div>
@@ -538,8 +549,8 @@
                 </span>
                 <span class="kiosk-distance">1.2 km</span>
               </div>
-              <h4>Kiosk Gelanggang UGM</h4>
-              <address>Student Center UGM, Sayap Barat Lt. Dasar</address>
+              <h4>Kiosk GKB 2 (Lobby Lt. 1)</h4>
+              <address>Gedung Kuliah Bersama II (GKB 2) UMM, Lobby Lantai 1</address>
               <div class="kiosk-spec-grid">
                 <div>Kertas A4: <strong>850 lbr</strong></div>
                 <div>Kertas F4: <strong>110 lbr</strong></div>
@@ -568,7 +579,8 @@
         <header class="testimoni-header">
           <span class="section-badge">Pengalaman Mahasiswa</span>
           <h2 class="section-title">Dipercaya Ribuan Mahasiswa di Berbagai Kampus</h2>
-          <p class="section-subtitle">Lihat apa kata mereka yang sudah merasakan praktisnya cetak tanpa antre untuk tugas harian, laporan praktikum, hingga naskah skripsi.</p>
+          <p class="section-subtitle">Lihat apa kata mereka yang sudah merasakan praktisnya cetak tanpa antre untuk
+            tugas harian, laporan praktikum, hingga naskah skripsi.</p>
         </header>
 
         <div class="testimoni-grid">
@@ -579,7 +591,8 @@
             <div>
               <div class="testimoni-top">
                 <span class="badge-verified-ticket">
-                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5">
+                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                    stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   Tiket CPT-8492 Terverifikasi
@@ -587,7 +600,9 @@
                 <div class="testimoni-stars" title="Rating 5/5">★★★★★</div>
               </div>
               <p class="testimoni-text">
-                "Beneran penyelamat waktu malam sebelum sidang skripsi! Jam 11 malam upload dari kosan, bayar QRIS, langsung meluncur ke perpus pusat ambil cetakan pakai kode tiket. Hasil cetak laserjetnya tajem banget dan gak lecek sama sekali."
+                "Beneran penyelamat waktu malam sebelum sidang skripsi! Jam 11 malam upload dari kosan, bayar QRIS,
+                langsung meluncur ke perpus pusat ambil cetakan pakai kode tiket. Hasil cetak laserjetnya tajem banget
+                dan gak lecek sama sekali."
               </p>
             </div>
             <div>
@@ -613,7 +628,8 @@
             <div>
               <div class="testimoni-top">
                 <span class="badge-verified-ticket">
-                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5">
+                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                    stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   Tiket CPT-8493 Terverifikasi
@@ -621,7 +637,9 @@
                 <div class="testimoni-stars" title="Rating 5/5">★★★★★</div>
               </div>
               <p class="testimoni-text">
-                "Udah gak pernah mau antre di fotokopian depan kampus lagi semenjak ada Cepatik. Format warna diagram praktikum keluar tajam sesuai file aslinya, auto-count halamannya juga akurat gak perlu repot hitung manual."
+                "Udah gak pernah mau antre di fotokopian depan kampus lagi semenjak ada Cepatik. Format warna diagram
+                praktikum keluar tajam sesuai file aslinya, auto-count halamannya juga akurat gak perlu repot hitung
+                manual."
               </p>
             </div>
             <div>
@@ -647,7 +665,8 @@
             <div>
               <div class="testimoni-top">
                 <span class="badge-verified-ticket">
-                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5">
+                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                    stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   Tiket CPT-8494 Terverifikasi
@@ -655,7 +674,9 @@
                 <div class="testimoni-stars" title="Rating 5/5">★★★★★</div>
               </div>
               <p class="testimoni-text">
-                "Fitur tracking tiketnya keren banget, ada progress bar real-time dan konfirmasi kode tiket pesanan. Tinggal jalan santai ke Gelanggang, masukkan kode tiket di layar kiosk, dokumen sudah tercetak rapi. Sangat recommended buat mahasiswa aktif!"
+                "Fitur tracking tiketnya keren banget, ada progress bar real-time dan konfirmasi kode tiket pesanan.
+                Tinggal jalan santai ke Gelanggang, masukkan kode tiket di layar kiosk, dokumen sudah tercetak rapi.
+                Sangat recommended buat mahasiswa aktif!"
               </p>
             </div>
             <div>
@@ -686,7 +707,8 @@
             <span class="section-badge">Pusat Bantuan &amp; Edukasi</span>
             <h2 class="section-title">Kerap Ditanyakan seputar Kiosk Cepatik</h2>
             <p class="faq-desc">
-              Punya pertanyaan tentang cara cetak dokumen, keamanan enkripsi file, atau mekanisme pengambilan di kiosk? Temukan jawaban ringkas di sini.
+              Punya pertanyaan tentang cara cetak dokumen, keamanan enkripsi file, atau mekanisme pengambilan di kiosk?
+              Temukan jawaban ringkas di sini.
             </p>
 
             <div class="faq-cs-card">
@@ -697,8 +719,10 @@
               </div>
             </div>
 
-            <a href="https://wa.me/6281216463462?text=Halo%20Admin%20Cepatik,%20saya%20butuh%20bantuan%20terkait%20cetak%20dokumen" target="_blank" rel="noopener noreferrer" class="btn-faq-cs">
-              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="https://wa.me/6281216463462?text=Halo%20Admin%20Cepatik,%20saya%20butuh%20bantuan%20terkait%20cetak%20dokumen"
+              target="_blank" rel="noopener noreferrer" class="btn-faq-cs">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
               <span>Hubungi CS WhatsApp</span>
@@ -716,7 +740,10 @@
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Cukup 3 langkah mudah: (1) Unggah berkas dokumenmu di halaman web ini, (2) Tentukan opsi cetak (warna / hitam putih, jenis kertas, bolak-balik) lalu selesaikan pembayaran via QRIS, (3) Kamu akan mendapatkan <strong>Kode Tiket Pesanan</strong> (cth: CPT-8492). Datang ke kiosk terdekat, masukkan kode tiket pada layar mesin, dan dokumenmu langsung tercetak dan siap diambil!</p>
+              <p>Cukup 3 langkah mudah: (1) Unggah berkas dokumenmu di halaman web ini, (2) Tentukan opsi cetak (warna /
+                hitam putih, jenis kertas, bolak-balik) lalu selesaikan pembayaran via QRIS, (3) Kamu akan mendapatkan
+                <strong>Kode Tiket Pesanan</strong> (cth: CPT-8492). Datang ke kiosk terdekat, masukkan kode tiket pada
+                layar mesin, dan dokumenmu langsung tercetak dan siap diambil!</p>
             </div>
           </details>
 
@@ -728,7 +755,9 @@
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Sangat aman! Cepatik menerapkan enkripsi transmisi TLS 256-bit kelas enterprise. Berkas hanya dikirim ke sistem spooler printer pada saat pencetakan dan <strong>otomatis terhapus permanen dari sistem lokal kiosk dalam 2 jam</strong> setelah berkas selesai dicetak dan diambil di kiosk.</p>
+              <p>Sangat aman! Cepatik menerapkan enkripsi transmisi TLS 256-bit kelas enterprise. Berkas hanya dikirim
+                ke sistem spooler printer pada saat pencetakan dan <strong>otomatis terhapus permanen dari sistem lokal
+                  kiosk dalam 2 jam</strong> setelah berkas selesai dicetak dan diambil di kiosk.</p>
             </div>
           </details>
 
@@ -740,7 +769,9 @@
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Setiap unit Kiosk Cepatik dilengkapi sensor presisi pemantau kertas dan toner. Jika terdeteksi gangguan mekanis, antrean cetakmu akan dialihkan secara otomatis ke unit kiosk terdekat atau kamu bisa menekan tombol <strong>Chat Admin</strong> untuk refund instan via QRIS.</p>
+              <p>Setiap unit Kiosk Cepatik dilengkapi sensor presisi pemantau kertas dan toner. Jika terdeteksi gangguan
+                mekanis, antrean cetakmu akan dialihkan secara otomatis ke unit kiosk terdekat atau kamu bisa menekan
+                tombol <strong>Chat Admin</strong> untuk refund instan via QRIS.</p>
             </div>
           </details>
 
@@ -752,7 +783,8 @@
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Dokumen dapat diambil kapan saja dengan memasukkan Kode Tiket pada mesin Kiosk yang Anda pilih selama jam operasional kiosk.</p>
+              <p>Dokumen dapat diambil kapan saja dengan memasukkan Kode Tiket pada mesin Kiosk yang Anda pilih selama
+                jam operasional kiosk.</p>
             </div>
           </details>
 
@@ -764,7 +796,8 @@
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Kami mendukung seluruh dompet digital (GoPay, OVO, DANA, ShopeePay, LinkAja) serta Mobile Banking bank mana pun di Indonesia melalui QRIS Standar Bank Indonesia dengan verifikasi otomatis detik itu juga.</p>
+              <p>Kami mendukung seluruh dompet digital (GoPay, OVO, DANA, ShopeePay, LinkAja) serta Mobile Banking bank
+                mana pun di Indonesia melalui QRIS Standar Bank Indonesia dengan verifikasi otomatis detik itu juga.</p>
             </div>
           </details>
 
@@ -776,7 +809,9 @@
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Tentu saja! Selain A4 75 GSM dan 80 GSM untuk tugas &amp; skripsi, kami juga menyediakan kertas F4 Folio 80 GSM serta opsi finishing jilid staples sudut atau jilid lakban rapi yang dapat dipilih langsung saat checkout.</p>
+              <p>Tentu saja! Selain A4 75 GSM dan 80 GSM untuk tugas &amp; skripsi, kami juga menyediakan kertas F4
+                Folio 80 GSM serta opsi finishing jilid staples sudut atau jilid lakban rapi yang dapat dipilih langsung
+                saat checkout.</p>
             </div>
           </details>
         </div>
@@ -791,7 +826,8 @@
               style="font-size: 11px; font-family: var(--font-mono); color: var(--peach); font-weight: 800; text-transform: uppercase;">Cetak
               Mandiri Tanpa Antre</span>
             <h2>Siap Cetak Dokumen Kamu Sekarang?</h2>
-            <p>Upload berkasmu sekarang juga, bayar mudah via QRIS, dan ambil di mesin kiosk pintar Cepatik kapan pun kamu sempat.</p>
+            <p>Upload berkasmu sekarang juga, bayar mudah via QRIS, dan ambil di mesin kiosk pintar Cepatik kapan pun
+              kamu sempat.</p>
             <div class="cta-btn-group">
               <a href="cetak.html" class="btn btn-cetak">
                 <span>Buka Sistem Cetak</span>
@@ -801,7 +837,8 @@
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </a>
-              <a href="https://wa.me/6281216463462?text=Halo%20Admin%20Cepatik,%20saya%20butuh%20bantuan" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+              <a href="https://wa.me/6281216463462?text=Halo%20Admin%20Cepatik,%20saya%20butuh%20bantuan"
+                target="_blank" rel="noopener noreferrer" class="btn btn-wa">
                 <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -822,7 +859,8 @@
               </svg>
             </div>
             <strong style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Scan di Kiosk</strong>
-            <p style="font-size: 11px; color: #D6CEC8; margin-top: 4px;">Ambil cetakan langsung di mesin Kiosk dengan kode tiket
+            <p style="font-size: 11px; color: #D6CEC8; margin-top: 4px;">Ambil cetakan langsung di mesin Kiosk dengan
+              kode tiket
             </p>
             <div class="cta-badge-code">CPT-2026</div>
           </aside>
@@ -834,10 +872,12 @@
 
   <aside class="floating-help" id="floatingHelp">
     <!-- Tombol Floating Chat Admin -->
-    <a href="https://wa.me/6281216463462?text=Halo%20Admin%20Cepatik,%20saya%20ingin%20bertanya" target="_blank" rel="noopener noreferrer" class="btn-floating"
-      title="Chat Admin Cepatik" aria-label="Chat Admin Customer Service">
+    <a href="https://wa.me/6281216463462?text=Halo%20Admin%20Cepatik,%20saya%20ingin%20bertanya" target="_blank"
+      rel="noopener noreferrer" class="btn-floating" title="Chat Admin Cepatik"
+      aria-label="Chat Admin Customer Service">
       <span class="floating-icon-wrap">
-        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.2">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
         </svg>
@@ -856,7 +896,8 @@
           </div>
           <div class="op-header-right">
             <span class="op-tz-label">WIB · UTC+7</span>
-            <button type="button" class="btn-op-close" id="btnOpClose" title="Sembunyikan status" aria-label="Tutup">×</button>
+            <button type="button" class="btn-op-close" id="btnOpClose" title="Sembunyikan status"
+              aria-label="Tutup">×</button>
           </div>
         </div>
 
