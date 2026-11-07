@@ -1,16 +1,16 @@
-﻿/**
+/**
  * ADMIN.JS - CEPATIK ADMIN PANEL & KIOSK MANAGEMENT
  * Mengelola antrean pesanan cloud printing, otentikasi operator & lokasi kiosk,
  * metrik real-time bersumber dari CepatikDB (/db/), dan pencetakan struk thermal.
  */
 
-// Kata Kunci Pencocokan Lokasi Kiosk
+// Kata Kunci Pencocokan Lokasi Kiosk (Mendukung Titik Kiosk UMM & Kompatibilitas Lama)
 const KIOSK_KEYWORDS = {
-  'umm_perpus': 'UI',
-  'umm_gkb1': 'ITB',
-  'umm_gkb2': 'UGM',
-  'umm_lab_it': 'Lab Komputer',
-  'umm_kantin_teknik': 'Rektorat'
+  'umm_perpus': ['perpustakaan', 'perpus', 'ui'],
+  'umm_gkb1': ['gkb 1', 'gkb1', 'itb'],
+  'umm_gkb2': ['gkb 2', 'gkb2', 'ugm'],
+  'umm_lab_it': ['lab informatika', 'lab komputer', 'lab_it'],
+  'umm_kantin_teknik': ['kantin teknik', 'rektorat']
 };
 
 const STATUS_OPTIONS = [
@@ -135,11 +135,14 @@ function getStatusBadgeClass(status) {
 }
 
 function orderMatchesKiosk(order, kioskFilter) {
-  if (kioskFilter === 'all') return true;
-  const keyword = KIOSK_KEYWORDS[kioskFilter];
-  if (!keyword) return true;
+  if (!kioskFilter || kioskFilter === 'all') return true;
+  const keywords = KIOSK_KEYWORDS[kioskFilter];
+  if (!keywords) return true;
   const kioskStr = (order.kiosk || '').toLowerCase();
-  return kioskStr.includes(keyword.toLowerCase());
+  if (Array.isArray(keywords)) {
+    return keywords.some(kw => kioskStr.includes(kw.toLowerCase()));
+  }
+  return kioskStr.includes(String(keywords).toLowerCase());
 }
 
 // =============================================================================

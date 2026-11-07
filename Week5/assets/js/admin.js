@@ -1,16 +1,16 @@
-﻿/**
+/**
  * ADMIN.JS - CEPATIK ADMIN PANEL & KIOSK MANAGEMENT
  * Mengelola antrean pesanan cloud printing, otentikasi operator & lokasi kiosk,
  * metrik real-time bersumber dari CepatikDB (/db/), dan pencetakan struk thermal.
  */
 
-// Kata Kunci Pencocokan Lokasi Kiosk
+// Kata Kunci Pencocokan Lokasi Kiosk (Mendukung Titik Kiosk UMM & Kompatibilitas Lama)
 const KIOSK_KEYWORDS = {
-  'umm_perpus': 'UI',
-  'umm_gkb1': 'ITB',
-  'umm_gkb2': 'UGM',
-  'umm_lab_it': 'Lab Komputer',
-  'umm_kantin_teknik': 'Rektorat'
+  'umm_perpus': ['perpustakaan', 'perpus', 'ui'],
+  'umm_gkb1': ['gkb 1', 'gkb1', 'itb'],
+  'umm_gkb2': ['gkb 2', 'gkb2', 'ugm'],
+  'umm_lab_it': ['lab informatika', 'lab komputer', 'lab_it'],
+  'umm_kantin_teknik': ['kantin teknik', 'rektorat']
 };
 
 const STATUS_OPTIONS = [
@@ -69,24 +69,31 @@ function setupOperatorProfileUI(session) {
   const kioskSwitcherWrap = document.getElementById('kioskSwitcherWrap');
   const selectKioskFilter = document.getElementById('selectKioskAdminFilter');
 
-  if (operatorNameEl) operatorNameEl.textContent = session.nama || session.username;
-  if (operatorRoleEl) operatorRoleEl.textContent = `${session.role} · ${session.kioskName}`;
+  const displayName = session.nama || session.displayName || session.username || 'Admin';
+  const kioskName = session.kioskName || session.kioskTitle || 'Kiosk Perpustakaan Pusat UMM (Lt. 1)';
+  const roleLabel = session.role || (session.kioskId === 'all' ? 'Super Admin' : 'Operator Kiosk');
+
+  if (operatorNameEl) operatorNameEl.textContent = displayName;
+  if (operatorRoleEl) operatorRoleEl.textContent = `${roleLabel} · ${kioskName}`;
   if (operatorAvatarEl) {
-    const initial = (session.nama || session.username || 'A').charAt(0).toUpperCase();
+    const initial = displayName.charAt(0).toUpperCase();
     operatorAvatarEl.textContent = initial;
   }
 
   if (topbarKioskEl) {
-    topbarKioskEl.innerHTML = `<strong>${session.kioskName}</strong> (Online 24/7)`;
+    topbarKioskEl.innerHTML = `<strong>${kioskName}</strong> (Online 24/7)`;
   }
 
-  if (session.role === 'Super Admin' || session.kioskId === 'all') {
+  if (roleLabel === 'Super Admin' || session.kioskId === 'all') {
     currentKioskFilter = 'all';
     if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'inline-flex';
     if (selectKioskFilter) selectKioskFilter.value = 'all';
   } else {
-    currentKioskFilter = session.kioskId;
-    if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'none';
+    currentKioskFilter = session.kioskId || 'all';
+    if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'inline-flex';
+    if (selectKioskFilter && session.kioskId) {
+      selectKioskFilter.value = session.kioskId;
+    }
   }
 }
 
@@ -135,11 +142,14 @@ function getStatusBadgeClass(status) {
 }
 
 function orderMatchesKiosk(order, kioskFilter) {
-  if (kioskFilter === 'all') return true;
-  const keyword = KIOSK_KEYWORDS[kioskFilter];
-  if (!keyword) return true;
+  if (!kioskFilter || kioskFilter === 'all') return true;
+  const keywords = KIOSK_KEYWORDS[kioskFilter];
+  if (!keywords) return true;
   const kioskStr = (order.kiosk || '').toLowerCase();
-  return kioskStr.includes(keyword.toLowerCase());
+  if (Array.isArray(keywords)) {
+    return keywords.some(kw => kioskStr.includes(kw.toLowerCase()));
+  }
+  return kioskStr.includes(String(keywords).toLowerCase());
 }
 
 // =============================================================================
@@ -170,13 +180,14 @@ function updateFilterCounts(orders) {
   const countSemua = orders.length;
   const countMenunggu = orders.filter(o => o.status === 'Menunggu Cetak').length;
   const countProses = orders.filter(o => o.status === 'Sedang Diproses').length;
-  const countSiap = orders.filter(o => o.status === 'Siap di Loker').length;
+  const countSiap = orders.filter(o => o.status === 'Siap Diambil' || o.status === 'Siap di Loker').length;
   const countSelesai = orders.filter(o => o.status === 'Selesai').length;
 
   const countElMap = {
     'Semua': countSemua,
     'Menunggu Cetak': countMenunggu,
     'Sedang Diproses': countProses,
+    'Siap Diambil': countSiap,
     'Siap di Loker': countSiap,
     'Selesai': countSelesai
   };

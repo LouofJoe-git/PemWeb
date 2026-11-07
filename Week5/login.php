@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * login.php - Cepatik Portal Masuk Operator & Admin Kiosk
  * 
@@ -86,11 +86,11 @@
             </svg>
             <select id="selectKioskLocation" class="form-select-control" required>
               <option value="all">⭐ Super Admin (Semua Lokasi Kiosk)</option>
-              <option value="umm_perpus" selected>📍 Kiosk #01 - Perpustakaan UI</option>
+              <option value="umm_perpus" selected>📍 Kiosk #01 - Perpustakaan Pusat UMM (Lt. 1)</option>
               <option value="umm_gkb1">📍 Kiosk #02 - Kiosk GKB 1 UMM</option>
-              <option value="umm_gkb2">📍 Kiosk #03 - Gelanggang UGM</option>
-              <option value="umm_lab_it">📍 Kiosk #04 - Lab Komputer TI</option>
-              <option value="umm_kantin_teknik">📍 Kiosk #05 - Gedung Rektorat</option>
+              <option value="umm_gkb2">📍 Kiosk #03 - Kiosk GKB 2 (Lobby Lt. 1)</option>
+              <option value="umm_lab_it">📍 Kiosk #04 - Lab Informatika &amp; Komputer (Lt. 6)</option>
+              <option value="umm_kantin_teknik">📍 Kiosk #05 - Kiosk Kantin Teknik</option>
             </select>
           </div>
         </div>

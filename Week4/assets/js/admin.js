@@ -1,16 +1,16 @@
-﻿/**
+/**
  * ADMIN.JS - CEPATIK ADMIN PANEL & KIOSK MANAGEMENT
  * Mengelola antrean pesanan cloud printing, otentikasi operator & lokasi kiosk,
  * metrik real-time bersumber dari CepatikDB (/db/), dan pencetakan struk thermal.
  */
 
-// Kata Kunci Pencocokan Lokasi Kiosk
+// Kata Kunci Pencocokan Lokasi Kiosk (Mendukung Titik Kiosk UMM & Kompatibilitas Lama)
 const KIOSK_KEYWORDS = {
-  'umm_perpus': 'UI',
-  'umm_gkb1': 'ITB',
-  'umm_gkb2': 'UGM',
-  'umm_lab_it': 'Lab Komputer',
-  'umm_kantin_teknik': 'Rektorat'
+  'umm_perpus': ['perpustakaan', 'perpus', 'ui'],
+  'umm_gkb1': ['gkb 1', 'gkb1', 'itb'],
+  'umm_gkb2': ['gkb 2', 'gkb2', 'ugm'],
+  'umm_lab_it': ['lab informatika', 'lab komputer', 'lab_it'],
+  'umm_kantin_teknik': ['kantin teknik', 'rektorat']
 };
 
 const STATUS_OPTIONS = [
@@ -42,7 +42,7 @@ function getAdminSession() {
 function checkAdminAuth() {
   const session = getAdminSession();
   if (!session || !session.username) {
-    window.location.replace('login.php');
+    window.location.replace('login.html');
     return null;
   }
   return session;
@@ -54,7 +54,7 @@ function logoutAdmin() {
     localStorage.removeItem('cepatik_admin_session');
     showToast('Berhasil keluar. Mengalihkan ke login...', 'toast-info');
     setTimeout(() => {
-      window.location.href = 'login.php';
+      window.location.href = 'login.html';
     }, 500);
   }
 }
@@ -69,24 +69,31 @@ function setupOperatorProfileUI(session) {
   const kioskSwitcherWrap = document.getElementById('kioskSwitcherWrap');
   const selectKioskFilter = document.getElementById('selectKioskAdminFilter');
 
-  if (operatorNameEl) operatorNameEl.textContent = session.nama || session.username;
-  if (operatorRoleEl) operatorRoleEl.textContent = `${session.role} · ${session.kioskName}`;
+  const displayName = session.nama || session.displayName || session.username || 'Admin';
+  const kioskName = session.kioskName || session.kioskTitle || 'Kiosk Perpustakaan Pusat UMM (Lt. 1)';
+  const roleLabel = session.role || (session.kioskId === 'all' ? 'Super Admin' : 'Operator Kiosk');
+
+  if (operatorNameEl) operatorNameEl.textContent = displayName;
+  if (operatorRoleEl) operatorRoleEl.textContent = `${roleLabel} · ${kioskName}`;
   if (operatorAvatarEl) {
-    const initial = (session.nama || session.username || 'A').charAt(0).toUpperCase();
+    const initial = displayName.charAt(0).toUpperCase();
     operatorAvatarEl.textContent = initial;
   }
 
   if (topbarKioskEl) {
-    topbarKioskEl.innerHTML = `<strong>${session.kioskName}</strong> (Online 24/7)`;
+    topbarKioskEl.innerHTML = `<strong>${kioskName}</strong> (Online 24/7)`;
   }
 
-  if (session.role === 'Super Admin' || session.kioskId === 'all') {
+  if (roleLabel === 'Super Admin' || session.kioskId === 'all') {
     currentKioskFilter = 'all';
     if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'inline-flex';
     if (selectKioskFilter) selectKioskFilter.value = 'all';
   } else {
-    currentKioskFilter = session.kioskId;
-    if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'none';
+    currentKioskFilter = session.kioskId || 'all';
+    if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'inline-flex';
+    if (selectKioskFilter && session.kioskId) {
+      selectKioskFilter.value = session.kioskId;
+    }
   }
 }
 
@@ -135,11 +142,14 @@ function getStatusBadgeClass(status) {
 }
 
 function orderMatchesKiosk(order, kioskFilter) {
-  if (kioskFilter === 'all') return true;
-  const keyword = KIOSK_KEYWORDS[kioskFilter];
-  if (!keyword) return true;
+  if (!kioskFilter || kioskFilter === 'all') return true;
+  const keywords = KIOSK_KEYWORDS[kioskFilter];
+  if (!keywords) return true;
   const kioskStr = (order.kiosk || '').toLowerCase();
-  return kioskStr.includes(keyword.toLowerCase());
+  if (Array.isArray(keywords)) {
+    return keywords.some(kw => kioskStr.includes(kw.toLowerCase()));
+  }
+  return kioskStr.includes(String(keywords).toLowerCase());
 }
 
 // =============================================================================
@@ -170,13 +180,14 @@ function updateFilterCounts(orders) {
   const countSemua = orders.length;
   const countMenunggu = orders.filter(o => o.status === 'Menunggu Cetak').length;
   const countProses = orders.filter(o => o.status === 'Sedang Diproses').length;
-  const countSiap = orders.filter(o => o.status === 'Siap di Loker').length;
+  const countSiap = orders.filter(o => o.status === 'Siap Diambil' || o.status === 'Siap di Loker').length;
   const countSelesai = orders.filter(o => o.status === 'Selesai').length;
 
   const countElMap = {
     'Semua': countSemua,
     'Menunggu Cetak': countMenunggu,
     'Sedang Diproses': countProses,
+    'Siap Diambil': countSiap,
     'Siap di Loker': countSiap,
     'Selesai': countSelesai
   };
@@ -207,8 +218,12 @@ function renderTable() {
       return false;
     }
 
-    if (currentFilter !== 'Semua' && order.status !== currentFilter) {
-      return false;
+    if (currentFilter !== 'Semua') {
+      if (currentFilter === 'Siap Diambil' || currentFilter === 'Siap di Loker') {
+        if (order.status !== 'Siap Diambil' && order.status !== 'Siap di Loker') return false;
+      } else if (order.status !== currentFilter) {
+        return false;
+      }
     }
 
     if (searchQuery.trim() !== '') {
@@ -255,12 +270,12 @@ function renderTable() {
 
     const statusBadgeClass = getStatusBadgeClass(order.status);
     const waktuTampil = order.waktu ? `${order.waktu}` : 'Hari Ini';
-    const pin = order.pin || '0000';
     const totalHarga = window.CepatikDB ? window.CepatikDB.formatRupiah(order.total || 0) : `Rp ${order.total}`;
 
     let selectOptions = '';
     STATUS_OPTIONS.forEach(opt => {
-      const isSelected = order.status === opt ? 'selected' : '';
+      const normalizedStatus = order.status === 'Siap di Loker' ? 'Siap Diambil' : order.status;
+      const isSelected = normalizedStatus === opt ? 'selected' : '';
       selectOptions += `<option value="${opt}" ${isSelected}>${opt}</option>`;
     });
 
@@ -323,7 +338,7 @@ function renderTable() {
           <div class="admin-status-wrap">
             <span class="badge-status ${statusBadgeClass}">
               <span class="status-dot"></span>
-              <span>${order.status}</span>
+              <span>${order.status === 'Siap di Loker' ? 'Siap Diambil' : order.status}</span>
             </span>
             <select class="admin-select-status" onchange="handleStatusChange('${orderId}', this.value)" title="Ubah Status Pesanan">
               ${selectOptions}
@@ -371,6 +386,7 @@ function handlePurgeFiles() {
     );
   }
 }
+
 function handleStatusChange(orderId, newStatus) {
   if (window.CepatikDB) {
     const updated = window.CepatikDB.updateOrderStatus(orderId, newStatus);
@@ -413,7 +429,6 @@ function cetakStruk(orderId) {
   }
 
   const tiketId = order.id || order.tiket || 'CPT-8492';
-  const pin = order.pin || '0000';
   const rawFileName = typeof order.file === 'object' ? (order.file.nama || 'Dokumen.pdf') : (order.file || 'Dokumen.pdf');
   const hlm = (typeof order.file === 'object' && order.file.halaman) ? order.file.halaman : (order.halaman || 1);
   const rangkap = order.rangkap || 1;

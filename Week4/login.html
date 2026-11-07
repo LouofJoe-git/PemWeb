@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -55,7 +55,8 @@
 
       <!-- Alert Pesan Kesalahan -->
       <div id="loginErrorAlert" class="login-alert-error" role="alert">
-        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.5">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="12" y1="8" x2="12" y2="12"></line>
           <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -73,17 +74,18 @@
             <span style="font-size: 11px; color: var(--primary); font-weight: 600;">Wajib Dipilih</span>
           </label>
           <div class="form-input-wrap">
-            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.2">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
             <select id="selectKioskLocation" class="form-select-control" required>
               <option value="all">⭐ Super Admin (Semua Lokasi Kiosk)</option>
-              <option value="umm_perpus" selected>📍 Kiosk #01 - Perpustakaan UI</option>
+              <option value="umm_perpus" selected>📍 Kiosk #01 - Perpustakaan Pusat UMM (Lt. 1)</option>
               <option value="umm_gkb1">📍 Kiosk #02 - Kiosk GKB 1 UMM</option>
-              <option value="umm_gkb2">📍 Kiosk #03 - Gelanggang UGM</option>
-              <option value="umm_lab_it">📍 Kiosk #04 - Lab Komputer TI</option>
-              <option value="umm_kantin_teknik">📍 Kiosk #05 - Gedung Rektorat</option>
+              <option value="umm_gkb2">📍 Kiosk #03 - Kiosk GKB 2 (Lobby Lt. 1)</option>
+              <option value="umm_lab_it">📍 Kiosk #04 - Lab Informatika &amp; Komputer (Lt. 6)</option>
+              <option value="umm_kantin_teknik">📍 Kiosk #05 - Kiosk Kantin Teknik</option>
             </select>
           </div>
         </div>
@@ -94,11 +96,13 @@
             <span>Nama Pengguna (Username)</span>
           </label>
           <div class="form-input-wrap">
-            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.2">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
-            <input type="text" id="inputUsername" class="form-input-control" placeholder="Contoh: admin atau operator" value="admin" required autocomplete="username">
+            <input type="text" id="inputUsername" class="form-input-control" placeholder="Contoh: admin atau operator"
+              value="admin" required autocomplete="username">
           </div>
         </div>
 
@@ -109,13 +113,17 @@
             <span style="font-size: 11px; color: var(--text-muted);">Default: cepatik2026</span>
           </label>
           <div class="form-input-wrap">
-            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.2">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
-            <input type="password" id="inputPassword" class="form-input-control" placeholder="Masukkan kata sandi..." value="cepatik2026" required autocomplete="current-password">
-            <button type="button" class="btn-toggle-password" id="btnTogglePassword" title="Lihat/Sembunyikan kata sandi">
-              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <input type="password" id="inputPassword" class="form-input-control" placeholder="Masukkan kata sandi..."
+              value="cepatik2026" required autocomplete="current-password">
+            <button type="button" class="btn-toggle-password" id="btnTogglePassword"
+              title="Lihat/Sembunyikan kata sandi">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
@@ -135,7 +143,8 @@
         <!-- Tombol Masuk -->
         <button type="submit" class="btn-login-submit" id="btnLoginSubmit">
           <span>Masuk ke Panel Kontrol</span>
-          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
@@ -151,17 +160,20 @@
             <span>👑 Super Admin</span>
             <small>Akses Seluruh Titik Kiosk</small>
           </button>
-          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_perpus', 'operator_ui', 'Operator Perpustakaan UI')">
-            <span>📍 Operator Kiosk UI</span>
-            <small>Khusus Perpustakaan Depok</small>
+          <button type="button" class="btn-demo-quick"
+            onclick="quickLogin('umm_perpus', 'operator_perpus', 'Operator Perpustakaan Pusat UMM')">
+            <span>📍 Operator Perpus UMM</span>
+            <small>Khusus Perpustakaan Pusat Lt. 1</small>
           </button>
-          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_gkb1', 'operator_itb', 'Operator ITB Ganesha')">
-            <span>📍 Operator Kiosk ITB</span>
-            <small>Khusus Kampus ITB Bandung</small>
+          <button type="button" class="btn-demo-quick"
+            onclick="quickLogin('umm_gkb1', 'operator_gkb1', 'Operator GKB 1 UMM')">
+            <span>📍 Operator GKB 1</span>
+            <small>Khusus Lobby Utama GKB 1 UMM</small>
           </button>
-          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_gkb2', 'operator_ugm', 'Operator UGM')">
-            <span>📍 Operator Kiosk UGM</span>
-            <small>Khusus Gelanggang Yogyakarta</small>
+          <button type="button" class="btn-demo-quick"
+            onclick="quickLogin('umm_gkb2', 'operator_gkb2', 'Operator GKB 2 UMM')">
+            <span>📍 Operator GKB 2</span>
+            <small>Khusus Lobby GKB 2 Lt. 1</small>
           </button>
         </div>
       </div>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $site_info = [
     'nama' => 'Cepatik',
     'tagline' => 'Self-Service Cloud Printing Kiosk',
@@ -6,6 +6,7 @@ $site_info = [
     'kiosk_aktif_count' => 42,
     'kampus_mitra_count' => 40,
     'kecepatan_ppm' => 35,
+    'tarif_mulai' => 350,
     'resolusi_dpi' => '1200 x 1200 DPI',
     'retensi_jam' => 2,
     'kontak_wa' => '+62 812-3456-7890',

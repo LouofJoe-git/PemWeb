@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/classes/Order.php';
 require_once __DIR__ . '/classes/Kiosk.php';
 
@@ -487,8 +487,8 @@ foreach ($kiosks as $k) {
           </div>
         </div>
 
-        <a href="admin.html" class="btn btn-cek" style="font-size: 11.5px; padding: 6px 12px;" title="Beralih ke Versi Client-Side JS">
-          <span>Mode JS (HTML)</span>
+        <a href="login.php" class="btn btn-cek" style="font-size: 11.5px; padding: 6px 12px;" title="Buka Portal Login Operator">
+          <span>Portal Login</span>
         </a>
       </div>
     </div>

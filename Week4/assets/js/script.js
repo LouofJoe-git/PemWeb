@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Beralih ke halaman sistem cetak dalam 800ms
         setTimeout(function () {
-          window.location.href = 'cetak.php';
+          window.location.href = 'cetak.html';
         }, 800);
       }
     });

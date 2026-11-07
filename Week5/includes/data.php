@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $site_info = [
     'nama' => 'Cepatik',
     'tagline' => 'Self-Service Cloud Printing Kiosk',
@@ -6,6 +6,7 @@ $site_info = [
     'kiosk_aktif_count' => 42,
     'kampus_mitra_count' => 40,
     'kecepatan_ppm' => 35,
+    'tarif_mulai' => 350,
     'resolusi_dpi' => '1200 x 1200 DPI',
     'retensi_jam' => 2,
     'kontak_wa' => '+62 812-3456-7890',
@@ -119,6 +120,7 @@ $daftar_kiosk = [
         'jarak' => '0.3 km',
         'stok_a4' => 920,
         'stok_f4' => 450,
+        'loker_tersedia' => 12,
         'jam_buka' => '24 Jam',
         'status' => 'online', 
         'maps_url' => 'https://maps.google.com/?q=Perpustakaan+Pusat+UMM+Malang',
@@ -132,6 +134,7 @@ $daftar_kiosk = [
         'jarak' => '0.8 km',
         'stok_a4' => 1400,
         'stok_f4' => 620,
+        'loker_tersedia' => 8,
         'jam_buka' => '07.00 - 23.00',
         'status' => 'online',
         'maps_url' => 'https://maps.google.com/?q=GKB+1+Universitas+Muhammadiyah+Malang',
@@ -145,6 +148,7 @@ $daftar_kiosk = [
         'jarak' => '1.2 km',
         'stok_a4' => 850,
         'stok_f4' => 110,
+        'loker_tersedia' => 10,
         'jam_buka' => '24 Jam',
         'status' => 'online',
         'maps_url' => 'https://maps.google.com/?q=GKB+2+Universitas+Muhammadiyah+Malang',

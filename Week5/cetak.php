@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/functions.php';
 ?>
@@ -18,7 +18,8 @@ require_once __DIR__ . '/includes/functions.php';
 
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- File JavaScript Khusus Sistem Pemesanan -->
+  <!-- Database Layer & File JavaScript Khusus Sistem Pemesanan -->
+  <script src="db/database.js" defer></script>
   <script src="assets/js/sistem.js" defer></script>
 </head>
 

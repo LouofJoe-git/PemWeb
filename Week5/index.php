@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once __DIR__ . '/includes/data.php';
 require_once __DIR__ . '/includes/functions.php';
 
@@ -24,6 +24,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
   <link rel="icon" type="image/png" href="assets/images/icon.png">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="db/database.js" defer></script>
   <script src="assets/js/script.js" defer></script>
 </head>
 
