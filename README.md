@@ -4,53 +4,51 @@
 
 ---
 
-## 📌 Daftar Isi
+## 👥 Identitas Pengembang & Pembagian Tugas (Kelompok)
 
-- [Latar Belakang & Fitur Utama](#-fitur-utama)
-- [Tangkapan Layar & Alur Sistem](#-alur-kerja-sistem)
-- [Struktur Direktori](#-struktur-direktori)
-- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
-- [Panduan Menjalankan Proyek](#-panduan-menjalankan-proyek)
-- [Rincian Halaman & Komponen](#-rincian-halaman--komponen)
-- [Kalkulasi Tarif & Simulasi](#-skema-biaya--kalkulator)
-- [Kontribusi & Lisensi](#-lisensi)
+Proyek ini dikembangkan secara kolaboratif untuk tugas mata kuliah **Pemrograman Web (PemWeb)** dengan pembagian peran modul yang alami dan terstruktur:
+
+| No | Nama Anggota | GitHub Username | Fokus Modul & Tanggung Jawab Utama |
+|---|---|---|---|
+| 1 | **Zahra Zusseta Stiawan** | [@LouOfJoe-Git](https://github.com/LouOfJoe-git) | **Anggota A — Sisi Pengguna (Front-Office):**<br>• Bertanggung jawab penuh atas tampilan awal dan alur pemesanan mahasiswa.<br>• Halaman Beranda (`index.html` / `index.php`) & Wizard Pemesanan (`cetak.html` / `cetak.php`).<br>• Kalkulator estimasi biaya instan, drag-drop dokumen berkas, skema dataset JSON, master tarif, Class `Order`, serta `HomeController`, `CetakController`, dan `TarifModel` (MVC). |
+| 2 | **Damar Ghulamul Abror** | [@DamarAbror-Git](https://github.com/DamarAbror-Git) | **Anggota B — Sisi Operator & Admin (Back-Office):**<br>• Bertanggung jawab penuh atas sistem keamanan, autentikasi, dan panel monitoring loker.<br>• Portal Login Operator (`login.html` / `login.php`) & Dashboard Monitoring (`admin.html` / `admin.php`).<br>• Styling tabel antrean & struk thermal kasir, database engine `CepatikDB`, sinkronisasi real-time & Zero-Retention, Class `Kiosk`, serta `BaseController`, `AdminController`, `OrderModel`, `KioskModel`, dan Unit Testing 60 skenario (MVC). |
 
 ---
 
-## ✨ Fitur Utama
+## 📅 Roadmap Perkuliahan & Navigasi Mingguan (Week 2 – Week 7)
 
-### 1. 🌐 Portal Landing Page Interaktif (`index.html` & `index.php`)
+Setiap minggu pengerjaan dikemas dalam folder mandiri yang dapat diuji secara langsung oleh dosen dan asisten praktikum:
+
+| Minggu | Topik Pembelajaran | Folder Proyek | Status |
+|:---:|---|:---:|:---:|
+| **Week 2** | **HTML5 & CSS3** | [`/Week2`](./Week2/) | ✅ Selesai (100%) |
+| **Week 3** | **JavaScript, DOM & Events** | [`/Week3`](./Week3/) | ✅ Selesai (100%) |
+| **Week 4** | **API, JSON & Asynchronous** | [`/Week4`](./Week4/) | ✅ Selesai (100%) |
+| **Week 5** | **PHP Prosedural & Formula Bisnis** | [`/Week5`](./Week5/) | ✅ Selesai (100%) |
+| **Week 6** | **PHP OOP (Object-Oriented Programming)** | [`/Week6`](./Week6/) | ✅ Selesai (100%) |
+| **Week 7** | **Arsitektur PHP MVC (Model-View-Controller)** | [`/Week7`](./Week7/) | ✅ Selesai (100%) |
+
+---
+
+## ✨ Fitur Utama Sistem Cepatik
+
+### 1. 🌐 Portal Landing Page & Pemesanan Mandiri (Modul Zahra)
 - **Kalkulator Tarif Real-Time**: Simulasi biaya cetak langsung berdasarkan jenis kertas, tinta warna/hitam-putih, jumlah halaman, dan diskon otomatis *duplex* (bolak-balik) 5%.
 - **Live Antrean Cloud & Status Kiosk**: Menampilkan metrik operasional printer kiosk mitra secara *live*.
 - **Quick Order Tracker**: Fitur lacak pesanan instan menggunakan kode tiket (cth: `CPT-8492`) yang terintegrasi dengan database antrean real-time.
-- **Peta & Titik Lokasi Kiosk**: Informasi ketersediaan stok kertas, jam buka, dan status printer di berbagai titik kampus (UI, ITB, UGM, dsb) lengkap dengan tautan peta lokasi.
-- **Fast Upload Dropzone**: Drag-and-drop berkas langsung dari beranda yang otomatis meneruskan berkas ke aplikasi pemesanan (`sessionStorage`).
+- **Wizard Pemesanan 5 Langkah (`cetak.php`)**:
+  - Langkah 1: Unggah berkas (PDF, DOCX, PPTX) dengan sistem drag-and-drop.
+  - Langkah 2: Kustomisasi kertas (A4 75g, A4 80g, F4 80g), tinta (BW/Warna), duplex, dan jilid.
+  - Langkah 3: Pilih titik kiosk terdekat di kampus.
+  - Langkah 4: Pembayaran QRIS instan dengan countdown timer.
+  - Langkah 5: Penerbitan Kode Tiket unik dan PIN loker mandiri.
 
-### 2. 📝 Aplikasi Wizard Pemesanan 5 Langkah (`cetak.html` & `cetak.php`)
-- **Langkah 1: Unggah Berkas & Validasi**:
-  - Mendukung format `.pdf`, `.docx`, `.pptx`, `.jpg`, `.png`.
-  - Auto-deteksi estimasi halaman dan kalkulasi format ukuran file (KB/MB).
-- **Langkah 2: Opsi Cetak & Finishing**:
-  - Pilihan kertas: *A4 Standar (75 GSM)*, *A4 Tebal (80 GSM)*, dan *F4 Folio (80 GSM)*.
-  - Mode tinta: *Hitam Putih (B/W)*, *Warna Standar*, dan *Full Color Foto*.
-  - Sisi cetak: *Simplex (1 Sisi)* atau *Duplex (Bolak-Balik)* dengan diskon hemat kertas 5%.
-  - Opsi penjilidan: *Tanpa Jilid*, *Steples Pojok*, dan *Jilid Lakban Mika*.
-  - Jumlah rangkap/salinan yang dapat diatur fleksibel.
-- **Langkah 3: Pemilihan Mesin Kiosk**:
-  - Pemilihan titik kiosk terdekat dengan informasi ketersediaan kertas siap cetak.
-- **Langkah 4: Pembayaran QRIS Dinamis**:
-  - Mockup visual QR Code Standar Pembayaran Nasional (QRIS).
-  - Countdown timer mundur 15 menit untuk batas waktu pembayaran.
-  - Tombol simulasi bayar instan.
-- **Langkah 5: Tiket Pengambilan Pesanan**:
-  - Penerbitan kode unik tiket pesanan (cth: `CPT-xxxx`) sebagai kunci tunggal untuk memproses/mengambil dokumen di layar mesin kiosk.
-  - Tombol **Cetak Struk Tiket** (`window.print()`).
-  - Data pesanan otomatis disimpan ke database antrean terpusat (`db/database.js`).
-- **Live Order Summary Sidebar**: Rincian pesanan dan total biaya selalu ter-update secara *real-time* di panel sisi kanan.
-
-### 3. 🔒 Keamanan & Privasi Mahasiswa
-- Menampilkan konsep *Zero Data Retention* (file dokumen otomatis terhapus dari server dalam 2 jam setelah pencetakan).
-- Pengambilan hasil cetak aman terlindungi dengan validasi Kode Tiket unik pada layar sentuh mesin kiosk.
+### 2. 🔒 Portal Keamanan & Dashboard Operator (Modul Damar)
+- **Portal Login Operator & Super Admin (`login.php`)**: Sistem keamanan berbasis peran lokasi kiosk penugasan.
+- **Dashboard Monitoring Antrean Real-Time (`admin.php`)**: Pembaruan status cetak seketika (Menunggu Cetak ➔ Sedang Diproses ➔ Siap Diambil ➔ Selesai).
+- **Cetak Struk Thermal Loker**: Format cetak struk kasir thermal 58mm/80mm menggunakan browser print (`@media print`).
+- **Zero-Retention Enforcement**: Berkas dokumen otomatis dimusnahkan secara permanen dari memori saat pesanan selesai demi keamanan data mahasiswa.
+- **Automated QA Testing Suite**: 60 rangkaian unit test otomatis untuk menjamin keandalan seluruh fungsi dan router aplikasi.
 
 ---
 
@@ -58,124 +56,51 @@
 
 ```mermaid
 flowchart LR
-    A[1. Upload Berkas] --> B[2. Atur Opsi Cetak & Kertas]
-    B --> C[3. Pilih Mesin Kiosk]
-    C --> D[4. Bayar QRIS Dinamis]
-    D --> E[5. Dapatkan Kode Tiket]
-    E --> F[Ambil Cetakan di Kiosk]
+    A["1. Upload Berkas"] --> B["2. Atur Opsi Cetak & Kertas"]
+    B --> C["3. Pilih Mesin Kiosk"]
+    C --> D["4. Bayar QRIS Dinamis"]
+    D --> E["5. Dapatkan Kode Tiket & PIN"]
+    E --> F["Ambil di Kiosk Loker"]
 ```
-
-1. **Unggah Dokumen**: Mahasiswa memilih dokumen dari perangkat (HP/Laptop).
-2. **Kustomisasi**: Menyesuaikan kebutuhan kertas, tinta warna, rangkap, dan jilid.
-3. **Pilih Lokasi**: Memilih titik kiosk terdekat di area kampus.
-4. **Bayar**: Melakukan pembayaran non-tunai melalui QRIS.
-5. **Pengambilan**: Datang ke kiosk, masukkan Kode Tiket pada layar sentuh kiosk, dan dokumen langsung tercetak rapi.
 
 ---
 
-## 📁 Struktur Direktori
+## 📁 Struktur Direktori Repository
 
 ```text
 PemWeb-master/
-├── assets/
-│   ├── css/
-│   │   └── style.css            # Desain sistem & styling lengkap (Landing, App, Admin, Login, & Thermal Print)
-│   ├── images/
-│   │   ├── icon.png             # Ikon aplikasi PNG
-│   │   ├── icon.svg             # Ikon vektor aplikasi
-│   │   ├── icon_base64.txt      # Data URI icon fallback
-│   │   └── logo.svg             # Logo resmi Cepatik
-│   └── js/
-│       ├── admin.js             # Skrip logika dashboard admin & cetak thermal
-│       ├── script.js            # Skrip logika beranda (Kalkulator biaya, live tracker tiket, hero queue)
-│       └── sistem.js            # Skrip logika wizard aplikasi cetak mandiri 5 tahap
-├── db/                          # Database layer terpusat (Single Source of Truth)
-│   ├── antrean.json             # Dataset master antrean dan pesanan
-│   ├── database.js              # Controller CepatikDB (CRUD, real-time pub/sub, zero-retention file purge)
-│   └── kiosk.json               # Dataset master titik lokasi kiosk dan loker mandiri
-├── admin.html                   # Dashboard panel admin kiosk & monitor antrean real-time
-├── cetak.html                   # Aplikasi web pemesanan cetak mandiri 5 langkah (Wizard View)
-├── cetak.php                    # Versi PHP alternatif pemesanan cetak
-├── favicon.ico                  # Favicon tab browser
-├── includes/                    # Modul data & fungsi PHP
-│   ├── data.php                 # Master data PHP
-│   └── functions.php            # Helper fungsi PHP
-├── index.html                   # Landing page utama Cepatik
-├── index.php                    # Versi PHP alternatif landing page
-├── login.html                   # Portal autentikasi operator & pemilihan lokasi kiosk
-├── main.html                    # Halaman redirect ke index.html
-├── test_suite.php               # Unit test PHP suite
-└── README.md                    # Dokumentasi lengkap proyek
+├── Week2/                   # [WEEK 2: HTML5 & CSS3]
+├── Week3/                   # [WEEK 3: JAVASCRIPT, DOM & EVENTS]
+├── Week4/                   # [WEEK 4: API, JSON & STORAGE]
+├── Week5/                   # [WEEK 5: PHP PROSEDURAL]
+├── Week6/                   # [WEEK 6: PHP OOP]
+├── Week7/                   # [WEEK 7: PHP MVC LENGKAP]
+├── index.php                # Portal Navigasi Utama Evaluasi Praktikum
+├── start_server.bat         # Skrip 1-Klik Menjalankan Server Lokal Cepatik
+└── README.md                # Dokumentasi Utama
 ```
-
----
-
-## 🛠️ Teknologi yang Digunakan
-
-| Komponen | Teknologi | Keterangan |
-| :--- | :--- | :--- |
-| **Markup** | HTML5 Semantik | Menggunakan elemen semantik (`<nav>`, `<header>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`) |
-| **Styling** | Vanilla CSS3 | Menggunakan CSS Custom Properties (`:root`), CSS Grid, Flexbox, layout `@media print` kertas thermal kasir 80mm, dan desain responsif |
-| **Scripting** | Vanilla JavaScript (ES6+) | Logika reaktif murni tanpa framework eksternal, manipulasi DOM dinamis, pub/sub storage event, dan enkripsi klien |
-| **Database Layer** | CepatikDB (`db/`) | Pengelolaan data antrean terpusat (`antrean.json`), manajemen sesi operator, dan auto-purge retensi privasi |
-| **Aset Grafis** | Scalable Vector Graphics (SVG) | Ikon antarmuka modern yang tajam di berbagai resolusi layar tanpa dependensi pustaka font pihak ketiga |
 
 ---
 
 ## 🚀 Panduan Menjalankan Proyek
 
-Aplikasi ini dibangun menggunakan teknologi web berbasis *client-side* murni, sehingga tidak memerlukan instalasi *backend server* atau database yang rumit.
+### 1. Menjalankan Server Lokal (Paling Mudah)
+Cukup **klik dua kali file `start_server.bat`**, peramban akan otomatis terbuka di `http://localhost:8000` menuju Portal Navigasi Cepatik.
 
-### Opsi 1: Buka Langsung di Web Browser
-1. Unduh / ekstrak repositori ini ke komputer Anda.
-2. Klik dua kali (*double click*) file **`index.html`** untuk membuka beranda.
-3. Klik file **`cetak.html`** untuk mencoba alur pemesanan cetak.
-4. Klik file **`login.html`** atau **`admin.html`** untuk mengakses panel admin kiosk.
+Atau jalankan melalui terminal:
+```bash
+php -S localhost:8000
+```
 
-### Opsi 2: Menggunakan VS Code Live Server (Direkomendasikan)
-1. Buka folder proyek di **Visual Studio Code**.
-2. Pasang ekstensi **Live Server** (oleh Ritwick Dey) jika belum ada.
-3. Klik kanan pada `index.html`, lalu pilih **"Open with Live Server"**.
-4. Website akan otomatis terbuka di browser pada alamat `http://127.0.0.1:5500/index.html`.
-
-### Opsi 3: Menggunakan Local Web Server (Node / Python / PHP)
-
-- **Node.js (`npx serve`)**:
-  ```bash
-  npx serve .
-  ```
-- **Python 3**:
-  ```bash
-  python -m http.server 8000
-  ```
-  Lalu buka `http://localhost:8000` pada peramban web.
-- **PHP Built-in Server**:
-  ```bash
-  php -S localhost:8000
-  ```
+### 2. Menjalankan Unit Testing Otomatis
+Untuk memvalidasi integritas logika, objek OOP, dan arsitektur MVC (60 test):
+```bash
+php Week7/test_suite.php
+```
 
 ---
 
-## 📊 Skema Biaya & Kalkulator
+## 👥 Lisensi & Hak Cipta
 
-| Komponen | Pilihan | Biaya / Lembar |
-| :--- | :--- | :--- |
-| **Warna Tinta** | Hitam Putih (B/W) | Rp 350 |
-| | Warna Standar | Rp 1.000 |
-| | Full Color Foto | Rp 2.000 |
-| **Kertas** | A4 Standard (75 GSM) | +Rp 0 |
-| | A4 Tebal (80 GSM) | +Rp 50 |
-| | F4 Folio (80 GSM) | +Rp 100 |
-| **Duplex** | Cetak Bolak-Balik | Diskon 5% total cetak |
-| **Finishing** | Tanpa Jilid | Rp 0 |
-| | Steples Pojok | +Rp 500 / set |
-| | Jilid Lakban Mika | +Rp 3.500 / set |
-
----
-
-## 👥 Pengembang & Lisensi
-
-Proyek ini dibuat sebagai implementasi proyek tugas mata kuliah **Pemrograman Web (PemWeb)** dengan konsep inovasi solusi digital untuk mahasiswa.
-
-- **Lisensi**: [MIT License](LICENSE) — Bebas digunakan untuk referensi pembelajaran dan pengembangan lebih lanjut.
-- **Hak Cipta**: © 2026 PT Cepatik Teknologi Nusantara / Tim PemWeb.
+- **Lisensi**: [MIT License](LICENSE) — Bebas digunakan untuk referensi pembelajaran dan praktikum.
+- **Hak Cipta**: © 2026 Cepatik Cloud Printing Kiosk — Zahra Zusseta & Damar Abror.
