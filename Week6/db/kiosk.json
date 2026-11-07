@@ -1,0 +1,42 @@
+﻿[
+  {
+    "id": "umm_perpus",
+    "nama": "Kiosk Perpustakaan Pusat UMM",
+    "nama_lengkap": "Kiosk Perpustakaan Pusat UMM (Lt. 1)",
+    "lokasi": "Gedung Perpustakaan Pusat UMM Kampus III, Lantai 1",
+    "maps_url": "https://maps.google.com/?q=Perpustakaan+Pusat+UMM+Malang",
+    "status": "online"
+  },
+  {
+    "id": "umm_gkb1",
+    "nama": "Kiosk GKB 1 UMM",
+    "nama_lengkap": "Kiosk GKB 1",
+    "lokasi": "Lobby Utama GKB 1 UMM Kampus III, Lantai Dasar",
+    "maps_url": "https://maps.google.com/?q=GKB+1+Universitas+Muhammadiyah+Malang",
+    "status": "online"
+  },
+  {
+    "id": "umm_gkb2",
+    "nama": "Kiosk GKB 2 UMM",
+    "nama_lengkap": "Kiosk GKB 2 (Lobby Lt. 1)",
+    "lokasi": "Gedung Kuliah Bersama II (GKB 2) UMM, Lobby Lantai 1",
+    "maps_url": "https://maps.google.com/?q=GKB+2+Universitas+Muhammadiyah+Malang",
+    "status": "online"
+  },
+  {
+    "id": "umm_lab_it",
+    "nama": "Kiosk Lab Informatika TI",
+    "nama_lengkap": "Kiosk Lab Informatika & Komputer (Lt. 6)",
+    "lokasi": "Gedung Teknik Lt. 6, Depan Lab Komputer Informatika UMM",
+    "maps_url": "https://maps.google.com/?q=Informatika+UMM+Malang",
+    "status": "online"
+  },
+  {
+    "id": "umm_kantin_teknik",
+    "nama": "Kiosk Kantin Teknik",
+    "nama_lengkap": "Kiosk Kantin Teknik",
+    "lokasi": "Area Kantin Fakultas Teknik UMM Kampus III",
+    "maps_url": "https://maps.google.com/?q=Fakultas+Teknik+Universitas+Muhammadiyah+Malang",
+    "status": "online"
+  }
+]
