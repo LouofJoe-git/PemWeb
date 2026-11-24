@@ -1,4 +1,9 @@
 <?php
+/**
+ * login.php - Cepatik Portal Masuk Operator & Admin Kiosk
+ * 
+ * Bagian dari arsitektur MVC Cepatik.
+ */
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -7,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portal Masuk Admin & Operator Kiosk Mandiri Cepatik Cloud Printing.">
-  <title>Login Operator & Admin - Cepatik Cloud Printing</title>
+  <title>Login Operator &amp; Admin - Cepatik Cloud Printing</title>
 
   <!-- Favicon Ikon Tab Browser -->
   <link rel="icon" type="image/svg+xml" href="assets/images/icon.svg">
@@ -145,6 +150,29 @@
 
       </form>
 
+      <!-- 1-Click Demo Shortcut Login -->
+      <div class="login-demo-box">
+        <div class="login-demo-title">Pintasan Uji Coba Demo 1-Klik</div>
+        <div class="login-demo-grid">
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('all', 'admin', 'Super Admin Pusat')">
+            <span>👑 Super Admin</span>
+            <small>Akses Seluruh Titik Kiosk</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_perpus', 'operator_perpus', 'Operator Perpustakaan Pusat UMM')">
+            <span>📍 Operator Perpus UMM</span>
+            <small>Khusus Perpustakaan Pusat Lt. 1</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_gkb1', 'operator_gkb1', 'Operator GKB 1 UMM')">
+            <span>📍 Operator GKB 1</span>
+            <small>Khusus Lobby Utama GKB 1 UMM</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_gkb2', 'operator_gkb2', 'Operator GKB 2 UMM')">
+            <span>📍 Operator GKB 2</span>
+            <small>Khusus Lobby GKB 2 Lt. 1</small>
+          </button>
+        </div>
+      </div>
+
     </div>
   </main>
 
@@ -156,21 +184,25 @@
   <!-- Logika Autentikasi Klien -->
   <script>
     function getKioskTitle(kioskId) {
+      if (kioskId === 'all') return 'Semua Titik Kampus (Pusat)';
+      if (window.CepatikDB) {
+        const kiosks = window.CepatikDB.getKiosks();
+        const found = kiosks.find(k => k.id === kioskId);
+        if (found) return found.nama_lengkap || found.nama;
+      }
       const titles = {
-        'all': 'Super Admin (Pusat Monitoring)',
-        'umm_perpus': 'Kiosk Perpustakaan Pusat UMM (Lt. 1) (Lantai 1)',
-        'umm_gkb1': 'Kiosk GKB 1 UMM (Ganesha)',
-        'umm_gkb2': 'Kiosk GKB 2 (Lobby Lt. 1) (Student Center)',
+        'umm_perpus': 'Kiosk Perpustakaan Pusat UMM (Lt. 1)',
+        'umm_gkb1': 'Kiosk GKB 1 UMM',
+        'umm_gkb2': 'Kiosk GKB 2 (Lobby Lt. 1)',
         'umm_lab_it': 'Kiosk Lab Informatika & Komputer (Lt. 6)',
-        'umm_kantin_teknik': 'Kiosk Kantin Teknik Kampus'
+        'umm_kantin_teknik': 'Kiosk Kantin Teknik'
       };
       return titles[kioskId] || 'Mesin Kiosk Cepatik';
     }
 
-    // Toggle Tampilkan / Sembunyikan Kata Sandi
+    // Toggle Lihat/Sembunyikan Password
     const btnTogglePassword = document.getElementById('btnTogglePassword');
     const inputPassword = document.getElementById('inputPassword');
-
     if (btnTogglePassword && inputPassword) {
       btnTogglePassword.addEventListener('click', function () {
         const isPassword = inputPassword.type === 'password';
@@ -182,19 +214,29 @@
     }
 
     function processLogin(kioskId, username, displayName, remember) {
+      const isSuperAdmin = kioskId === 'all' || username.toLowerCase() === 'admin';
+      const roleText = isSuperAdmin ? 'Super Admin' : 'Operator Kiosk';
+      const kioskTitle = getKioskTitle(kioskId);
+
+      const now = new Date();
       const sessionData = {
         isLoggedIn: true,
-        kioskId: kioskId,
-        kioskTitle: getKioskTitle(kioskId),
         username: username,
-        displayName: displayName || (username.charAt(0).toUpperCase() + username.slice(1)),
-        loginTime: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
+        nama: displayName || (isSuperAdmin ? 'Admin Pusat Cepatik' : `Operator ${kioskTitle}`),
+        displayName: displayName || (isSuperAdmin ? 'Admin Pusat Cepatik' : `Operator ${kioskTitle}`),
+        role: roleText,
+        kioskId: kioskId,
+        kioskName: kioskTitle,
+        kioskTitle: kioskTitle,
+        loginTime: now.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
       };
 
       try {
         sessionStorage.setItem('cepatik_admin_session', JSON.stringify(sessionData));
         if (remember) {
           localStorage.setItem('cepatik_admin_session', JSON.stringify(sessionData));
+        } else {
+          localStorage.removeItem('cepatik_admin_session');
         }
       } catch (err) {}
 
@@ -209,7 +251,6 @@
       }, 500);
     }
 
-    // Penanganan Submit Form
     const formLogin = document.getElementById('formAdminLogin');
     const loginErrorAlert = document.getElementById('loginErrorAlert');
     const loginErrorText = document.getElementById('loginErrorText');
@@ -233,7 +274,7 @@
         if (password.length < 4) {
           if (loginErrorAlert) {
             loginErrorAlert.style.display = 'flex';
-            loginErrorText.textContent = 'Kata sandi minimal 4 karakter.';
+            loginErrorText.textContent = 'Kata sandi minimal 4 karakter (Default demo: cepatik2026).';
           }
           return;
         }
@@ -241,6 +282,18 @@
         if (loginErrorAlert) loginErrorAlert.style.display = 'none';
         processLogin(kioskId, username, null, remember);
       });
+    }
+
+    function quickLogin(kioskId, user, name) {
+      const selectKiosk = document.getElementById('selectKioskLocation');
+      const inputUser = document.getElementById('inputUsername');
+      const inputPass = document.getElementById('inputPassword');
+
+      if (selectKiosk) selectKiosk.value = kioskId;
+      if (inputUser) inputUser.value = user;
+      if (inputPass) inputPass.value = 'cepatik2026';
+
+      processLogin(kioskId, user, name, true);
     }
   </script>
 

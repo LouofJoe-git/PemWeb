@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cepatik - Portal Perkuliahan PemWeb (Week 2 - Week 7)</title>
+  <title>Cepatik - Portal Perkuliahan PemWeb (Week 2 - Week 9)</title>
   <link rel="icon" type="image/svg+xml" href="Week7/assets/images/icon.svg">
   <style>
     :root {
@@ -334,9 +334,12 @@
           </div>
         </div>
       </div>
-      <div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
         <a href="Week7/test_suite.php" target="_blank" class="btn-doc" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
-          ✓ Jalankan 60 Unit Tests
+          ✓ 60 Tests Week 7 (MVC)
+        </a>
+        <a href="Week9/test_week9.php" target="_blank" class="btn-doc" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); color: #38bdf8;">
+          ✓ 20 Tests Week 9 (Laravel CRUD)
         </a>
       </div>
     </div>
@@ -440,10 +443,10 @@
       </div>
 
       <!-- Week 7 -->
-      <div class="card-week" style="border-color: rgba(6, 182, 212, 0.5);">
+      <div class="card-week">
         <div>
           <div class="card-head">
-            <span class="pill-week" style="background: var(--primary); color: #fff;">WEEK 07 (LENGKAP)</span>
+            <span class="pill-week">WEEK 07</span>
             <span class="status-ok">● Selesai (100%)</span>
           </div>
           <h2>Arsitektur PHP MVC</h2>
@@ -455,7 +458,26 @@
             <span class="tag">60 Unit Tests</span>
           </div>
         </div>
-        <a href="Week7/index.php" class="btn-launch" style="background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);">Buka Proyek Week 7 (MVC) &rarr;</a>
+        <a href="Week7/index.php" class="btn-launch">Buka Proyek Week 7 (MVC) &rarr;</a>
+      </div>
+
+      <!-- Week 9 -->
+      <div class="card-week" style="border-color: rgba(6, 182, 212, 0.55); box-shadow: 0 12px 28px -10px rgba(6, 182, 212, 0.25);">
+        <div>
+          <div class="card-head">
+            <span class="pill-week" style="background: var(--primary); color: #fff;">WEEK 09 (TERBARU)</span>
+            <span class="status-ok">● Selesai (100%)</span>
+          </div>
+          <h2>Laravel 9 + CRUD + Database</h2>
+          <p>Migrasi penuh ke framework Laravel 9: Database Migrations (tabel orders &amp; kiosks), Eloquent ORM ($fillable, ::all, ::find, ::create, update, delete), Blade View, &amp; Route.</p>
+          <div class="tech-tags">
+            <span class="tag">Laravel 9 Framework</span>
+            <span class="tag">Database Migration</span>
+            <span class="tag">Eloquent ORM</span>
+            <span class="tag">Full CRUD SQL</span>
+          </div>
+        </div>
+        <a href="Week9/index.php" class="btn-launch" style="background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);">Buka Proyek Week 9 (Laravel) &rarr;</a>
       </div>
 
     </div>

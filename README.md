@@ -15,10 +15,8 @@ Proyek ini dikembangkan secara kolaboratif untuk tugas mata kuliah **Pemrograman
 
 ---
 
-## 📅 Roadmap Perkuliahan & Navigasi Mingguan (Week 2 – Week 7)
-
-Setiap minggu pengerjaan dikemas dalam folder mandiri yang dapat diuji secara langsung oleh dosen dan asisten praktikum:
-
+## 📅 Roadmap Perkuliahan & Navigasi Mingguan (Week 2 – Week 9)
+ 
 | Minggu | Topik Pembelajaran | Folder Proyek | Status |
 |:---:|---|:---:|:---:|
 | **Week 2** | **HTML5 & CSS3** | [`/Week2`](./Week2/) | ✅ Selesai (100%) |
@@ -27,6 +25,8 @@ Setiap minggu pengerjaan dikemas dalam folder mandiri yang dapat diuji secara la
 | **Week 5** | **PHP Prosedural & Formula Bisnis** | [`/Week5`](./Week5/) | ✅ Selesai (100%) |
 | **Week 6** | **PHP OOP (Object-Oriented Programming)** | [`/Week6`](./Week6/) | ✅ Selesai (100%) |
 | **Week 7** | **Arsitektur PHP MVC (Model-View-Controller)** | [`/Week7`](./Week7/) | ✅ Selesai (100%) |
+| **Week 8** | **Ujian Tengah Semester (UTS)** | — | ✅ UTS |
+| **Week 9** | **Laravel 9 + CRUD + Database (Migration & Eloquent ORM)** | [`/Week9`](./Week9/) | ✅ Selesai (100%) |
 
 ---
 
@@ -75,6 +75,7 @@ PemWeb-master/
 ├── Week5/                   # [WEEK 5: PHP PROSEDURAL]
 ├── Week6/                   # [WEEK 6: PHP OOP]
 ├── Week7/                   # [WEEK 7: PHP MVC LENGKAP]
+├── Week9/                   # [WEEK 9: LARAVEL 9 + CRUD + DATABASE (ELOQUENT ORM)]
 ├── index.php                # Portal Navigasi Utama Evaluasi Praktikum
 ├── start_server.bat         # Skrip 1-Klik Menjalankan Server Lokal Cepatik
 └── README.md                # Dokumentasi Utama

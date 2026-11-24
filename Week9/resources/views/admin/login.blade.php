@@ -1,0 +1,296 @@
+<?php
+/**
+ * View: resources/views/admin/login.blade.php
+ * Modul Anggota B (Damar Ghulamul Abror) - Portal Masuk Operator & Admin Kiosk (Laravel 9 + Database)
+ */
+?>
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal Masuk Admin & Operator Kiosk Mandiri Cepatik Cloud Printing (Laravel 9).">
+  <title>Login Operator &amp; Admin (Laravel 9) - Cepatik Cloud Printing</title>
+
+  <!-- Favicon Ikon Tab Browser -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/icon.svg">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- File CSS Utama Proyek Cepatik -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Database Layer -->
+  <script src="db/database.js" defer></script>
+</head>
+
+<body class="login-body">
+
+  <div class="login-hero-glow"></div>
+
+  <!-- Header Navigasi -->
+  <header class="login-header-nav">
+    <a href="index.php" class="logo" title="Kembali ke Beranda Cepatik">
+      <img src="assets/images/logo.svg" alt="Logo Cepatik">
+    </a>
+
+    <a href="index.php" class="btn btn-cek" style="font-size: 12px; padding: 7px 16px;">
+      <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>Kembali ke Beranda</span>
+    </a>
+  </header>
+
+  <!-- Kontainer Form Login -->
+  <main class="login-main">
+    <div class="login-card">
+
+      <div class="login-card-head">
+        <div class="login-badge-pill">
+          <span class="status-dot"></span>
+          <span>Sistem Keamanan Kiosk (Laravel 9)</span>
+        </div>
+        <h1>Portal Operator &amp; Admin</h1>
+        <p>Pilih titik lokasi penugasan kiosk (dimuat dari tabel <code>kiosks</code> via Eloquent ORM)</p>
+      </div>
+
+      <!-- Alert Pesan Kesalahan -->
+      <div id="loginErrorAlert" class="login-alert-error" role="alert" style="display: none;">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="loginErrorText">Nama pengguna atau kata sandi tidak valid.</span>
+      </div>
+
+      <!-- Form Login -->
+      <form id="formAdminLogin" class="login-form">
+
+        <!-- 1. Pilihan Lokasi Kiosk & Peran (Dari Database Kiosk::all()) -->
+        <div class="form-field">
+          <label for="selectKioskLocation" class="form-label">
+            <span>Lokasi Penugasan / Peran Kiosk</span>
+            <span style="font-size: 11px; color: var(--primary); font-weight: 600;">Eloquent: Kiosk::all()</span>
+          </label>
+          <div class="form-input-wrap">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <select id="selectKioskLocation" class="form-select-control" required>
+              <option value="all">⭐ Super Admin (Semua Lokasi Kiosk)</option>
+              <?php foreach ($kiosks as $idx => $kiosk): ?>
+                <option value="<?= htmlspecialchars($kiosk->slug); ?>" <?= $kiosk->is_default ? 'selected' : ''; ?>>
+                  📍 <?= htmlspecialchars($kiosk->kiosk_code); ?> - <?= htmlspecialchars($kiosk->name); ?>
+                </option>
+              <?php endforeach; ?>
+              <option value="umm_kantin_teknik">📍 KSK-05 - Kiosk Kantin Teknik</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 2. Username -->
+        <div class="form-field">
+          <label for="inputUsername" class="form-label">
+            <span>Nama Pengguna (Username)</span>
+          </label>
+          <div class="form-input-wrap">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <input type="text" id="inputUsername" class="form-input-control" placeholder="Contoh: admin atau operator" value="admin" required autocomplete="username">
+          </div>
+        </div>
+
+        <!-- 3. Password -->
+        <div class="form-field">
+          <label for="inputPassword" class="form-label">
+            <span>Kata Sandi / PIN Operator</span>
+            <span style="font-size: 11px; color: var(--text-muted);">Default: cepatik2026</span>
+          </label>
+          <div class="form-input-wrap">
+            <svg class="icon form-input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input type="password" id="inputPassword" class="form-input-control" placeholder="Masukkan kata sandi..." value="cepatik2026" required autocomplete="current-password">
+            <button type="button" class="btn-toggle-password" id="btnTogglePassword" title="Lihat/Sembunyikan kata sandi">
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Opsi Tambahan -->
+        <div class="login-options-row">
+          <label class="remember-checkbox">
+            <input type="checkbox" id="checkRemember" checked>
+            <span>Ingat sesi saya di peramban ini</span>
+          </label>
+          <span style="color: var(--text-muted); font-size: 11px;">Enkripsi Browser Mandiri</span>
+        </div>
+
+        <!-- Tombol Masuk -->
+        <button type="submit" class="btn-login-submit" id="btnLoginSubmit">
+          <span>Masuk ke Panel Kontrol</span>
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+      </form>
+
+      <!-- 1-Click Demo Shortcut Login -->
+      <div class="login-demo-box">
+        <div class="login-demo-title">Pintasan Uji Coba Demo 1-Klik</div>
+        <div class="login-demo-grid">
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('all', 'admin', 'Super Admin Pusat')">
+            <span>👑 Super Admin</span>
+            <small>Akses Seluruh Titik Kiosk</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_perpus', 'operator_perpus', 'Operator Perpustakaan Pusat UMM')">
+            <span>📍 Operator Perpus UMM</span>
+            <small>Khusus Perpustakaan Pusat Lt. 1</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_gkb1', 'operator_gkb1', 'Operator GKB 1 UMM')">
+            <span>📍 Operator GKB 1</span>
+            <small>Khusus Lobby Utama GKB 1 UMM</small>
+          </button>
+          <button type="button" class="btn-demo-quick" onclick="quickLogin('umm_gkb2', 'operator_gkb2', 'Operator GKB 2 UMM')">
+            <span>📍 Operator GKB 2</span>
+            <small>Khusus Lobby GKB 2 Lt. 1</small>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="login-footer-text">
+    © 2026 PT Cepatik Teknologi Nusantara · Modul Anggota B (Damar Ghulamul Abror) · Laravel 9 + Eloquent ORM
+  </footer>
+
+  <!-- Logika Autentikasi Klien -->
+  <script>
+    function getKioskTitle(kioskId) {
+      if (kioskId === 'all') return 'Semua Titik Kampus (Pusat)';
+      if (window.CepatikDB) {
+        const kiosks = window.CepatikDB.getKiosks();
+        const found = kiosks.find(k => k.id === kioskId);
+        if (found) return found.nama_lengkap || found.nama;
+      }
+      const titles = {
+        'umm_perpus': 'Kiosk Perpustakaan Pusat UMM (Lt. 1)',
+        'umm_gkb1': 'Kiosk GKB 1 UMM',
+        'umm_gkb2': 'Kiosk GKB 2 (Lobby Lt. 1)',
+        'umm_lab_it': 'Kiosk Lab Informatika & Komputer (Lt. 6)',
+        'umm_kantin_teknik': 'Kiosk Kantin Teknik'
+      };
+      return titles[kioskId] || 'Mesin Kiosk Cepatik';
+    }
+
+    const btnTogglePassword = document.getElementById('btnTogglePassword');
+    const inputPassword = document.getElementById('inputPassword');
+    if (btnTogglePassword && inputPassword) {
+      btnTogglePassword.addEventListener('click', function () {
+        const isPassword = inputPassword.type === 'password';
+        inputPassword.type = isPassword ? 'text' : 'password';
+      });
+    }
+
+    function processLogin(kioskId, username, displayName, remember) {
+      const isSuperAdmin = kioskId === 'all' || username.toLowerCase() === 'admin';
+      const roleText = isSuperAdmin ? 'Super Admin' : 'Operator Kiosk';
+      const kioskTitle = getKioskTitle(kioskId);
+
+      const now = new Date();
+      const sessionData = {
+        isLoggedIn: true,
+        username: username,
+        nama: displayName || (isSuperAdmin ? 'Admin Pusat Cepatik' : `Operator ${kioskTitle}`),
+        displayName: displayName || (isSuperAdmin ? 'Admin Pusat Cepatik' : `Operator ${kioskTitle}`),
+        role: roleText,
+        kioskId: kioskId,
+        kioskName: kioskTitle,
+        kioskTitle: kioskTitle,
+        loginTime: now.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) + ' ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIB'
+      };
+
+      try {
+        sessionStorage.setItem('cepatik_admin_session', JSON.stringify(sessionData));
+        if (remember) {
+          localStorage.setItem('cepatik_admin_session', JSON.stringify(sessionData));
+        } else {
+          localStorage.removeItem('cepatik_admin_session');
+        }
+      } catch (err) {}
+
+      const btnSubmit = document.getElementById('btnLoginSubmit');
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span>⏳ Memvalidasi Hak Akses...</span>';
+      }
+
+      setTimeout(function () {
+        window.location.href = 'admin.php';
+      }, 400);
+    }
+
+    const formLogin = document.getElementById('formAdminLogin');
+    const loginErrorAlert = document.getElementById('loginErrorAlert');
+    const loginErrorText = document.getElementById('loginErrorText');
+
+    if (formLogin) {
+      formLogin.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const kioskId = document.getElementById('selectKioskLocation').value;
+        const username = document.getElementById('inputUsername').value.trim();
+        const password = document.getElementById('inputPassword').value.trim();
+        const remember = document.getElementById('checkRemember').checked;
+
+        if (!username || !password) {
+          if (loginErrorAlert) {
+            loginErrorAlert.style.display = 'flex';
+            loginErrorText.textContent = 'Silakan masukkan nama pengguna dan kata sandi Anda.';
+          }
+          return;
+        }
+
+        if (password.length < 4) {
+          if (loginErrorAlert) {
+            loginErrorAlert.style.display = 'flex';
+            loginErrorText.textContent = 'Kata sandi minimal 4 karakter (Default demo: cepatik2026).';
+          }
+          return;
+        }
+
+        if (loginErrorAlert) loginErrorAlert.style.display = 'none';
+        processLogin(kioskId, username, null, remember);
+      });
+    }
+
+    function quickLogin(kioskId, user, name) {
+      const selectKiosk = document.getElementById('selectKioskLocation');
+      const inputUser = document.getElementById('inputUsername');
+      const inputPass = document.getElementById('inputPassword');
+
+      if (selectKiosk) selectKiosk.value = kioskId;
+      if (inputUser) inputUser.value = user;
+      if (inputPass) inputPass.value = 'cepatik2026';
+
+      processLogin(kioskId, user, name, true);
+    }
+  </script>
+
+</body>
+
+</html>

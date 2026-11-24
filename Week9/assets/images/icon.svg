@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none">
+  <defs>
+    <linearGradient id="cptkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B4A" />
+      <stop offset="100%" stop-color="#E24522" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded Orange Base -->
+  <rect width="36" height="36" rx="8" fill="url(#cptkGrad)" />
+  <!-- Printer Paper Top -->
+  <path d="M12 9C12 7.895 12.895 7 14 7H22C23.105 7 24 7.895 24 9V11H12V9Z" fill="white" />
+  <!-- Printer Body -->
+  <rect x="8" y="11" width="20" height="13" rx="3" fill="#F8FAFC" />
+  <!-- Power LED -->
+  <circle cx="24" cy="15" r="1.5" fill="#10B981" />
+  <!-- Paper Tray Out -->
+  <rect x="11" y="18" width="14" height="10" rx="1.5" fill="#FFE2DA" stroke="#E24522" stroke-width="1" />
+</svg>

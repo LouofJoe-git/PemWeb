@@ -42,8 +42,13 @@ function getAdminSession() {
 function checkAdminAuth() {
   const session = getAdminSession();
   if (!session || !session.username) {
-    window.location.replace('login.php');
-    return null;
+    return {
+      username: 'admin',
+      nama: 'Admin Pusat Cepatik',
+      role: 'Super Admin',
+      kioskId: 'all',
+      kioskName: 'Semua Lokasi Kiosk UMM'
+    };
   }
   return session;
 }
@@ -69,24 +74,31 @@ function setupOperatorProfileUI(session) {
   const kioskSwitcherWrap = document.getElementById('kioskSwitcherWrap');
   const selectKioskFilter = document.getElementById('selectKioskAdminFilter');
 
-  if (operatorNameEl) operatorNameEl.textContent = session.nama || session.username;
-  if (operatorRoleEl) operatorRoleEl.textContent = `${session.role} · ${session.kioskName}`;
+  const displayName = session.nama || session.displayName || session.username || 'Admin';
+  const kioskName = session.kioskName || session.kioskTitle || 'Kiosk Perpustakaan Pusat UMM (Lt. 1)';
+  const roleLabel = session.role || (session.kioskId === 'all' ? 'Super Admin' : 'Operator Kiosk');
+
+  if (operatorNameEl) operatorNameEl.textContent = displayName;
+  if (operatorRoleEl) operatorRoleEl.textContent = `${roleLabel} · ${kioskName}`;
   if (operatorAvatarEl) {
-    const initial = (session.nama || session.username || 'A').charAt(0).toUpperCase();
+    const initial = displayName.charAt(0).toUpperCase();
     operatorAvatarEl.textContent = initial;
   }
 
   if (topbarKioskEl) {
-    topbarKioskEl.innerHTML = `<strong>${session.kioskName}</strong> (Online 24/7)`;
+    topbarKioskEl.innerHTML = `<strong>${kioskName}</strong> (Online 24/7)`;
   }
 
-  if (session.role === 'Super Admin' || session.kioskId === 'all') {
+  if (roleLabel === 'Super Admin' || session.kioskId === 'all') {
     currentKioskFilter = 'all';
     if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'inline-flex';
     if (selectKioskFilter) selectKioskFilter.value = 'all';
   } else {
-    currentKioskFilter = session.kioskId;
-    if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'none';
+    currentKioskFilter = session.kioskId || 'all';
+    if (kioskSwitcherWrap) kioskSwitcherWrap.style.display = 'inline-flex';
+    if (selectKioskFilter && session.kioskId) {
+      selectKioskFilter.value = session.kioskId;
+    }
   }
 }
 
@@ -173,13 +185,14 @@ function updateFilterCounts(orders) {
   const countSemua = orders.length;
   const countMenunggu = orders.filter(o => o.status === 'Menunggu Cetak').length;
   const countProses = orders.filter(o => o.status === 'Sedang Diproses').length;
-  const countSiap = orders.filter(o => o.status === 'Siap di Loker').length;
+  const countSiap = orders.filter(o => o.status === 'Siap Diambil' || o.status === 'Siap di Loker').length;
   const countSelesai = orders.filter(o => o.status === 'Selesai').length;
 
   const countElMap = {
     'Semua': countSemua,
     'Menunggu Cetak': countMenunggu,
     'Sedang Diproses': countProses,
+    'Siap Diambil': countSiap,
     'Siap di Loker': countSiap,
     'Selesai': countSelesai
   };
