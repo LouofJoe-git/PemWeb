@@ -18,9 +18,10 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="<?= htmlspecialchars($site_info['deskripsi']) ?>">
   <title><?= htmlspecialchars($site_info['nama']) ?> - <?= htmlspecialchars($site_info['tagline']) ?></title>
-  
+
   <link rel="icon" type="image/svg+xml" href="assets/images/icon.svg">
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVHhe7Zu/S8NAFIAzOjq66ejYRXDTzeYU/BN0U3MFndRRQRER1EFwFAVnQZAiYhUEXUQXUaRDBYeig0UEf7W9py+h1bzQQGlj7d178C3vLrl33yWlBJ5lhQQ4IgaOGAZpzzQtWL8jYnRvFQMSA51Kih2QAnRDSTupRuPddM/lQFtKijd6oW4oaS/AUE+Lb/NqzB6lE3VGJcT6z8l7j732Jx+kv9c7fUccBQf1R0mRsfBdoAMmYeGvIk2ahKVkfIImTcLy/jAEB0yh/gJWpwD2tqMD70/XrIH6C8Aiowy8P12zBlgAC2ABLIAF0GRNsAAWQEuubzRaQHF5EvK7W5W5uYR8oRAdeH+65i+wPlpzGFULwEXePz7/LVgfrTkMFtCsAlIPaXh+ew3ktReAm+46WYPW/VloP1yE+5cn37j2Ajbvzt3Nl1hKH/vGtReAJ952MF8WcPqY8Y1rLwC5ymVh7jYFyexNYMwIAWGwgEYJ+Ly+gMLu1p+B69EaGioAi6JzowTXozWwABbAAlgAC6iyDhbAAlgAC2ABNBlGpa/CxZXqvsbWCq5Ha3DriPqrsG6wABbAAlgAC6BJk2ABLIAFsAAWQJMmgZ1i0zRpEtgvFKdJk7BgfLCVJk3C6xqTIkMHTABbBUttc2a+Bo6YLjdPKmlvBCZojJLirLx5DPwtwOZiOlFHcPMw0tfhE1AKt4HasXP0Ih1w24N/P/bf8QXf4i9hq+va5AAAAABJRU5ErkJggg==">
+  <link rel="icon" type="image/png"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIhSURBVHhe7Zu/S8NAFIAzOjq66ejYRXDTzeYU/BN0U3MFndRRQRER1EFwFAVnQZAiYhUEXUQXUaRDBYeig0UEf7W9py+h1bzQQGlj7d178C3vLrl33yWlBJ5lhQQ4IgaOGAZpzzQtWL8jYnRvFQMSA51Kih2QAnRDSTupRuPddM/lQFtKijd6oW4oaS/AUE+Lb/NqzB6lE3VGJcT6z8l7j732Jx+kv9c7fUccBQf1R0mRsfBdoAMmYeGvIk2ahKVkfIImTcLy/jAEB0yh/gJWpwD2tqMD70/XrIH6C8Aiowy8P12zBlgAC2ABLIAF0GRNsAAWQEuubzRaQHF5EvK7W5W5uYR8oRAdeH+65i+wPlpzGFULwEXePz7/LVgfrTkMFtCsAlIPaXh+ew3ktReAm+46WYPW/VloP1yE+5cn37j2Ajbvzt3Nl1hKH/vGtReAJ952MF8WcPqY8Y1rLwC5ymVh7jYFyexNYMwIAWGwgEYJ+Ly+gMLu1p+B69EaGioAi6JzowTXozWwABbAAlgAC6iyDhbAAlgAC2ABNBlGpa/CxZXqvsbWCq5Ha3DriPqrsG6wABbAAlgAC6BJk2ABLIAFsAAWQJMmgZ1i0zRpEtgvFKdJk7BgfLCVJk3C6xqTIkMHTABbBUttc2a+Bo6YLjdPKmlvBCZojJLirLx5DPwtwOZiOlFHcPMw0tfhE1AKt4HasXP0Ih1w24N/P/bf8QXf4i9hq+va5AAAAABJRU5ErkJggg==">
   <link rel="icon" type="image/png" href="assets/images/icon.png">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -46,7 +47,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
       </div>
       <div class="topbar-divider">•</div>
       <div class="topbar-item topbar-info">
-        <span>Jam Operasional: 07.00 - 23.00 WIB (Kiosk Siap Cetak di <?= (int)$site_info['kampus_mitra_count'] ?>+ Kampus)</span>
+        <span>Jam Operasional: 07.00 - 23.00 WIB (Kiosk Siap Cetak di <?= (int) $site_info['kampus_mitra_count'] ?>+
+          Kampus)</span>
       </div>
     </div>
   </aside>
@@ -107,19 +109,21 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
           </h1>
 
           <p class="hero-desc">
-            Upload dokumen dari HP atau laptop, bayar instan via QRIS otomatis, dan ambil langsung di mesin kiosk pintar tanpa perlu antre di meja operator.
+            Upload dokumen dari HP atau laptop, bayar instan via QRIS otomatis, dan ambil langsung di mesin kiosk pintar
+            tanpa perlu antre di meja operator.
           </p>
         </header>
 
         <!-- Dua Kartu Aksi Utama: Upload Dropzone & Quick Ticket Tracker -->
         <div class="hero-actions-grid">
-          
+
           <!-- Kartu 1: Dropzone Unggah Dokumen Utama -->
           <article class="hero-action-card hero-dropzone-card">
             <div class="action-card-header">
               <div class="action-card-header-left">
                 <div class="action-card-icon upload-icon-gradient">
-                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
                     <path d="M12 12v9"></path>
                     <path d="m16 16-4-4-4 4"></path>
@@ -127,7 +131,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 </div>
                 <div>
                   <h3 class="action-card-title">Unggah Dokumen Instan</h3>
-                  <p class="action-card-subtitle">Mulai <?= format_rupiah($site_info['tarif_mulai'] ?? 350) ?> / lembar · Privasi 100%</p>
+                  <p class="action-card-subtitle">Mulai <?= format_rupiah($site_info['tarif_mulai'] ?? 350) ?> / lembar
+                    · Privasi 100%</p>
                 </div>
               </div>
               <span class="badge-action-pill">Mulai Cetak</span>
@@ -139,7 +144,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                   accept=".pdf,.docx,.doc,.pptx,.ppt,.jpg,.jpeg,.png">
                 <div class="dropzone-content">
                   <div class="dropzone-icon-box">
-                    <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
                       <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
                       <path d="M12 12v9"></path>
                       <path d="m16 16-4-4-4 4"></path>
@@ -152,7 +158,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                   <div class="dropzone-badges">
                     <span>⚡ Auto-Count Halaman</span>
                     <span>🔒 Enkripsi TLS 256-Bit</span>
-                    <span>🗑 Hapus Otomatis <?= (int)$site_info['retensi_jam'] ?> Jam</span>
+                    <span>🗑 Hapus Otomatis <?= (int) $site_info['retensi_jam'] ?> Jam</span>
                   </div>
                 </div>
               </label>
@@ -164,7 +170,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <div class="action-card-header">
               <div class="action-card-header-left">
                 <div class="action-card-icon tracker-icon-gradient">
-                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   </svg>
@@ -180,7 +187,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <div class="tracker-box" id="tracker">
               <form class="tracker-form" id="formTracker">
                 <div class="tracker-input-group">
-                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2">
+                  <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF"
+                    stroke-width="2">
                     <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path>
                     <line x1="8" y1="7" x2="16" y2="7"></line>
                     <line x1="8" y1="12" x2="16" y2="12"></line>
@@ -190,7 +198,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 </div>
                 <button type="submit" class="btn-tracker">
                   <span>Cek Status</span>
-                  <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2">
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
                 </button>
@@ -199,9 +208,12 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               <!-- Tombol Cepat Contoh Tiket Demo -->
               <div class="tracker-quick-suggestions">
                 <span>Coba tiket:</span>
-                <button type="button" class="btn-sample-code" onclick="document.getElementById('inputTiket').value='CPT-8492'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8492</button>
-                <button type="button" class="btn-sample-code" onclick="document.getElementById('inputTiket').value='CPT-8493'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8493</button>
-                <button type="button" class="btn-sample-code" onclick="document.getElementById('inputTiket').value='CPT-8494'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8494</button>
+                <button type="button" class="btn-sample-code"
+                  onclick="document.getElementById('inputTiket').value='CPT-8492'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8492</button>
+                <button type="button" class="btn-sample-code"
+                  onclick="document.getElementById('inputTiket').value='CPT-8493'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8493</button>
+                <button type="button" class="btn-sample-code"
+                  onclick="document.getElementById('inputTiket').value='CPT-8494'; document.getElementById('formTracker').dispatchEvent(new Event('submit'));">CPT-8494</button>
               </div>
 
               <!-- Hasil Cek Tiket Real-time -->
@@ -220,11 +232,12 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             </svg>
             <div class="trust-text">
               <strong>Privasi Terjamin 100%</strong>
-              <span>File otomatis dihapus aman <?= (int)$site_info['retensi_jam'] ?> jam</span>
+              <span>File otomatis dihapus aman <?= (int) $site_info['retensi_jam'] ?> jam</span>
             </div>
           </li>
           <li class="trust-item">
-            <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+            <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+              stroke-width="2">
               <rect x="3" y="3" width="7" height="7"></rect>
               <rect x="14" y="3" width="7" height="7"></rect>
               <rect x="14" y="14" width="7" height="7"></rect>
@@ -240,7 +253,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
             </svg>
             <div class="trust-text">
-              <strong>Spooling Laserjet <?= (int)$site_info['kecepatan_ppm'] ?> ppm</strong>
+              <strong>Spooling Laserjet <?= (int) $site_info['kecepatan_ppm'] ?> ppm</strong>
               <span>Cetak presisi tinggi dalam 12 detik</span>
             </div>
           </li>
@@ -253,10 +266,11 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
       <div class="container status-strip-content">
         <div class="status-left">
           <span class="status-dot"></span>
-          <span><?= (int)$site_info['kiosk_aktif_count'] ?> Mitra Kiosk <?= htmlspecialchars($site_info['nama']) ?> Online &amp; Siap Cetak</span>
+          <span><?= (int) $site_info['kiosk_aktif_count'] ?> Mitra Kiosk <?= htmlspecialchars($site_info['nama']) ?>
+            Online &amp; Siap Cetak</span>
         </div>
         <div class="status-right">
-          <div>⚡ Kecepatan: <strong><?= (int)$site_info['kecepatan_ppm'] ?> Halaman / Menit</strong></div>
+          <div>⚡ Kecepatan: <strong><?= (int) $site_info['kecepatan_ppm'] ?> Halaman / Menit</strong></div>
           <div>🔒 Ambil Mandiri via <strong>PIN / QR</strong></div>
         </div>
       </div>
@@ -275,9 +289,9 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <form id="calcForm" onsubmit="return false;">
               <div class="form-group-title">1. Ukuran &amp; Jenis Kertas</div>
               <div class="radio-pilihan-grid">
-                <?php foreach ($pilihan_kertas as $kertas): 
+                <?php foreach ($pilihan_kertas as $kertas):
                   $is_selected = ($kertas['id'] === $calc_kertas);
-                ?>
+                  ?>
                   <div class="radio-card radio-kertas <?= $is_selected ? 'selected' : '' ?>">
                     <input type="radio" name="paper" value="<?= htmlspecialchars($kertas['id']) ?>" <?= $is_selected ? 'checked' : '' ?>>
                     <span class="radio-label"><?= htmlspecialchars($kertas['nama_alt'] ?? $kertas['nama']) ?></span>
@@ -289,9 +303,9 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
 
               <div class="form-group-title">2. Mode Warna Tinta</div>
               <div class="radio-pilihan-grid">
-                <?php foreach ($pilihan_warna as $warna): 
+                <?php foreach ($pilihan_warna as $warna):
                   $is_selected = ($warna['id'] === $calc_warna);
-                ?>
+                  ?>
                   <div class="radio-card radio-warna <?= $is_selected ? 'selected' : '' ?>">
                     <input type="radio" name="color" value="<?= htmlspecialchars($warna['id']) ?>" <?= $is_selected ? 'checked' : '' ?>>
                     <span class="radio-label"><?= htmlspecialchars($warna['nama']) ?></span>
@@ -305,7 +319,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 <div class="input-box">
                   <label for="inputHalaman">Jumlah Halaman</label>
                   <div class="input-number-wrap">
-                    <input type="number" id="inputHalaman" value="<?= (int)$calc_halaman ?>" min="1" max="500">
+                    <input type="number" id="inputHalaman" value="<?= (int) $calc_halaman ?>" min="1" max="500">
                     <span style="font-size: 12px; color: var(--text-muted);">Lembar</span>
                   </div>
                 </div>
@@ -350,7 +364,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 </div>
                 <div class="struk-row">
                   <dt>Volume</dt>
-                  <dd id="strukHalaman"><?= $estimasi_awal['halaman'] ?> hlm x <?= $estimasi_awal['rangkap'] ?> rangkap</dd>
+                  <dd id="strukHalaman"><?= $estimasi_awal['halaman'] ?> hlm x <?= $estimasi_awal['rangkap'] ?> rangkap
+                  </dd>
                 </div>
                 <div class="struk-row">
                   <dt>Metode Sisi</dt>
@@ -368,7 +383,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                     <span
                       style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--text-muted); font-family: var(--font-mono);">Total
                       Estimasi:</span>
-                    
+
                   </div>
                   <div class="total-nominal" id="strukTotal"><?= $estimasi_awal['total_formatted'] ?></div>
                 </div>
@@ -403,18 +418,21 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               <div>
                 <div class="keunggulan-icon <?= htmlspecialchars($item['icon_class']) ?>">
                   <?php if ($item['svg_type'] === 'shield'): ?>
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
                       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                       <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
                   <?php elseif ($item['svg_type'] === 'printer'): ?>
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
                       <polyline points="6 9 6 2 18 2 18 9"></polyline>
                       <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
                       <rect x="6" y="14" width="12" height="8"></rect>
                     </svg>
                   <?php else: ?>
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
                       <circle cx="12" cy="12" r="10"></circle>
                       <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
@@ -439,7 +457,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <div>
               <span class="section-badge">Jaringan Kampus</span>
               <h2 class="section-title">Titik Kiosk Terdekat</h2>
-              <p class="section-subtitle" style="margin-bottom:0;">Pilih lokasi kiosk yang paling dekat dengan fakultas atau lokasimu.</p>
+              <p class="section-subtitle" style="margin-bottom:0;">Pilih lokasi kiosk yang paling dekat dengan fakultas
+                atau lokasimu.</p>
             </div>
 
             <div class="search-kiosk">
@@ -469,8 +488,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 </div>
                 <div class="kiosk-actions">
                   <a href="#dropzone" class="btn-pilih-kiosk">Pilih Lokasi Ini</a>
-                  <a href="<?= htmlspecialchars($kiosk['maps_url']) ?>" target="_blank" rel="noopener noreferrer" class="btn-maps"
-                    title="Buka Maps">
+                  <a href="<?= htmlspecialchars($kiosk['maps_url']) ?>" target="_blank" rel="noopener noreferrer"
+                    class="btn-maps" title="Buka Maps">
                     <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                       stroke-width="2">
                       <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
@@ -490,7 +509,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
         <header class="testimoni-header">
           <span class="section-badge">Pengalaman Mahasiswa</span>
           <h2 class="section-title">Dipercaya Ribuan Mahasiswa di Berbagai Kampus</h2>
-          <p class="section-subtitle">Lihat apa kata mereka yang sudah merasakan praktisnya cetak tanpa antre untuk tugas harian, laporan praktikum, hingga naskah skripsi.</p>
+          <p class="section-subtitle">Lihat apa kata mereka yang sudah merasakan praktisnya cetak tanpa antre untuk
+            tugas harian, laporan praktikum, hingga naskah skripsi.</p>
         </header>
 
         <div class="testimoni-grid">
@@ -501,7 +521,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <div>
               <div class="testimoni-top">
                 <span class="badge-verified-ticket">
-                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5">
+                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                    stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   Tiket CPT-8492 Terverifikasi
@@ -509,12 +530,14 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 <div class="testimoni-stars" title="Rating 5/5">★★★★★</div>
               </div>
               <p class="testimoni-text">
-                "Beneran penyelamat waktu malam sebelum sidang skripsi! Jam 11 malam upload dari kosan, bayar QRIS, langsung meluncur ke perpus pusat ambil cetakan pakai kode tiket. Hasil cetak laserjetnya tajem banget dan gak lecek sama sekali."
+                "Beneran penyelamat waktu malam sebelum sidang skripsi! Jam 11 malam upload dari kosan, bayar QRIS,
+                langsung meluncur ke perpus pusat ambil cetakan pakai kode tiket. Hasil cetak laserjetnya tajem banget
+                dan gak lecek sama sekali."
               </p>
             </div>
             <div>
               <div class="testimoni-order-spec">
-                <span>📄 Cetak: 64 Hlm Skripsi · Duplex A4 80g · Kiosk UI Depok</span>
+                <span>📄 Cetak: 48 Hlm Skripsi · Duplex A4 80g · Kiosk Perpus Pusat UMM</span>
               </div>
               <div class="testimoni-student">
                 <div class="testimoni-avatar" style="background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);">
@@ -522,7 +545,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 </div>
                 <div class="testimoni-author">
                   <h4>Fikri Ramadhan</h4>
-                  <p>Teknik Informatika · Universitas Indonesia</p>
+                  <p>Teknik Informatika · Universitas Muhammadiyah Malang</p>
                 </div>
               </div>
             </div>
@@ -535,7 +558,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <div>
               <div class="testimoni-top">
                 <span class="badge-verified-ticket">
-                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5">
+                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                    stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   Tiket CPT-8493 Terverifikasi
@@ -543,12 +567,14 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 <div class="testimoni-stars" title="Rating 5/5">★★★★★</div>
               </div>
               <p class="testimoni-text">
-                "Udah gak pernah mau antre di fotokopian depan kampus lagi semenjak ada <?= htmlspecialchars($site_info['nama']) ?>. Format warna diagram praktikum keluar tajam sesuai file aslinya, auto-count halamannya juga akurat gak perlu repot hitung manual."
+                "Udah gak pernah mau antre di fotokopian depan kampus lagi semenjak ada
+                <?= htmlspecialchars($site_info['nama']) ?>. Format warna diagram praktikum keluar tajam sesuai file
+                aslinya, auto-count halamannya juga akurat gak perlu repot hitung manual."
               </p>
             </div>
             <div>
               <div class="testimoni-order-spec">
-                <span>🎨 Cetak: 18 Hlm Jurnal · Full Color Foto · Kiosk ITB Ganesha</span>
+                <span>🎨 Cetak: 18 Hlm Jurnal · Full Color Foto · Kiosk GKB 1 UMM</span>
               </div>
               <div class="testimoni-student">
                 <div class="testimoni-avatar" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
@@ -556,7 +582,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 </div>
                 <div class="testimoni-author">
                   <h4>Nabila Putri Anggraini</h4>
-                  <p>Sekolah Farmasi · Institut Teknologi Bandung</p>
+                  <p>Farmasi · Universitas Muhammadiyah Malang</p>
                 </div>
               </div>
             </div>
@@ -569,7 +595,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <div>
               <div class="testimoni-top">
                 <span class="badge-verified-ticket">
-                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5">
+                  <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669"
+                    stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   Tiket CPT-8494 Terverifikasi
@@ -577,12 +604,14 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 <div class="testimoni-stars" title="Rating 5/5">★★★★★</div>
               </div>
               <p class="testimoni-text">
-                "Fitur tracking tiketnya keren banget, ada progress bar real-time dan konfirmasi kode tiket pesanan. Tinggal jalan santai ke Gelanggang, masukkan kode tiket di layar kiosk, dokumen sudah tercetak rapi. Sangat recommended buat mahasiswa aktif!"
+                "Fitur tracking tiketnya keren banget, ada progress bar real-time dan konfirmasi kode tiket pesanan.
+                Tinggal jalan santai ke lobby GKB 2, masukkan kode tiket di layar kiosk, dokumen sudah tercetak rapi.
+                Sangat recommended buat mahasiswa aktif!"
               </p>
             </div>
             <div>
               <div class="testimoni-order-spec">
-                <span>📌 Cetak: 42 Hlm Makalah · A4 75g + Jilid Staples · UGM</span>
+                <span>📌 Cetak: 14 Hlm Laporan · A4 75g + Jilid Staples · Kiosk GKB 2 UMM</span>
               </div>
               <div class="testimoni-student">
                 <div class="testimoni-avatar" style="background: linear-gradient(135deg, #10B981 0%, #047857 100%);">
@@ -590,7 +619,7 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                 </div>
                 <div class="testimoni-author">
                   <h4>Dimas Arya Wicaksana</h4>
-                  <p>Fakultas Ekonomika &amp; Bisnis · Universitas Gadjah Mada</p>
+                  <p>Fakultas Ekonomi &amp; Bisnis · Universitas Muhammadiyah Malang</p>
                 </div>
               </div>
             </div>
@@ -608,7 +637,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
             <span class="section-badge">Pusat Bantuan &amp; Edukasi</span>
             <h2 class="section-title">Kerap Ditanyakan seputar Kiosk <?= htmlspecialchars($site_info['nama']) ?></h2>
             <p class="faq-desc">
-              Punya pertanyaan tentang cara cetak dokumen, keamanan enkripsi file, atau mekanisme pengambilan di kiosk? Temukan jawaban ringkas di sini.
+              Punya pertanyaan tentang cara cetak dokumen, keamanan enkripsi file, atau mekanisme pengambilan di kiosk?
+              Temukan jawaban ringkas di sini.
             </p>
 
             <div class="faq-cs-card">
@@ -619,8 +649,10 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </div>
             </div>
 
-            <a href="<?= htmlspecialchars($site_info['kontak_wa_link']) ?>" target="_blank" rel="noopener noreferrer" class="btn-faq-cs">
-              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="<?= htmlspecialchars($site_info['kontak_wa_link']) ?>" target="_blank" rel="noopener noreferrer"
+              class="btn-faq-cs">
+              <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
               <span>Hubungi CS WhatsApp</span>
@@ -638,7 +670,10 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Cukup 3 langkah mudah: (1) Unggah berkas dokumenmu di halaman web ini, (2) Tentukan opsi cetak (warna / hitam putih, jenis kertas, bolak-balik) lalu selesaikan pembayaran via QRIS, (3) Kamu akan mendapatkan <strong>Kode Tiket Pesanan</strong> (cth: CPT-8492). Datang ke kiosk terdekat, masukkan kode tiket pada layar mesin, dan dokumenmu langsung tercetak dan siap diambil!</p>
+              <p>Cukup 3 langkah mudah: (1) Unggah berkas dokumenmu di halaman web ini, (2) Tentukan opsi cetak (warna /
+                hitam putih, jenis kertas, bolak-balik) lalu selesaikan pembayaran via QRIS, (3) Kamu akan mendapatkan
+                <strong>Kode Tiket Pesanan</strong> (cth: CPT-8492). Datang ke kiosk terdekat, masukkan kode tiket pada
+                layar mesin, dan dokumenmu langsung tercetak dan siap diambil!</p>
             </div>
           </details>
 
@@ -650,7 +685,10 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Sangat aman! <?= htmlspecialchars($site_info['nama']) ?> menerapkan enkripsi transmisi TLS 256-bit kelas enterprise. Berkas hanya dikirim ke sistem spooler printer pada saat pencetakan dan <strong>otomatis terhapus permanen dari sistem lokal kiosk dalam <?= (int)$site_info['retensi_jam'] ?> jam</strong> setelah berkas selesai dicetak dan diambil di kiosk.</p>
+              <p>Sangat aman! <?= htmlspecialchars($site_info['nama']) ?> menerapkan enkripsi transmisi TLS 256-bit
+                kelas enterprise. Berkas hanya dikirim ke sistem spooler printer pada saat pencetakan dan
+                <strong>otomatis terhapus permanen dari sistem lokal kiosk dalam <?= (int) $site_info['retensi_jam'] ?>
+                  jam</strong> setelah berkas selesai dicetak dan diambil di kiosk.</p>
             </div>
           </details>
 
@@ -662,7 +700,10 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Setiap unit Kiosk <?= htmlspecialchars($site_info['nama']) ?> dilengkapi sensor presisi pemantau kertas dan toner. Jika terdeteksi gangguan mekanis, antrean cetakmu akan dialihkan secara otomatis ke unit kiosk terdekat atau kamu bisa menekan tombol <strong>Chat Admin</strong> untuk refund instan via QRIS.</p>
+              <p>Setiap unit Kiosk <?= htmlspecialchars($site_info['nama']) ?> dilengkapi sensor presisi pemantau kertas
+                dan toner. Jika terdeteksi gangguan mekanis, antrean cetakmu akan dialihkan secara otomatis ke unit
+                kiosk terdekat atau kamu bisa menekan tombol <strong>Chat Admin</strong> untuk refund instan via QRIS.
+              </p>
             </div>
           </details>
 
@@ -674,7 +715,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Dokumen dapat diambil kapan saja dengan memasukkan Kode Tiket pada mesin Kiosk yang Anda pilih selama jam operasional kiosk.</p>
+              <p>Dokumen dapat diambil kapan saja dengan memasukkan Kode Tiket pada mesin Kiosk yang Anda pilih selama
+                jam operasional kiosk.</p>
             </div>
           </details>
 
@@ -686,7 +728,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Kami mendukung seluruh dompet digital (GoPay, OVO, DANA, ShopeePay, LinkAja) serta Mobile Banking bank mana pun di Indonesia melalui QRIS Standar Bank Indonesia dengan verifikasi otomatis detik itu juga.</p>
+              <p>Kami mendukung seluruh dompet digital (GoPay, OVO, DANA, ShopeePay, LinkAja) serta Mobile Banking bank
+                mana pun di Indonesia melalui QRIS Standar Bank Indonesia dengan verifikasi otomatis detik itu juga.</p>
             </div>
           </details>
 
@@ -698,7 +741,9 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </svg>
             </summary>
             <div class="faq-answer">
-              <p>Tentu saja! Selain A4 75 GSM dan 80 GSM untuk tugas &amp; skripsi, kami juga menyediakan kertas F4 Folio 80 GSM serta opsi finishing jilid staples sudut atau jilid lakban rapi yang dapat dipilih langsung saat checkout.</p>
+              <p>Tentu saja! Selain A4 75 GSM dan 80 GSM untuk tugas &amp; skripsi, kami juga menyediakan kertas F4
+                Folio 80 GSM serta opsi finishing jilid staples sudut atau jilid lakban rapi yang dapat dipilih langsung
+                saat checkout.</p>
             </div>
           </details>
         </div>
@@ -713,7 +758,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               style="font-size: 11px; font-family: var(--font-mono); color: var(--peach); font-weight: 800; text-transform: uppercase;">Cetak
               Mandiri Tanpa Antre</span>
             <h2>Siap Cetak Dokumen Kamu Sekarang?</h2>
-            <p>Upload berkasmu sekarang juga, bayar mudah via QRIS, dan ambil di mesin kiosk pintar <?= htmlspecialchars($site_info['nama']) ?> kapan pun kamu sempat.</p>
+            <p>Upload berkasmu sekarang juga, bayar mudah via QRIS, dan ambil di mesin kiosk pintar
+              <?= htmlspecialchars($site_info['nama']) ?> kapan pun kamu sempat.</p>
             <div class="cta-btn-group">
               <a href="cetak.php" class="btn btn-cetak">
                 <span>Buka Sistem Cetak</span>
@@ -723,7 +769,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </a>
-              <a href="<?= htmlspecialchars($site_info['kontak_wa_link']) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+              <a href="<?= htmlspecialchars($site_info['kontak_wa_link']) ?>" target="_blank" rel="noopener noreferrer"
+                class="btn btn-wa">
                 <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -744,7 +791,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
               </svg>
             </div>
             <strong style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Scan di Kiosk</strong>
-            <p style="font-size: 11px; color: #D6CEC8; margin-top: 4px;">Ambil cetakan langsung di mesin Kiosk dengan kode tiket
+            <p style="font-size: 11px; color: #D6CEC8; margin-top: 4px;">Ambil cetakan langsung di mesin Kiosk dengan
+              kode tiket
             </p>
             <div class="cta-badge-code">CPT-2026</div>
           </aside>
@@ -756,10 +804,11 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
 
   <aside class="floating-help" id="floatingHelp">
     <!-- Tombol Floating Chat Admin -->
-    <a href="<?= htmlspecialchars($site_info['kontak_wa_link']) ?>" target="_blank" rel="noopener noreferrer" class="btn-floating"
-      title="Chat Admin Cepatik" aria-label="Chat Admin Customer Service">
+    <a href="<?= htmlspecialchars($site_info['kontak_wa_link']) ?>" target="_blank" rel="noopener noreferrer"
+      class="btn-floating" title="Chat Admin Cepatik" aria-label="Chat Admin Customer Service">
       <span class="floating-icon-wrap">
-        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.2">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
         </svg>
@@ -778,7 +827,8 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
           </div>
           <div class="op-header-right">
             <span class="op-tz-label">WIB · UTC+7</span>
-            <button type="button" class="btn-op-close" id="btnOpClose" title="Sembunyikan status" aria-label="Tutup">×</button>
+            <button type="button" class="btn-op-close" id="btnOpClose" title="Sembunyikan status"
+              aria-label="Tutup">×</button>
           </div>
         </div>
 
@@ -809,11 +859,12 @@ $estimasi_awal = hitung_estimasi_cetak($calc_halaman, $calc_warna, $calc_kertas,
       <div class="footer-brand">
         <img src="assets/images/logo.svg" alt="<?= htmlspecialchars($site_info['nama']) ?> Logo">
         <span><?= htmlspecialchars($site_info['nama']) ?> Cloud Printing</span>
-        <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">© <?= (int)$site_info['tahun'] ?> <?= htmlspecialchars($site_info['perusahaan']) ?></span>
+        <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">© <?= (int) $site_info['tahun'] ?>
+          <?= htmlspecialchars($site_info['perusahaan']) ?></span>
       </div>
 
       <nav class="footer-links">
-        <a href="login.html">ꗃ Panel Admin</a>
+        <a href="login.php">ꗃ Panel Admin</a>
         <a href="#testimoni">Testimoni</a>
         <a href="#faq">Bantuan &amp; FAQ</a>
         <a href="#lokasi">Lokasi Kiosk</a>

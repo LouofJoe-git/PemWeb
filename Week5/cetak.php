@@ -59,7 +59,7 @@ require_once __DIR__ . '/includes/functions.php';
       </div>
       <div class="wizard-step" id="stepIndicator3">
         <span class="step-num">3</span>
-        <span>Pilih Loker</span>
+        <span>Pilih Kiosk</span>
       </div>
       <div class="wizard-step" id="stepIndicator4">
         <span class="step-num">4</span>
@@ -206,7 +206,7 @@ require_once __DIR__ . '/includes/functions.php';
               <span>Kembali</span>
             </button>
             <button type="button" class="btn-wizard-next" onclick="pindahLangkah(3)">
-              <span>Lanjut: Pilih Loker</span>
+              <span>Lanjut: Pilih Kiosk</span>
               <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
           </div>
@@ -214,7 +214,7 @@ require_once __DIR__ . '/includes/functions.php';
 
         <section class="step-panel" data-step="3">
           <header class="panel-header">
-            <h2>Langkah 3: Pilih Titik Kiosk &amp; Loker Pengambilan</h2>
+            <h2>Langkah 3: Pilih Titik Mesin Kiosk Pengambilan</h2>
             <p>Pilih mesin printer kiosk terdekat yang paling nyaman untuk kamu ambil hasilnya.</p>
           </header>
 
@@ -227,15 +227,9 @@ require_once __DIR__ . '/includes/functions.php';
                     <span class="radio-label" style="font-size: 14px;"><?= htmlspecialchars($kiosk['nama_lengkap_app']) ?></span>
                     <span class="radio-desc" style="font-size: 12px;"><?= htmlspecialchars($kiosk['lokasi']) ?></span>
                   </div>
-                  <?php if ($kiosk['loker_tersedia'] > 0): ?>
-                    <span style="font-size: 11px; background: #ECFDF5; color: #065F46; padding: 2px 8px; border-radius: 6px; font-weight: 700;">
-                      <?= (int)$kiosk['loker_tersedia'] ?> Loker Siap
-                    </span>
-                  <?php else: ?>
-                    <span style="font-size: 11px; background: #FEF2F2; color: #991B1B; padding: 2px 8px; border-radius: 6px; font-weight: 700;">
-                      Loker Penuh
-                    </span>
-                  <?php endif; ?>
+                  <span style="font-size: 11px; background: #ECFDF5; color: #065F46; padding: 2px 8px; border-radius: 6px; font-weight: 700;">
+                    ✓ Siap Cetak
+                  </span>
                 </div>
                 <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px; font-family: var(--font-mono);">
                   Status: <?= htmlspecialchars($kiosk['jam_buka']) === '24 Jam' ? 'Online 24 Jam' : 'Buka ' . htmlspecialchars($kiosk['jam_buka']) ?> • Stok Kertas: <?= $kiosk['stok_a4'] > 500 ? 'Penuh' : 'Menipis' ?>
@@ -280,7 +274,7 @@ require_once __DIR__ . '/includes/functions.php';
 
             <div style="font-size: 12px; color: var(--text-muted);">Total Tagihan:</div>
             <div style="font-size: 28px; font-weight: 900; color: var(--primary); font-family: var(--font-main);" id="qrisTotalDisplay">
-              Rp 0
+              Rp 5.250
             </div>
 
             <span class="qris-timer-pill" id="qrisTimerText">⏱ Sisa Waktu Bayar: 15:00 Menit</span>
@@ -308,24 +302,24 @@ require_once __DIR__ . '/includes/functions.php';
 
             <h2 style="font-size: 22px; font-weight: 900; color: #065F46; margin-bottom: 4px;">Pembayaran Sukses &amp; Dokumen Dicetak!</h2>
             <p style="font-size: 13px; color: var(--text-muted); max-width: 480px; margin: 0 auto;">
-              Dokumenmu sedang di-spooling dan otomatis masuk ke loker mandiri dalam 12 detik.
+              Dokumenmu sedang di-spooling dan siap diambil langsung di mesin kiosk yang dipilih.
             </p>
 
             <div class="ticket-code-display">
-              <span style="font-size: 11px; text-transform: uppercase; font-family: var(--font-mono); font-weight: 800; color: var(--text-muted); letter-spacing: 1px;">KODE TIKET KIOSK:</span>
+              <span style="font-size: 11px; text-transform: uppercase; font-family: var(--font-mono); font-weight: 800; color: var(--text-muted); letter-spacing: 1px;">KODE TIKET PENGAMBILAN:</span>
               <div class="ticket-big-code" id="displayTiket">CPT-8492</div>
               <div class="ticket-pin-info">
-                PIN Loker Mandiri: <span style="background: var(--primary-soft); color: var(--primary); padding: 2px 10px; border-radius: 6px;" id="displayPIN">8492</span>
+                Masukkan Kode Tiket di atas pada layar mesin Kiosk untuk mencetak / mengambil dokumen.
               </div>
             </div>
 
             <div style="background: #FAFAF8; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 14px; text-align: left; font-size: 12.5px; margin-bottom: 24px;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
                 <span style="color: var(--text-muted);">Lokasi Pengambilan:</span>
-                <strong id="displayLokasiSukses">Kiosk Perpustakaan Pusat UMM (Lt. 1) (Loker Blok A)</strong>
+                <strong id="displayLokasiSukses">Kiosk Perpustakaan Pusat UMM (Lt. 1)</strong>
               </div>
               <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                <span style="color: var(--text-muted);">Batas Simpan Loker:</span>
+                <span style="color: var(--text-muted);">Batas Waktu Pengambilan:</span>
                 <strong style="color: #D97706;"><?= (int)$site_info['retensi_jam'] ?> Jam (s.d. 19:45 WIB)</strong>
               </div>
               <div style="display: flex; justify-content: space-between;">
@@ -337,6 +331,14 @@ require_once __DIR__ . '/includes/functions.php';
             <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
               <button type="button" class="btn-wizard-next" onclick="pindahLangkah(1)">
                 <span>Cetak Dokumen Lain</span>
+              </button>
+              <button type="button" class="btn btn-cek" onclick="window.print()" style="padding: 11px 20px;">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                <span>Cetak Struk Tiket</span>
               </button>
               <a href="index.php" class="btn-back-home" style="padding: 11px 22px;">
                 <span>Kembali ke Beranda</span>
@@ -379,8 +381,8 @@ require_once __DIR__ . '/includes/functions.php';
             <dd id="ringkasJilid"><?= htmlspecialchars($pilihan_jilid['none']['nama']) ?></dd>
           </div>
           <div class="struk-row">
-            <dt>Loker:</dt>
-            <dd id="ringkasKiosk" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Perpustakaan UI</dd>
+            <dt>Kiosk:</dt>
+            <dd id="ringkasKiosk" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Perpustakaan Pusat UMM</dd>
           </div>
         </dl>
 

@@ -336,6 +336,14 @@ require_once __DIR__ . '/../../../includes/functions.php';
               <button type="button" class="btn-wizard-next" onclick="pindahLangkah(1)">
                 <span>Cetak Dokumen Lain</span>
               </button>
+              <button type="button" class="btn btn-cek" onclick="window.print()" style="padding: 11px 20px;">
+                <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                <span>Cetak Struk Tiket</span>
+              </button>
               <a href="index.php" class="btn-back-home" style="padding: 11px 22px;">
                 <span>Kembali ke Beranda</span>
               </a>
@@ -378,7 +386,7 @@ require_once __DIR__ . '/../../../includes/functions.php';
           </div>
           <div class="struk-row">
             <dt>Kiosk:</dt>
-            <dd id="ringkasKiosk" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Perpustakaan UI</dd>
+            <dd id="ringkasKiosk" style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Perpustakaan Pusat UMM</dd>
           </div>
         </dl>
 

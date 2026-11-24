@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * View: app/Views/home/index.php
  * Halaman utama (Landing Page) Cepatik.
@@ -510,7 +510,7 @@ require_once __DIR__ . '/../../../includes/functions.php';
             </div>
             <div>
               <div class="testimoni-order-spec">
-                <span>📄 Cetak: 64 Hlm Skripsi · Duplex A4 80g · Kiosk UI Depok</span>
+                <span>📄 Cetak: 48 Hlm Skripsi · Duplex A4 80g · Kiosk Perpus Pusat UMM</span>
               </div>
               <div class="testimoni-student">
                 <div class="testimoni-avatar" style="background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);">
@@ -518,7 +518,7 @@ require_once __DIR__ . '/../../../includes/functions.php';
                 </div>
                 <div class="testimoni-author">
                   <h4>Fikri Ramadhan</h4>
-                  <p>Teknik Informatika · Universitas Indonesia</p>
+                  <p>Teknik Informatika · Universitas Muhammadiyah Malang</p>
                 </div>
               </div>
             </div>
@@ -544,7 +544,7 @@ require_once __DIR__ . '/../../../includes/functions.php';
             </div>
             <div>
               <div class="testimoni-order-spec">
-                <span>🎨 Cetak: 18 Hlm Jurnal · Full Color Foto · Kiosk ITB Ganesha</span>
+                <span>🎨 Cetak: 18 Hlm Jurnal · Full Color Foto · Kiosk GKB 1 UMM</span>
               </div>
               <div class="testimoni-student">
                 <div class="testimoni-avatar" style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
@@ -552,7 +552,7 @@ require_once __DIR__ . '/../../../includes/functions.php';
                 </div>
                 <div class="testimoni-author">
                   <h4>Nabila Putri Anggraini</h4>
-                  <p>Sekolah Farmasi · Institut Teknologi Bandung</p>
+                  <p>Farmasi · Universitas Muhammadiyah Malang</p>
                 </div>
               </div>
             </div>
@@ -573,12 +573,12 @@ require_once __DIR__ . '/../../../includes/functions.php';
                 <div class="testimoni-stars" title="Rating 5/5">★★★★★</div>
               </div>
               <p class="testimoni-text">
-                "Fitur tracking tiketnya keren banget, ada progress bar real-time dan konfirmasi kode tiket pesanan. Tinggal jalan santai ke Gelanggang, masukkan kode tiket di layar kiosk, dokumen sudah tercetak rapi. Sangat recommended buat mahasiswa aktif!"
+                "Fitur tracking tiketnya keren banget, ada progress bar real-time dan konfirmasi kode tiket pesanan. Tinggal jalan santai ke lobby GKB 2, masukkan kode tiket di layar kiosk, dokumen sudah tercetak rapi. Sangat recommended buat mahasiswa aktif!"
               </p>
             </div>
             <div>
               <div class="testimoni-order-spec">
-                <span>📌 Cetak: 42 Hlm Makalah · A4 75g + Jilid Staples · UGM</span>
+                <span>📌 Cetak: 14 Hlm Laporan · A4 75g + Jilid Staples · Kiosk GKB 2 UMM</span>
               </div>
               <div class="testimoni-student">
                 <div class="testimoni-avatar" style="background: linear-gradient(135deg, #10B981 0%, #047857 100%);">
@@ -586,7 +586,7 @@ require_once __DIR__ . '/../../../includes/functions.php';
                 </div>
                 <div class="testimoni-author">
                   <h4>Dimas Arya Wicaksana</h4>
-                  <p>Fakultas Ekonomika &amp; Bisnis · Universitas Gadjah Mada</p>
+                  <p>Fakultas Ekonomi &amp; Bisnis · Universitas Muhammadiyah Malang</p>
                 </div>
               </div>
             </div>
